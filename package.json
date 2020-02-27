@@ -38,7 +38,7 @@
         "vendors": "^1.0.2",
         "waypoints": "^4.0.1",
         "wow.js": "^1.2.2",
-        "yarn": "^1.12.1"
+        "yarn": "^1.22.0"
     },
     "name": "S*Book",
     "version": "1.0.0",
