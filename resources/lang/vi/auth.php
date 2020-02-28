@@ -15,5 +15,5 @@ return [
 
     'failed' => 'Sai tên đăng nhập hoặc mật khẩu. Vui lòng kiểm tra lại!',
     'throttle' => 'Hệ thống đang quá tải!. Vui lòng thử lại sau :seconds giây.',
-
+    'login' => 'Bạn cần đăng nhập để tiếp tục',
 ];
