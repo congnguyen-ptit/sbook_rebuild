@@ -6534,3 +6534,9 @@ p.lost-password a:hover {
     padding-top: 10px;
     float: right;
 }
+
+.btn-share-book {
+    color: white !important;
+    margin-bottom: 5px;
+    background-color: #f07c29;
+}

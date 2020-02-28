@@ -363,7 +363,7 @@
                                                 <div class="alert alert-success">
                                                     {{ trans('page.reviews.sign') }}
                                                     <b><a class="nav-link"
-                                                          href="{{ route('login') }}">{{ trans('Login') }}</a></b>
+                                                          href="{{ route('framgia.login') }}">{{ trans('Login') }}</a></b>
                                                 </div>
                                             @endif
                                         </div>
