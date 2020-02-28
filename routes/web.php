@@ -12,6 +12,9 @@
 */
 
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('landing-page', function (){
+    return view('landing');
+})->name('landing');
 
 Route::group(['middleware' => 'locale'], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -26,6 +29,7 @@ Route::group(['middleware' => 'locale'], function () {
     Route::get('login/framgia/callback', 'Auth\LoginController@handleProviderCallback');
 
     Route::group(['namespace' => 'User'], function () {
+        Route::post('change-cover', 'UserController@changeCover')->name('change-cover');
         Route::get('getModalBook/{id}', 'BookController@getModalBook')->name('modal-book');
         Route::resource('books', 'BookController');
         Route::get('books/category/{slug}', 'BookController@getBookCategory')->name('book.category');

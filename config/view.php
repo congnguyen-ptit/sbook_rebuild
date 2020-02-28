@@ -29,6 +29,8 @@ return [
         'book' => 'storage/img/book/',
         'logo_admin' => 'admin_asset/assets/demo/default/media/img/logo/',
         'detaultAvatar' => 'storage/img/user/avatar/1.png',
+        'defaultCover' => 'storage/img/user/cover/cover.jpg',
+        'cover' => 'storage/img/user/cover/',
     ],
 
     'paginate' => [

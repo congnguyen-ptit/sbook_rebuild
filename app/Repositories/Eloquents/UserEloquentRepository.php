@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquents;
 
 use App\Eloquent\User;
 use App\Repositories\Contracts\UserRepository;
+use File;
 
 class UserEloquentRepository extends AbstractEloquentRepository implements UserRepository
 {
@@ -90,5 +91,31 @@ class UserEloquentRepository extends AbstractEloquentRepository implements UserR
         }
 
         return $status;
+    }
+
+    public function changeCover($file, $id)
+    {
+        try {
+            $pathCover = config('view.image_paths.cover');
+            $user = $this->model()->findOrFail($id);
+            $oldCover = $user->cover;
+            $pathImage = $pathCover . $oldCover;
+            if (File::exists($pathImage))
+                File::delete($pathImage);
+            $filename = str_random(10) . '_' . preg_replace('/\s+/', '', $file->getClientOriginalName());
+            $file->move($pathCover, $filename);
+            $user->update(['cover' => $filename]);
+
+            return [
+                'status' => true,
+                'data' => $pathCover . $user->cover,
+                'message' => trans('settings.profile.changeCoverSucc'),
+            ];
+        } catch (\Exception $e) {
+            return [
+                'status' => false,
+                'data' => $e->getMessage(),
+            ];
+        }
     }
 }

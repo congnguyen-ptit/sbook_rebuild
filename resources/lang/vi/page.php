@@ -76,4 +76,5 @@ return [
     'close' => 'Tắt',
     'editPhone' => 'Sửa',
     'enterPhone' => 'Nhập số điện thoại của bạn',
+    'landing' => 'Landing Page',
 ];

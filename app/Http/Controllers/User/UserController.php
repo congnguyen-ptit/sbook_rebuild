@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Requests\BioRequest;
+use App\Http\Requests\UploadCoverRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\OwnerRepository;
@@ -412,5 +413,12 @@ class UserController extends Controller
                 'msg' => trans('page.succBio'),
             ]);
         }
+    }
+
+    public function changeCover(UploadCoverRequest $request)
+    {
+        $user_id = Auth::id();
+
+        return $request->hasFile('cover') ? $this->user->changeCover($request->file('cover'), $user_id) : false;
     }
 }

@@ -186,6 +186,8 @@ return [
         'bio' => 'Giới thiệu',
         'bioTitle' => 'Giới thiệu bản thân :',
         'favorite' => 'Sách yêu thích',
+        'changeCover' => 'Cập nhật ảnh bìa',
+        'changeCoverSucc' => 'Cập nhật ảnh bìa thành công',
     ],
 
     'req' => 'Yêu cầu',

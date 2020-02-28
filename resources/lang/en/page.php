@@ -76,4 +76,5 @@ return [
     'close' => 'Close',
     'editPhone' => 'Edit',
     'enterPhone' => 'Enter your phone number',
+    'langding' => 'Landing Page',
 ];

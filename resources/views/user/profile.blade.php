@@ -2,11 +2,23 @@
 
 @section('header')
     @parent
+    {{ Html::style('assets/user/css/cover.css') }}
     <div class="breadcrumbs-area mb-70">
         <div class="container">
             <div class="fb-profile">
-                <img align="left" class="fb-image-lg" src="{{ asset(config('view.image_paths.banner') . '32.jpg') }}" alt="banner"/>
-                <img align="left" src="{{ $user->avatar ? asset($user->avatar) : asset(config('view.image_paths.user') . '1.png') }}" alt="avatar" class="fb-avatar-profile thumbnail" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};">
+                <div class="cover">
+                    <img class="cover-image" src="{{ coverUser($user) }}">
+                    @if(Auth::id() === $user->id)
+                        <div class="cover-overlay"></div>
+                        <div class="cover-details fadeIn-bottom">
+                            <span id="change-cover"><i class="fa fa-camera"></i>{{ trans('settings.profile.changeCover') }}</span>
+                        </div>
+                        <form enctype="multipart/form-data" id="upload_form" role="form" method="POST" action="" >
+                            <input type="file" name="cover" class="hide" id="cover">
+                        </form>
+                    @endif
+                </div>
+                <img align="left" src="{{ $user->avatar ?? asset(config('view.image_paths.user') . '1.png') }}" alt="avatar" class="fb-avatar-profile thumbnail absolute" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};">
                 <div class="fb-profile-text floatleft">
                     @if ($user)
                         <h1 class="name-avatar">{{ $user->name }}</h1>
@@ -132,14 +144,9 @@
                                     <p id="text-bio">
                                         {{ $user->bio }}
                                     </p>
-                                    @if (Auth::id() === $user->id)
-                                        <button class="btn btn-sm btn-warning pull-right mt-16" id="edit-bio">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                    @endif
                                 </div>
                                 @if (Auth::id() === $user->id)
-                                    <div id="form-bio" class="col-md-10 col-md-offset-1 dp-none">
+                                    <div id="form-bio" class="col-md-10 col-md-offset-1">
                                         <textarea class="form-control" id="input-bio" rows="4" cols="50">{{ $user->bio }}</textarea>
                                         <small><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>{{ trans('page.maxBio') }}</small>
                                         <button class="btn btn-sm btn-success pull-right mt-16" id="submit-bio" data-url="{{ route('update-bio', $user->id) }}">
