@@ -151,7 +151,7 @@
 <div class="most-product-area pt-90 pb-60">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="product-active-2 owl-carousel">
                     @if($officeBooks)
                         @foreach($officeBooks as $item)
@@ -161,16 +161,6 @@
                             </div>
                         @endforeach
                     @endif
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                <div class="block-newsletter">
-                    <h2>{{ __('page.email.signUp') }}</h2>
-                    <p>{{ __('page.email.content') }}</p>
-                    <form action="#">
-                        <input type="text" placeholder="{{ __('page.email.placeHolder') }}" />
-                    </form>
-                    <a href="#">{{ __('page.email.submit') }}</a>
                 </div>
             </div>
         </div>
