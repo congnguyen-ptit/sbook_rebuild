@@ -1,7 +1,7 @@
 <div class="product-wrapper">
     <div class="product-img">
         <a href="{{ route('books.show', $book->slug . '-' . $book->id) }}">
-            <img src="{{ $book->medias->count() > 0 ? asset(config('view.image_paths.book') . $book->medias[0]->path) : asset(config('view.image_paths.book') . 'default.jpg') }}" alt="book" class="primary" />
+            <img src="{{ mediaBook($book) }}" alt="{{ $book->title }}" class="primary" />
         </a>
         <div class="quick-view">
             <a class="action-view show-book-modal" href="#" data-url="{{ route('modal-book', $book->id) }}" data-target="#productModal" data-toggle="modal" title="Quick View">
