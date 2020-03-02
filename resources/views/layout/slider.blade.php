@@ -6,10 +6,10 @@
                     <div class="col-md-5">
                         <div class="slider-content slider-animated-1 text-center">
                             @if (isset($textBanners) && count($textBanners) >0)
-                                <h1>{{ $textBanners[0]['value'] }}</h1>
-                                <h3>{{ $textBanners[1]['value'] }}</h3>
+                                <h3 class="invisible">{{ $textBanners[1]['value'] }}</h3>
+                                <h1 class="color-banner">{{ $textBanners[0]['value'] }}</h1>
                             @endif
-                            <a href="{{ route('books.create') }}" class="{{ Auth::check() ? '' : 'login' }}">{{ __('settings.createBook') }}</a>
+                            <a href="{{ route('books.create') }}" class="{{ Auth::check() ? '' : 'login' }}">{{ __('settings.shareBook') }}</a>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                         <h1>{{ $textBanners[2]['value'] }}</h1>
                         <h2>{{ $textBanners[3]['value'] }}</h2>
                     @endif
-                    <a href="{{ route('books.create') }}" class="{{ Auth::check() ? '' : 'login' }}">{{ __('settings.createBook') }}</a>
+                    <a href="{{ route('books.create') }}" class="{{ Auth::check() ? '' : 'login' }}">{{ __('settings.shareBook') }}</a>
                 </div>
             </div>
         </div>

@@ -191,7 +191,7 @@ return [
     ],
 
     'req' => 'Yêu cầu',
-    'createBook' => 'Thêm sách',
+    'shareBook' => 'Chia sẽ sách',
     'request' => [
         'myReq' => 'Yêu cầu của tôi',
         'image' => 'Ảnh bìa',

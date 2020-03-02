@@ -49,7 +49,7 @@
                             @auth
                                 <li>
                                     <a href="{{ route('books.create') }}" class="btn btn-sm btn-share-book{{ Auth::check() ? '' : 'login' }}">
-                                        <span class="fa fa-plus pl-0"></span>{{ __('settings.createBook') }}
+                                        <i class="fa fa-plus mr-3_pl-0"></i> {{ __('settings.shareBook') }}
                                     </a>
                                 <li class="">
                                     <div class="header-noti">

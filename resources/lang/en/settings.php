@@ -191,7 +191,7 @@ return [
     ],
 
     'req' => 'Request',
-    'createBook' => 'Create Book',
+    'shareBook' => 'Share Book',
     'request' => [
         'myReq' => 'My Request',
         'image' => 'Image',
