@@ -4,7 +4,7 @@
             <div class="product-wrapper mb-40">
                 <div class="product-img">
                     <a href="{{ route('books.show', $latestBook[$i]->slug . '-' . $latestBook[$i]->id) }}">
-                        <img src="{{ asset(config('view.image_paths.book') . ($latestBook[$i]->medias->count() > 0 ? $latestBook[$i]->medias[0]->path : 'default.jpg')) }}" alt="book" class="primary" />
+                        <img src="{{ mediaBook($latestBook[$i]) }}" alt="{{ $latestBook[$i]->title }}" class="primary" />
                     </a>
                     <div class="quick-view">
                         <a class="action-view show-book-modal" href="#" data-url="{{ route('modal-book', $latestBook[$i]->id) }}" data-toggle="modal" title="Quick View">
@@ -77,7 +77,8 @@
             <div class="product-wrapper">
                 <div class="product-img">
                     <a href="{{ route('books.show', $latestBook[$i]->slug . '-' . $latestBook[$i]->id) }}">
-                        <img src="{{ $latestBook[++$i]->medias->count() > 0 ? asset(config('view.image_paths.book') . $latestBook[$i]->medias[0]->path) : asset(config('view.image_paths.book') . 'default.jpg') }}" alt="book" class="primary" />
+                        <img src="{{ mediaBook($latestBook[$i])  }}" alt="{{ $latestBook[$i]->title }}" class="primary"
+                        />
                     </a>
                     <div class="quick-view">
                         <a class="action-view show-book-modal" href="#" data-url="{{ route('modal-book', $latestBook[$i]->id) }}" data-toggle="modal" title="Quick View">
