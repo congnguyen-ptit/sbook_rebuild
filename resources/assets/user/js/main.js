@@ -880,10 +880,6 @@
         })
     });
 
-    $('#edit-bio').click(function () {
-       $('#form-bio').toggle(config.FIVEHUNDRESS);
-    });
-
     $('#submit-bio').click(function() {
         var text = $('#input-bio').val();
         const url = $(this).attr('data-url');
@@ -906,8 +902,6 @@
                     messagePopup(response.errors.bio[0], 'error', 'error');
                 }
             }
-        }).done(function () {
-            $('#form-bio').css('display', 'none');
         });
     });
 
@@ -947,6 +941,34 @@
                     }
                 }
             });
+        });
+    });
+
+    $('#change-cover').click(function () {
+        $('#cover').trigger('click');
+    });
+
+    $('body').on('change', '#cover', function () {
+        $.ajax({
+            url: 'change-cover',
+            data: new FormData($("#upload_form")[0]),
+            dataType: 'json',
+            async: false,
+            type: 'post',
+            processData: false,
+            contentType: false,
+            success: function(res) {
+                if (res) {
+                    $('.cover-image').attr('src', res.data)
+                    messagePopup(res.message, 'success', 'success');
+                }
+            },
+            error: function (xhr, status, error) {
+                var response = JSON.parse(xhr.responseText);
+                if (xhr.status === config.STATUS.CLIENT.PAYMENT_REQ) {
+                    messagePopup(response.errors.cover[0], 'warning', 'warning');
+                }
+            }
         });
     });
 

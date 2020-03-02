@@ -156,6 +156,7 @@ return [
         'avatar' => 'Ảnh đại diện',
         'password_confirmation' => 'Mật khẩu xác nhận',
         'name' => 'Tên',
+        'cover' => 'Ảnh bìa',
     ],
 
 ];

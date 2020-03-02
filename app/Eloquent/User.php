@@ -29,6 +29,7 @@ class User extends Authenticatable
         'office_id',
         'chatwork_id',
         'bio',
+        'cover',
     ];
 
     /**

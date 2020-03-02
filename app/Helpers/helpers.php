@@ -120,3 +120,9 @@ function avatarUser($user) {
 function mediaBook($typeBook){
     return asset(config('view.image_paths.book') . ($typeBook->medias->first()->path ?? 'default.jpg'));
 }
+
+function coverUser($user) {
+    return $user->cover
+            ? asset(config('view.image_paths.cover') . $user->cover)
+            : asset(config('view.image_paths.defaultCover'));
+}
