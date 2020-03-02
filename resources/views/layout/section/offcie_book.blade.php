@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div class="most-product-content">
-                    <div class="product-rating">
+                    <div class="product-rating text-left">
                         {!! Form::select('rating',
                            [
                                 '' => '',

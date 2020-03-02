@@ -6548,3 +6548,6 @@ p.lost-password a:hover {
 .color-banner {
     color: #ee4848 !important;
 }
+.mw-25 {
+    max-width: 250px;
+}
