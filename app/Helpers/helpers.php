@@ -118,7 +118,5 @@ function avatarUser($user) {
 }
 
 function mediaBook($typeBook){
-    return  $typeBook->medias->count() > 0
-        ? asset(config('view.image_paths.book') . $typeBook->medias[0]->path)
-        : asset(config('view.image_paths.book') . 'default.jpg');
+    return asset(config('view.image_paths.book') . ($typeBook->medias->first()->path ?? 'default.jpg'));
 }
