@@ -112,7 +112,7 @@ return [
     ],
 
     'links' => [
-        'feedback' => 'https://docs.google.com/forms/d/e/1FAIpQLSeVwREJ9vbPHB3LGDudz9ieePp3Z9xJG96e48_5i9VQj4r5zQ/viewform',
+        'feedback' => 'https://forms.gle/DQCtB8DBMJ8WhL6a7',
         'instruction' => '',
         'banner1' => '/storage/img/banner/banner1.gif',
         'banner2' => '/storage/img/banner/banner2.jpg',
@@ -120,6 +120,7 @@ return [
         'wsm' => '.sun-asterisk.vn/',
         'http' => 'http://',
         'avatar' => "'https://edev.sun-asterisk.vn//assets/user_avatar_default-bc6c6c40940226d6cf0c35571663cd8d231a387d5ab1921239c2bd19653987b2.png'",
+        'icon_header' => '/assets/img/favicon.png',
     ],
 
     'social' => [

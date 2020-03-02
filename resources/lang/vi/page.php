@@ -45,6 +45,7 @@ return [
     'review' => 'Đánh giá',
     'summary' => 'Tiêu đề',
     'reviews' => [
+        'contentLabel' => 'Nội dung',
         'title' => 'Bình luận phải dài từ 5 - 191 ký tự.',
         'content' => 'Nội dung phải chứa ít nhất 5 ký tự.',
         'noReview' => 'Chưa có đánh giá nào!',

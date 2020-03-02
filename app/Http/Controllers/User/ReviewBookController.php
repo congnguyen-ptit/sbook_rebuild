@@ -72,14 +72,16 @@ class ReviewBookController extends Controller
                 $review = $this->review->store($request->all());
                 if ($review && $owners) {
                     foreach ($owners as $owner) {
-                        $info = [
-                            'send_id' => Auth::id(),
-                            'receive_id' => $owner->id,
-                            'target_type' => config('model.target_type.review'),
-                            'target_id' => $review->id,
-                            'viewed' => config('model.viewed.false'),
-                        ];
-                        $this->notification->store($info);
+                        if ($owner->id != auth()->user()->id) {
+                            $info = [
+                                'send_id' => Auth::id(),
+                                'receive_id' => $owner->id,
+                                'target_type' => config('model.target_type.review'),
+                                'target_id' => $review->id,
+                                'viewed' => config('model.viewed.false'),
+                            ];
+                            $this->notification->store($info);
+                        }
                     }
                 }
                 $data = $this->review->find($id);

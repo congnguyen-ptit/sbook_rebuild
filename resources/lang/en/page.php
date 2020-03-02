@@ -45,6 +45,7 @@ return [
     'review' => 'Review',
     'summary' => 'Title',
     'reviews' => [
+        'contentLabel' => 'Content',
         'title' => 'The title must be between 5 and 191.',
         'content' => 'The content must be 5 characters.',
         'noReview' => 'No reviews yet!',
