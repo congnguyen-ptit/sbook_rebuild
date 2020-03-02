@@ -16,7 +16,6 @@ class ReviewBookEloquentRepository extends AbstractEloquentRepository implements
     public function store($data = [])
     {
         $data['user_id'] = Auth::user()->id;
-        $data['content'] = strip_tags($data['content'], config('view.text'));
 
         return $this->model()->create($data);
     }

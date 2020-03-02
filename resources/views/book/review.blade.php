@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="single-form-3 mytextarea">
-                                                {!! Form::textarea('content', null, ['id' => 'mytextarea']) !!}
+                                                {!! Form::textarea('content', null, ['placeHolder' => trans('page.reviews.contentLabel'), 'id' => 'mytextarea']) !!}
                                                 {!! Form::button(__('page.submit'), ['type' => 'submit', 'class' => 'submit']) !!}
                                             </div>
                                         </div>

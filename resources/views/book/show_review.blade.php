@@ -25,7 +25,7 @@
                 <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                     @include('layout.notification')
                     <div class="contact-form text-center">
-                        <h3>{{ $review->title }}</h3>
+                        <h3>{{ htmlspecialchars_decode($review->title) }}</h3>
                     </div>
                     <div class="row content">
                         <div class="col-md-2">
@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-10">
                             <div class="body">
-                                {!! $review->content !!}
+                                {{ htmlspecialchars_decode($review->content) }}
                             </div>
                         </div>
                     </div>
