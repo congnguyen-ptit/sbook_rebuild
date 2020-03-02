@@ -6540,3 +6540,11 @@ p.lost-password a:hover {
     margin-bottom: 5px;
     background-color: #f07c29;
 }
+
+.mr-3_pl-0 {
+    margin-right: 3px !important;
+    padding-left: 0 !important;
+}
+.color-banner {
+    color: #ee4848 !important;
+}
