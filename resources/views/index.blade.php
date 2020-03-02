@@ -155,7 +155,7 @@
                 <div class="product-active-2 owl-carousel">
                     @if($officeBooks)
                         @foreach($officeBooks as $item)
-                            <div class="section-title-2 mb-30">
+                            <div class="section-title-2 mb-30 text-center">
                                 <h3 class="mb-30">{{ $item['office'] }}</h3>
                                 @include('layout.section.offcie_book')
                             </div>
@@ -206,7 +206,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('footer')
