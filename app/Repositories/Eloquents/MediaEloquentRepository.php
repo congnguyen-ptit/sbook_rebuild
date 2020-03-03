@@ -23,13 +23,14 @@ class MediaEloquentRepository extends AbstractEloquentRepository implements Medi
             $imgBook = $data['avatar'];
             $filename = str_random(4) . '_' . preg_replace('/\s+/', '', $imgBook->getClientOriginalName());
             $imgBook->move(config('view.image_paths.book'), $filename);
-            $data['path'] = $filename;
-            $data['target_id'] = $data['book_id'];
-            $data['target_type'] = 'App\Eloquent\Book';
-            $data['priority'] = 1;
-
-            return $this->model()->create($data);
+        }else{
+            $filename = config('view.image_paths.nameDefaultBookImage');
         }
+        $data['path'] = $filename;
+        $data['target_id'] = $data['book_id'];
+        $data['target_type'] = 'App\Eloquent\Book';
+        $data['priority'] = 1;
+        return $this->model()->create($data);
     }
 
     public function find($id)

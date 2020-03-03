@@ -112,7 +112,6 @@
                                     Form::file('avatar',
                                     [
                                         'id' => 'customFile',
-                                        'required' => 'required',
                                         'accept' => 'image/png, image/jpg, image/jpeg, image/bmp, image/gif',
                                         'onchange' => 'changeFile(event)',
                                         'onclick' => 'clickFile(event)',
