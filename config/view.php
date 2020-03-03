@@ -30,6 +30,7 @@ return [
         'logo_admin' => 'admin_asset/assets/demo/default/media/img/logo/',
         'detaultAvatar' => 'storage/img/user/avatar/1.png',
         'defaultCover' => 'storage/img/user/cover/cover.jpg',
+        'nameDefaultBookImage' => 'default_book.jpg',
         'cover' => 'storage/img/user/cover/',
     ],
 
@@ -52,7 +53,7 @@ return [
     ],
 
     'random_numb' => [
-        'book' => 3,
+        'book' => 2,
         'office' => 5,
     ],
 
