@@ -7,7 +7,7 @@
         </div>
         @if (isset($notifications) && count($notifications) > 0)
             @foreach ($notifications as $item)
-                @if (!is_null($item->route))
+                @if (!is_null($item->route) && $item->send_id != $item->receive_id)
                     <li class="result-entry {{ $item->viewed == 0 ? 'new' : 'old' }} notification" data-suggestion="#" data-position="1" data-type="type" data-analytics-type="merchant">
                         <a href="{{ route($item->route, $item->link) }}" class="result-link" data-id={{ $item->id }}>
                             <div class="media single-noti">
