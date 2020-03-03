@@ -158,7 +158,6 @@ class BookController extends Controller
                     $this->notification->store($info);
                 }
             }
-            \Cache::put('latestBook', $this->book->setCache(['created_at', 'desc']), 1440);
             Session::flash('success', trans('settings.success.store'));
 
             return redirect()->route('books.show', $book->slug . '-' . $book->id);
