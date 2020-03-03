@@ -99,7 +99,9 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="banner-shadow-hover xs-mb">
-                    <img src="{{ asset(config('view.links.banner1')) }}" width="100%" />
+                    <a href="{{ config('view.links.book-sun') }}" target="_blank">
+                        <img src="{{ asset(config('view.links.banner1')) }}" width="100%" />
+                    </a>
                 </div>
             </div>
         </div>

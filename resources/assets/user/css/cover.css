@@ -62,6 +62,6 @@
     display: none;
 }
 
-.absolute {
-    position: absolute !important;
+.relative {
+    position: relative !important;
 }

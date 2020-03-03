@@ -18,8 +18,8 @@
                         </form>
                     @endif
                 </div>
-                <img align="left" src="{{ $user->avatar ?? asset(config('view.image_paths.user') . '1.png') }}" alt="avatar" class="fb-avatar-profile thumbnail absolute mw-25" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};">
-                <div class="fb-profile-text floatleft">
+                <img align="left" src="{{ $user->avatar ?? asset(config('view.image_paths.user') . '1.png') }}" alt="avatar" class="fb-avatar-profile thumbnail relative mw-25" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};">
+                <div class="fb-profile-text floatleft relative">
                     @if ($user)
                         <h1 class="name-avatar">{{ $user->name }}</h1>
                     @endif

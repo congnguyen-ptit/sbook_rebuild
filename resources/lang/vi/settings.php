@@ -106,6 +106,9 @@ return [
         'office' => 'Văn phòng:',
         'not_date' => 'Đoán xem',
         'list_borrow' => 'Danh sách mượn',
+        'msgSameTitleBook' => 'Trên hệ thống hiện đã có cuốn sách này, bạn có muốn chia sẽ cuốn sách này không ?',
+        'titleModalSame' => 'Sách có cùng tên ',
+        'totalPage' => 'Tổng số trang :',
     ],
 
     'review' => [
@@ -145,6 +148,7 @@ return [
         'statistic_book' => 'Thống kê review sách',
         'btn_cancel' => 'Hủy bỏ',
         'btn_close' => 'Đóng',
+        'btn_next' => 'Tiếp theo',
         'btn_submit' => 'Gửi',
         'close' => 'x',
         'choose_time_to_borrow' => 'Bạn muốn mượn cuốn sách này trong bao lâu:',
@@ -191,7 +195,7 @@ return [
     ],
 
     'req' => 'Yêu cầu',
-    'shareBook' => 'Chia sẽ sách',
+    'shareBook' => 'Chia sẻ sách',
     'request' => [
         'myReq' => 'Yêu cầu của tôi',
         'image' => 'Ảnh bìa',

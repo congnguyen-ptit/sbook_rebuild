@@ -47,6 +47,8 @@
         textAlert = 'Sách đang được mượn';
         textWaiting = 'Vui lòng đợi chủ sở hữu xác nhận. Cảm ơn bạn!';
     }
+
+    const { settings } = window.translations;
     var header = $('#header-sticky');
     var win = $(window);
 
@@ -971,6 +973,55 @@
             }
         });
     });
+
+    $('#book-title').keyup( function() {
+        let req = $(this).val();
+        $.ajax({
+            url: route('get-book-title'),
+            method: 'GET',
+            data: { req },
+            success: function(res) {
+                if (res.length > 0){
+                    var html = '';
+                    $.each(res, function (index, item) {
+                        html += `<option value="${item.title}" class="item-title" data-id="${item.id}">`;
+                    })
+                    $('#browsers').html(html);
+                }
+            }
+        })
+    }).on('change', function() {
+        var options = $('datalist')[0].options;
+        for (var i = 0; i < options.length; i++){
+            if (options[i].value == $(this).val()) {
+                var req = $(options[i]).attr('data-id');
+                $.ajax({
+                    url: route('get-book-title'),
+                    method: 'GET',
+                    data: { req, type: true },
+                    success: function(res) {
+                        if (res){
+                            swal({
+                                title: settings.book.msgSameTitleBook,
+                                icon: 'warning',
+                                buttons: [
+                                    settings.modal.btn_close,
+                                    settings.modal.btn_next,
+                                ],
+                            }).then( (confirm) => {
+                                if (confirm) {
+                                    $('#modal-content').html(res);
+                                    $('#book-modal').modal('show');
+                                }
+                            });
+                        } else {
+                            messagePopup(settings.home.not_found, 'error', 'error');
+                        }
+                    }
+                })
+            }
+        }
+    });;
 
     $(function() {
         showStart($('.rating'));

@@ -31,6 +31,9 @@
                 <div class="modal-content" id="modal-content"></div>
             </div>
         </div>
+        <script type='text/javascript'>
+            window.translations = {!! $translations !!}
+        </script>
         @include('layout.script')
             @section('script')
                 @show

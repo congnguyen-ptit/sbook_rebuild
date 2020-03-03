@@ -6551,3 +6551,11 @@ p.lost-password a:hover {
 .mw-25 {
     max-width: 250px;
 }
+.mh-15 {
+    max-height: 150px;
+}
+.img-text-cen {
+    display:flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}

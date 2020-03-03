@@ -124,6 +124,7 @@ return [
         'http' => 'http://',
         'avatar' => "'https://edev.sun-asterisk.vn//assets/user_avatar_default-bc6c6c40940226d6cf0c35571663cd8d231a387d5ab1921239c2bd19653987b2.png'",
         'icon_header' => '/assets/img/favicon.png',
+        'book-sun' => 'https://news.sun-asterisk.com/vi/tags/toan-sun-doc-sach',
     ],
 
     'social' => [

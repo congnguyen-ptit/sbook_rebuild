@@ -404,4 +404,25 @@ class BookController extends Controller
 
 
     }
+
+    public function getBookByTitle(Request $request)
+    {
+        if ($request->req != '') {
+            if($request->type){
+                try {
+                    $book = $this->book->find($request->req);
+
+                    return view('layout.section.modal_book_preview', compact('book'));
+                }catch (\Exception $e){
+                    return response()->json(false);
+                }
+
+            }else{
+                return response()->json(
+                    $this->book->searchPage('title', $request->req)
+                         ->take(config('view.paginate.book_request'))
+                );
+            }
+        }
+    }
 }
