@@ -107,10 +107,7 @@
                         <div class="row">
                             {!! Form::label(
                                 'avatar',
-                                __('page.book.avatar'),
-                                [
-                                    'class' => 'add-book',
-                                ])
+                                __('page.book.avatar'))
                             !!}
                             <div class="col-md-12 custom-file" id="custom">
                                 {!!
@@ -150,30 +147,6 @@
                                     </label>
                                 </div>
                             @endforeach
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="single-register">
-                                {!! Form::label(
-                                    'publish_date',
-                                    __('page.book.publish'),
-                                    [
-                                        'class' => 'add-book'
-                                    ]
-                                ) !!}
-                                {!! Form::date(
-                                    'publish_date',
-                                    null,
-                                    [
-                                        'id' => 'example-datetime-local-input publish-date',
-                                        'required' => 'required',
-                                        'class' => 'form-control m-input',
-                                        'max' => date('Y-m-d'),
-                                        'title' =>  __('page.book.publish')
-                                    ]
-                                ) !!}
-                            </div>
                         </div>
                     </div>
                     <div class="single-register">

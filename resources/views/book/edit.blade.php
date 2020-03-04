@@ -158,7 +158,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="single-register">
                                 {!! Form::label(
                                     'sku',
@@ -177,28 +177,6 @@
                                     ]
                                 ) !!}
                                 {!! $errors->first('sku', '<p style="color:red">:message</p>') !!}
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="single-register">
-                                {!! Form::label(
-                                    'publish_date',
-                                    __('page.book.publish'),
-                                    [
-                                        'class' => 'add-book',
-                                    ]
-                                ) !!}
-                                {!! Form::date(
-                                    'publish_date',
-                                    $book->publish_date,
-                                    [
-                                        'id' => 'example-datetime-local-input',
-                                        'required' => 'required',
-                                        'class' => 'form-control m-input',
-                                        'max' => date('Y-m-d'),
-                                    ]
-                                ) !!}
-                                {!! $errors->first('publish_date', '<p style="color:red">:message</p>') !!}
                             </div>
                         </div>
                     </div>

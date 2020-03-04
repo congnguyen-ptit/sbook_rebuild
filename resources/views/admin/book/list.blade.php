@@ -114,12 +114,6 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.publish_date') }}</label>
-                                        <div class="col-lg-10">
-                                            <input name="publish_date" type="text" class="form-control time-datepicker mb-10" placeholder="{{ trans('admin.book.placeHolder.publishDate') }}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label class="col-lg-2 control-label">{{ trans('admin.book.book_detail.new_images') }}</label>
                                         <div class="col-lg-10">
                                             <input type="file" name="newImages[]" class="file-input" multiple="multiple" data-show-upload="false" data-show-caption="true" data-show-preview="true" accept="image/*">
@@ -172,10 +166,6 @@
                                     <div class="single-info">
                                         <b>{{ trans('admin.book.book_detail.sku') }}:</b>
                                         <span id="sku"></span>
-                                    </div>
-                                    <div class="single-info">
-                                        <b>{{ trans('admin.book.book_detail.publish_date') }}:</b>
-                                        <span id="publish_date"></span>
                                     </div>
                                     <div class="single-info">
                                         <b>{{ trans('admin.book.book_detail.total_pages') }}:</b>
@@ -245,13 +235,6 @@
                                         <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.authors') }}</label>
                                         <div class="col-lg-10">
                                             <input id="author" name="author" type="text" class="form-control mb-10" placeholder="{{ trans('admin.book.placeHolder.author') }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.publish_date') }}</label>
-                                        <div class="col-lg-10">
-                                            <input id="publish_date" name="publish_date" type="text" class="form-control time-datepicker mb-10" placeholder="{{ trans('admin.book.placeHolder.publishDate') }}">
                                         </div>
                                     </div>
 

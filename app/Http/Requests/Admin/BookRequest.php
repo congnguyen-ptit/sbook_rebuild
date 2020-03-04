@@ -29,7 +29,6 @@ class BookRequest extends FormRequest
             'description' => 'required|min:5|max:2500',
             'author' => 'required|min:5|max:191',
             'categories' => 'required',
-            'publish_date' => 'required|regex:/^(\d{4})-(\d{1,2})-(\d{1,2})$/',
         ];
     }
     public function messages()
@@ -44,7 +43,6 @@ class BookRequest extends FormRequest
             'author.min' => trans('validation.min.string'),
             'author.max' => trans('validation.max.string'),
             'categories.required' => trans('validation.required'),
-            'publish_date.required' => trans('validation.required'),
         ];
     }
 }

@@ -23,7 +23,6 @@ class UserAdminSeeder extends Seeder
                 'password' => bcrypt(config('settings.user.admin.password')),
                 'employee_code' => config('settings.user.admin.employee_code'),
                 'avatar' => config('app.url') . '/' . config('settings.user.admin.avatar'),
-                'workspace' => config('settings.user.admin.workspace'),
                 'position' => config('settings.user.admin.position'),
             ]
         );
