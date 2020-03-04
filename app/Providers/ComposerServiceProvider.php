@@ -19,7 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
             'App\Http\ViewComposers\ProfileComposer'
         );
         view()->composer(
-            'admin.layout.main',
+            ['admin.layout.main', 'layout.app'],
             'App\Http\ViewComposers\TranslationComposer'
         );
     }

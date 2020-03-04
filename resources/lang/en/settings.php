@@ -106,6 +106,9 @@ return [
         'office' => 'Office:',
         'not_date' => 'Unknown',
         'list_borrow' => 'List Borrowing',
+        'msgSameTitleBook' => 'On the existing system, do you want to share this book?',
+        'titleModalSame' => 'Book the same title',
+        'totalPage' => 'Total pages :',
     ],
 
     'review' => [
@@ -144,6 +147,7 @@ return [
         'borrow_book' => 'Borrowing book',
         'statistic_book' => 'Book reviews statistic',
         'btn_cancel' => 'Cancel',
+        'btn_next' => 'Next',
         'btn_close' => 'Close',
         'btn_submit' => 'Submit',
         'close' => 'x',

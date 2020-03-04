@@ -50,8 +50,13 @@
                                 'class' => 'form-control m-input',
                                 'placeHolder' => __('page.book.placeHolder.title'),
                                 'title' => __('page.book.title'),
+                                'id' => 'book-title',
+                                'autocomplete' => 'off',
+                                'list' => 'browsers'
                             ]
                         ) !!}
+                        <datalist id="browsers">
+                        </datalist>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
