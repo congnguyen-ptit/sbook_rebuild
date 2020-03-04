@@ -14,7 +14,6 @@ var DatatablesDataSourceAjaxServer = {
             columns: [
                 { data: 'title', name: 'title' },
                 { data: 'author', name: 'author' },
-                { data: 'total_pages', name: 'total_pages' },
                 { data: 'avg_star', name: 'avg_star' },
                 { data: 'count_viewed', name: 'count_viewed' },
                 {
@@ -67,7 +66,6 @@ $('#bookList').on('click', '.bookDetailbutton', function () {
             $('#book_detail_model #listCategoies').html('');
             $('#book_detail_model #author').text('');
             $('#book_detail_model #sku').text('');
-            $('#book_detail_model #total_pages').text('');
             $('#book_detail_model #avg_star').text('');
             $('#book_detail_model #view').text('');
             $('#book_detail_model #description').text('');
@@ -87,7 +85,6 @@ $('#bookList').on('click', '.bookDetailbutton', function () {
                 });
                 $('#book_detail_model #author').text(data.author);
                 $('#book_detail_model #sku').text(data.sku);
-                $('#book_detail_model #total_pages').text(data.total_pages);
                 $('#book_detail_model #avg_star').text(data.avg_star);
                 $('#book_detail_model #view').text(data.count_viewed);
                 $('#book_detail_model #description').text(data.description);
@@ -150,7 +147,6 @@ $('#bookList').on('click', '.bookEditbutton', function () {
             $('#book_update_model .modal-body #book_name').val('');
             $('#book_update_model .modal-body #author').val('');
             $('#book_update_model .modal-body #description').val('');
-            $('#book_update_model .modal-body #total_pages').val('');
             $('#book_update_model #listBookImages').html('');
             $('#book_update_model #listImageBookDiv').css('display', 'none');
             $('#book_update_model select option').prop("selected", false);
@@ -160,7 +156,6 @@ $('#bookList').on('click', '.bookEditbutton', function () {
                 $('#book_update_model .modal-body #book_name').val(data.title);
                 $('#book_update_model .modal-body #author').val(data.author);
                 $('#book_update_model .modal-body #description').val(data.description);
-                $('#book_update_model .modal-body #total_pages').val(data.total_pages);
                 data.categories.forEach(function (category) {
                     $('#book_update_model select option[value="' + category.id + '"').prop("selected", true);
                 });
@@ -212,12 +207,6 @@ function validateBook($formElement) {
                 required: true,
                 minlength: 5,
                 maxlength: 191,
-            },
-            total_pages: {
-                required: true,
-                min: 1,
-                max: 10000,
-                regex: /\d+/,
             },
             author: {
                 required: true,

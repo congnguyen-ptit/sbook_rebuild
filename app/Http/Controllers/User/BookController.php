@@ -425,4 +425,11 @@ class BookController extends Controller
             }
         }
     }
+
+    public function getAuthors(Request $req)
+    {
+        if ($req->req != '') {
+            return response()->json($this->book->getAuthors($req->req));
+        };
+    }
 }

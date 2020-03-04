@@ -37,7 +37,6 @@ $factory->define(Book::class, function (Faker $faker) {
         'slug' => str_random(10),
         'description' => $faker->paragraph(200),
         'author' => $faker->name,
-        'total_pages' => $faker->numberBetween(50, 100),
         'avg_star' => $faker->numberBetween(0, 5),
         'sku' => str_random(10),
         'count_viewed' => $faker->numberBetween(20, 100),

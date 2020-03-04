@@ -75,28 +75,6 @@
                                 {!! $errors->first('author', '<p style="color:red">:message</p>') !!}
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="single-register">
-                                {!! Form::label(
-                                    'total_pages',
-                                    __('page.book.totalPage'),
-                                    [
-                                        'class' => 'add-book',
-                                    ]
-                                ) !!}
-                                {!! Form::number(
-                                    'total_pages',
-                                    $book->total_pages,
-                                    [
-                                        'placeHolder' => 'Total pages',
-                                        'required' => 'required',
-                                        'class' => 'form-control m-input',
-                                        'min' => 0,
-                                    ]
-                                ) !!}
-                                {!! $errors->first('total_pages', '<p style="color:red">:message</p>') !!}
-                            </div>
-                        </div>
                     </div>
                     <div class="single-register mb-4">
                         <div class="row">

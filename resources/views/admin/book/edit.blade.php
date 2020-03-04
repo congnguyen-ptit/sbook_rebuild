@@ -43,12 +43,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.total_pages') }}</label>
-                    <div class="col-lg-10">
-                        <input name="total_pages" type="number" class="form-control mb-10" min="1" value="{{ $book->total_pages }}" placeholder="{{ trans('admin.book.placeHolder.totalPage') }}">
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.authors') }}</label>
                     <div class="col-lg-10">
                         <input name="author" type="text" class="form-control mb-10" value="{{ $book->author }}" placeholder="{{ trans('admin.book.placeHolder.author') }}">

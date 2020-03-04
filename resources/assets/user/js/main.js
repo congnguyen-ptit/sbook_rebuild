@@ -976,20 +976,22 @@
 
     $('#book-title').keyup( function() {
         let req = $(this).val();
-        $.ajax({
-            url: route('get-book-title'),
-            method: 'GET',
-            data: { req },
-            success: function(res) {
-                if (res.length > 0){
-                    var html = '';
-                    $.each(res, function (index, item) {
-                        html += `<option value="${item.title}" class="item-title" data-id="${item.id}">`;
-                    })
-                    $('#browsers').html(html);
+        if (req != '') {
+            $.ajax({
+                url: route('get-book-title'),
+                method: 'GET',
+                data: { req },
+                success: function(res) {
+                    if (res.length > 0){
+                        var html = '';
+                        $.each(res, function (index, item) {
+                            html += `<option value="${item.title}" class="item-title" data-id="${item.id}">`;
+                        })
+                        $('#browsers').html(html);
+                    }
                 }
-            }
-        })
+            })
+        }
     }).on('change', function() {
         var options = $('datalist')[0].options;
         for (var i = 0; i < options.length; i++){
@@ -1022,6 +1024,26 @@
             }
         }
     });;
+
+    $('#author').keyup( function() {
+        let req = $(this).val();
+        if (req != '') {
+            $.ajax({
+                url: route('get-authors'),
+                method: 'GET',
+                data: {req},
+                success: function (res) {
+                    if (res.length > 0) {
+                        var html = '';
+                        $.each(res, function (index, item) {
+                            html += `<option value="${item.author}">`;
+                        })
+                        $('#authors').html(html);
+                    }
+                }
+            })
+        }
+    });
 
     $(function() {
         showStart($('.rating'));

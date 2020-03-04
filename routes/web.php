@@ -65,6 +65,7 @@ Route::group(['middleware' => 'locale'], function () {
             Route::post('/setting-phone/{request}/{radio}', 'SettingController@postPhoneSetting');
             Route::post('language/{language}', 'SettingController@postLanguage')->name('setting.language');
             Route::get('/get-book-title', 'BookController@getBookByTitle')->name('get-book-title');
+            Route::get('/get-authors', 'BookController@getAuthors')->name('get-authors');
         });
     });
 
