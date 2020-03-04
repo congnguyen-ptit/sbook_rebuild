@@ -15,7 +15,6 @@ class Book extends Model
         'slug',
         'description',
         'author',
-        'publish_date',
         'total_pages',
         'avg_star',
         'sku',

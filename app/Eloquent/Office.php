@@ -9,7 +9,6 @@ class Office extends Model
     protected $fillable = [
         'name',
         'address',
-        'wsm_workspace_id',
         'description',
     ];
 

@@ -54,12 +54,6 @@
                         <input name="author" type="text" class="form-control mb-10" value="{{ $book->author }}" placeholder="{{ trans('admin.book.placeHolder.author') }}">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.publish_date') }}</label>
-                    <div class="col-lg-10">
-                        <input name="publish_date" type="text" value="{{ $book->publish_date }}" class="form-control time-datepicker mb-10" placeholder="{{ trans('admin.book.placeHolder.publishDate') }}">
-                    </div>
-                </div>
 
                 @if ($book->medias && count($book->medias))
                     <div class="form-group">

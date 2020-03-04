@@ -40,8 +40,14 @@ class OfficeEloquentRepository extends AbstractEloquentRepository implements Off
 
     public function store($data = [])
     {
-        $this->model()->create($data);
+        $office = $this->model()->create($data);
+        \Cache::put('offices', $this->getData(), 1440);
 
-        return \Cache::put('offices', $this->getData(), 1440);
+        return $office;
+    }
+
+    public function byName($name)
+    {
+        return $this->model()->where('name', '=', $name)->first();
     }
 }
