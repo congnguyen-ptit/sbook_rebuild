@@ -107,7 +107,10 @@
                         <div class="row">
                             {!! Form::label(
                                 'avatar',
-                                __('page.book.avatar'))
+                                __('page.book.avatar'),
+                                [
+                                    'class' => 'ml-15',
+                                ])
                             !!}
                             <div class="col-md-12 custom-file" id="custom">
                                 {!!
