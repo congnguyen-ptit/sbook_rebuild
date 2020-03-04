@@ -6559,3 +6559,7 @@ p.lost-password a:hover {
     flex-wrap: nowrap;
     align-items: center;
 }
+
+.ml-15 {
+    margin-left: 15px;
+}

@@ -29,8 +29,7 @@ class OfficeEloquentRepository extends AbstractEloquentRepository implements Off
                 $data = $office->name;
             }
         }
-
-        return $data;
+        return isset($data) ? $data : abort(404);
     }
 
     public function findById($id)

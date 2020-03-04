@@ -244,8 +244,10 @@
                 <div class="pagination-area mt-50">
                     <div class="list-page-2">
                         <p>
-                            {{ __('settings.showing')  }}
-                            {{ ($books->currentpage() - 1) * $books->perpage() + 1 }} {{ __('settings.to') }} {{ ($books->currentpage() - 1) * $books->perpage() + $books->count() }} {{ __('settings.of') }} {{ $books->total() }} {{ __('settings.items') }}
+                            @if($books->count() >0)
+                                {{ __('settings.showing')  }}
+                                {{ ($books->currentpage() - 1) * $books->perpage() + 1 }} {{ __('settings.to') }} {{ ($books->currentpage() - 1) * $books->perpage() + $books->count() }} {{ __('settings.of') }} {{ $books->total() }} {{ __('settings.items') }}
+                            @endif
                         </p>
                     </div>
                     <div class="page-numbers">

@@ -222,7 +222,8 @@ class BookEloquentRepository extends AbstractEloquentRepository implements BookR
 
     public function getBookOffice($data, $with = [])
     {
-        $data = strstr($data, '-', true);
+        $string = strstr($data, '-', true);
+        $data = $string ? $string : $data;
         $office = app(Office::class)::where('name', 'like', '%' . $data . '%')->first();
 
         $ids = app(Bookmeta::class)
@@ -381,5 +382,10 @@ class BookEloquentRepository extends AbstractEloquentRepository implements BookR
         ];
 
         return $data;
+    }
+
+    public function getAllAuthor()
+    {
+        return $this->model()->select('author')->distinct()->get();
     }
 }
