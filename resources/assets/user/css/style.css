@@ -6383,7 +6383,7 @@ p.lost-password a:hover {
 }
 
 #search-suggest {
-    width: 90%;
+    width: 95% !important;
     z-index: 99;
     margin-top: 0;
     position: absolute;

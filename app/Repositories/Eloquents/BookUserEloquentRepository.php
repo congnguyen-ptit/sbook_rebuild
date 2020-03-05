@@ -247,4 +247,9 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
 
         return $result;
     }
+
+    public function findByBookIdAndUserId($bookId, $userId)
+    {
+        return $this->model()->where('book_id', $bookId)->where('user_id', $userId)->first();
+    }
 }

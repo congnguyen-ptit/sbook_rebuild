@@ -309,16 +309,16 @@ class UserController extends Controller
     public function cancelBorrowing($bookId)
     {
         try {
+            $target = $this->bookUser->findByBookIdAndUserId($bookId, Auth::id());
             $id = $this->bookUser->destroy([
                 'book_id' => $bookId,
                 'user_id' => Auth::id(),
             ]);
-
             if ($id != 0) {
                 $this->notification->destroy([
                     'send_id' => Auth::id(),
                     'target_type' => config('model.target_type.book_user'),
-                    'target_id' => $id,
+                    'target_id' => $target->id,
                 ]);
             }
 

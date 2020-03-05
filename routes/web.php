@@ -27,6 +27,7 @@ Route::group(['middleware' => 'locale'], function () {
 
     Route::get('login/framgia', 'Auth\LoginController@redirectToProvider')->name('framgia.login');
     Route::get('login/framgia/callback', 'Auth\LoginController@handleProviderCallback');
+    Route::post('/set-modal-phone', 'HomeController@setStatusModalPhone')->middleware('auth')->name('set-modal-phone');
 
     Route::group(['namespace' => 'User'], function () {
         Route::post('change-cover', 'UserController@changeCover')->name('change-cover');
