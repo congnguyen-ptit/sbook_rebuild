@@ -74,8 +74,10 @@
                                                             {{ $user->phone }}
                                                         @else
                                                             {{__('settings.profile.no_phone') }}
-                                                            ( <small id="update-phone" class="cursor">
+                                                            @if(Auth::id() == $user->id)
+                                                                ( <small id="update-phone" class="cursor">
                                                                 {{__('settings.profile.update') }} <i class="fa fa-pencil-square-o"></i></small>)
+                                                            @endif
                                                         @endif
                                                     </span>
                                                 </li>
@@ -83,22 +85,22 @@
                                         @else
                                             <li title="{{ __('settings.profile.phone') }}" class="list-group-item">
                                                 <i class="fa fa-phone-square" aria-hidden="true"></i>
-                                                <span>{{ $user->phone ? $user->phone : __('settings.profile.no_phone') }}</span>
+                                                <span>{{ $user->phone ?? __('settings.profile.no_phone') }}</span>
                                             </li>
                                         @endif
                                         <li title="Employee Code" class="list-group-item">
                                             <i class="fa fa-barcode" aria-hidden="true"></i>
-                                            <span>{{ $user->employee_code ? $user->employee_code : __('settings.profile.no_code') }}</span>
+                                            <span>{{ $user->employee_code ??  __('settings.profile.no_code') }}</span>
                                         </li>
 
                                         <li title="{{ __('settings.profile.position') }}" class="list-group-item">
                                             <i class="fa fa-building" aria-hidden="true"></i>
-                                            <span>{{ $user->position ? $user->position : __('settings.profile.no_position') }}</span>
+                                            <span>{{ $user->position ?? __('settings.profile.no_position') }}</span>
                                         </li>
 
                                         <li title="{{ __('settings.profile.workspace') }}" class="list-group-item">
                                             <i class="fa fa-home" aria-hidden="true"></i>
-                                            <span>{{ $user->workspace ? $user->workspace : __('settings.profile.no_workspace') }}</span>
+                                            <span>{{ $user->office->name ?? __('settings.profile.no_workspace') }}</span>
                                         </li>
                                         @if (count($followings->collapse()) > 0)
                                             <li title="Following Users" class="list-group-item">

@@ -50,6 +50,7 @@ return [
         'latest_book' => 12,
         'author' => 10,
         'book_top' => 6,
+        'showOwner' => 3,
     ],
 
     'random_numb' => [

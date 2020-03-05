@@ -6566,3 +6566,33 @@ p.lost-password a:hover {
 .cursor {
     cursor: pointer;
 }
+#list-owner {
+    position: relative;
+    background: #8e8e8e;
+    width: 30px;
+    height: 30px;
+    color: white;
+    border-radius: 50%;
+}
+.img-list {
+    height: 50px !important;
+    width: 50px !important;
+    border-radius: 50%;
+    border: 1px solid #80808070;
+    margin: 0;
+    padding: 0;
+}
+
+.border-bottom {
+    border: none;
+    border-bottom: 1px solid #ddd !important;
+}
+.scroll-h-3{
+    max-height: 350px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.overflow-none {
+    overflow: hidden !important;
+}

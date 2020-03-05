@@ -53,7 +53,7 @@
     var win = $(window);
 
     win.on('scroll', function() {
-        if ($(this).scrollTop() > 135) {
+        if ($(this).scrollTop() > 150) {
             header.addClass("sticky");
         } else {
             header.removeClass("sticky");
@@ -353,7 +353,7 @@
                     $('.owner-avatar').append(html);
                     obj.html(textRemoveOwner);
                     obj.removeClass('btn-share').addClass('btn-remove-owner');
-                    $('.btn-borrow').addClass('disabled');
+                    $('.btn-borrow').addClass('disabled hide');
                 })
                 .fail(function() {
                     //
@@ -381,7 +381,7 @@
                     $('#user-' + res).remove();
                     obj.html(textBook);
                     obj.removeClass().addClass('btn-share');
-                    $('.btn-borrow').removeClass('disabled');
+                    $('.btn-borrow').removeClass('disabled hide');
                 })
                 .fail(function() {
                     //

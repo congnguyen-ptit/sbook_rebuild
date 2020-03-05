@@ -126,3 +126,14 @@ function coverUser($user) {
             ? asset(config('view.image_paths.cover') . $user->cover)
             : asset(config('view.image_paths.defaultCover'));
 }
+
+function bookBorrowed ($owner, $bookId) :bool {
+    $condition = [
+        'owner_id' => $owner->id,
+        'book_id' => $bookId,
+        'type' => config('view.request.reading'),
+    ];
+    $result = \App\Eloquent\BookUser::countByCondition($condition);
+
+    return $result > 0 ? true : false;
+}
