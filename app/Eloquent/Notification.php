@@ -37,6 +37,6 @@ class Notification extends Model
             'viewed' => 0,
         ];
 
-        return count(static::where($where)->where('send_id', '!=', $id)->get());
+        return static::where($where)->where('send_id', '!=', $id)->count();
     }
 }

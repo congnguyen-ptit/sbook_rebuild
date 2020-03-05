@@ -147,6 +147,7 @@
                             [
                                 'id' => 'mytextarea',
                                 'class' => 'form-control m-input',
+                                'required' => 'required',
                             ]
                         ) !!}
                     </div>
