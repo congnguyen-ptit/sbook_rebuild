@@ -69,7 +69,15 @@
                                             @else
                                                 <li title="{{ __('settings.profile.phone') }}" class="list-group-item">
                                                     <i class="fa fa-phone-square" aria-hidden="true"></i>
-                                                    <span>{{ $user->phone ? $user->phone : __('settings.profile.no_phone') }}</span>
+                                                    <span id="phone-here">
+                                                        @if($user->phone)
+                                                            {{ $user->phone }}
+                                                        @else
+                                                            {{__('settings.profile.no_phone') }}
+                                                            ( <small id="update-phone" class="cursor">
+                                                                {{__('settings.profile.update') }} <i class="fa fa-pencil-square-o"></i></small>)
+                                                        @endif
+                                                    </span>
                                                 </li>
                                             @endif
                                         @else

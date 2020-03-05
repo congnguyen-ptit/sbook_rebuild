@@ -6563,3 +6563,6 @@ p.lost-password a:hover {
 .ml-15 {
     margin-left: 15px;
 }
+.cursor {
+    cursor: pointer;
+}
