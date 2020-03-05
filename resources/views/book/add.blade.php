@@ -59,7 +59,7 @@
                         </datalist>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="single-register">
                                 {!! Form::label(
                                     'author',
@@ -75,32 +75,13 @@
                                         'required' => 'required',
                                         'class' => 'form-control m-input',
                                         'placeHolder' => __('page.book.placeHolder.author'),
-                                        'title' => __('page.book.author')
+                                        'title' => __('page.book.author'),
+                                        'autocomplete' => 'off',
+                                        'list' => 'authors',
                                     ]
                                 ) !!}
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="single-register">
-                                {!! Form::label(
-                                    'total_pages',
-                                    __('page.book.totalPage'),
-                                    [
-                                        'class' => 'add-book',
-                                    ]
-                                ) !!}
-                                {!! Form::number(
-                                    'total_pages',
-                                    null,
-                                    [
-                                        'required' => 'required',
-                                        'class' => 'form-control m-input',
-                                        'min' => 0,
-                                        'placeHolder' => __('page.book.placeHolder.totalPage'),
-                                        'title' => __('page.book.totalPage')
-                                    ]
-                                ) !!}
-                            </div>
+                            <datalist id="authors"></datalist>
                         </div>
                     </div>
                     <div class="single-register mb-4">
@@ -180,7 +161,6 @@
     </div>
 </div>
 @endsection
-
 @section('footer') @parent
 @endsection
 

@@ -102,12 +102,6 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.total_pages') }}</label>
-                                        <div class="col-lg-10">
-                                            <input name="total_pages" type="number" class="form-control mb-10" min="1" placeholder="{{ trans('admin.book.placeHolder.totalPage') }}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.authors') }}</label>
                                         <div class="col-lg-10">
                                             <input name="author" type="text" class="form-control mb-10" placeholder="{{ trans('admin.book.placeHolder.author') }}">
@@ -168,10 +162,6 @@
                                         <span id="sku"></span>
                                     </div>
                                     <div class="single-info">
-                                        <b>{{ trans('admin.book.book_detail.total_pages') }}:</b>
-                                        <span id="total_pages"></span>
-                                    </div>
-                                    <div class="single-info">
                                         <b>{{ trans('admin.book.book_detail.avg_star') }}:</b>
                                         <span id="avg_star"></span>
                                     </div>
@@ -222,12 +212,6 @@
                                                     <option value="{{ $cate->id }}">{{ $cate->name }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2">{{ trans('admin.book.book_detail.total_pages') }}</label>
-                                        <div class="col-lg-10">
-                                            <input id="total_pages" name="total_pages" type="number" min="1" class="form-control mb-10" placeholder="{{ trans('admin.book.placeHolder.totalPage') }}">
                                         </div>
                                     </div>
 

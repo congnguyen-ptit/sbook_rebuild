@@ -384,8 +384,12 @@ class BookEloquentRepository extends AbstractEloquentRepository implements BookR
         return $data;
     }
 
-    public function getAllAuthor()
+    public function getAuthors($tern)
     {
-        return $this->model()->select('author')->distinct()->get();
+        return $this->model()
+                    ->select('author')
+                    ->where('author', 'like', '%' . $tern . '%')
+                    ->distinct()
+                    ->get();
     }
 }

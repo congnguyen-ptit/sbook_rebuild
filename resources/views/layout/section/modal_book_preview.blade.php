@@ -21,7 +21,6 @@
             <div class="modal-pro-content">
                 <h5>{{ $book->title }}</h5>
                 <div class="single-info">{{ trans('settings.book.author') }}  {{ $book->author }}</div>
-                <div class="single-info">{{ trans('settings.book.totalPage') }} {{ $book->total_pages }}</div>
                 <div class="single-info">
                     <b>{{ __('settings.modal.category') }}</b>
                     @foreach ($book->categories as $cate)

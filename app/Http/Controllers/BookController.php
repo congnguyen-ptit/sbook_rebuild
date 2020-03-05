@@ -56,7 +56,7 @@ class BookController extends Controller
             $books = $this->book->getData(
                 [],
                 [],
-                ['id', 'title', 'author', 'total_pages', 'avg_star', 'count_viewed', 'slug'],
+                ['id', 'title', 'author', 'avg_star', 'count_viewed', 'slug'],
                 ['id', 'desc'],
                 $limit
             );
@@ -95,7 +95,6 @@ class BookController extends Controller
             'author',
             'categories',
             'category',
-            'total_pages',
             'slug',
         ]);
 
@@ -148,7 +147,6 @@ class BookController extends Controller
             'author',
             'categories',
             'category',
-            'total_pages',
             'slug',
         ]);
 
