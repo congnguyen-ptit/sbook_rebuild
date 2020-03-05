@@ -1,4 +1,4 @@
-@if(empty(Auth::user()->phone))
+@if(Auth::check() && empty(Auth::user()->phone))
     <div id="phone_modal" class="container">
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-sm">
