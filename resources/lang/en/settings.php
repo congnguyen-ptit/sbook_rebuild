@@ -192,6 +192,7 @@ return [
         'favorite' => 'Favorite books',
         'changeCover' => 'Update cover',
         'changeCoverSucc' => 'Update cover successfully',
+        'update' => 'Update',
     ],
 
     'req' => 'Request',

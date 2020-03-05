@@ -76,11 +76,6 @@ class HomeController extends Controller
             'totalReview'
         );
 
-        $phone = Auth::user();
-        if ((Auth::check()) && ($phone->phone == null)) {
-            session()->flash('status');
-        }
-
         return view('index', $data);
     }
 

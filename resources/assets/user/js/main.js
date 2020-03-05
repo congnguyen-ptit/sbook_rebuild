@@ -53,7 +53,7 @@
     var win = $(window);
 
     win.on('scroll', function() {
-        if ($(this).scrollTop() > 120) {
+        if ($(this).scrollTop() > 135) {
             header.addClass("sticky");
         } else {
             header.removeClass("sticky");
@@ -705,7 +705,10 @@
     })
 
     $(window).on('load', function(event) {
-        $('#myModal').modal('show');
+        let status = localStorage.getItem('status');
+        if(status === null){
+            $('#myModal').modal('show');
+        }
     });
 
     $('#modal_phone').on('click', function() {
@@ -719,6 +722,7 @@
                     if (res.data == 1) {
                         swal(textSuccess, textThank, 'success');
                         $('#myModal').modal('toggle');
+                        $('#phone-here').html($('#phone_value').val());
                     } else {
                         swal({
                           title: textPhone,
@@ -1043,6 +1047,15 @@
                 }
             })
         }
+    });
+
+    $('#myModal').on('hidden.bs.modal', e => {
+        localStorage.setItem('status', 'true');
+    });
+
+    $('#update-phone').click(function (e) {
+        e.preventDefault();
+        $('#myModal').modal('show');
     });
 
     $(function() {

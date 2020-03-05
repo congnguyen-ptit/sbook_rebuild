@@ -13,11 +13,11 @@ trait FullTextSearch
     protected function fullTextWildcards($term)
     {
         // removing symbols used by MySQL
-        $reservedSymbols = ['-', '+', '<', '>', '@', '(', ')', '~'];
+        $reservedSymbols = ['-', '+', '<', '>', '@', '(', ')', '~', '*', '%', '^', '$', '#', '!', '='];
         $term = str_replace($reservedSymbols, '', $term);
  
         $words = explode(' ', $term);
- 
+
         foreach ($words as $key => $word) {
             /*
              * applying + operator (required word) only big words
@@ -27,9 +27,8 @@ trait FullTextSearch
                 $words[$key] = '+' . $word  . '*';
             }
         }
-        
         $searchTerm = implode(' ', $words);
- 
+
         return $searchTerm;
     }
  

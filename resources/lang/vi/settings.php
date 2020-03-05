@@ -192,6 +192,7 @@ return [
         'favorite' => 'Sách yêu thích',
         'changeCover' => 'Cập nhật ảnh bìa',
         'changeCoverSucc' => 'Cập nhật ảnh bìa thành công',
+        'update' => 'Cập nhật',
     ],
 
     'req' => 'Yêu cầu',
