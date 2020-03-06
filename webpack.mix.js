@@ -52,7 +52,7 @@ mix.copy('resources/assets/js/config.js', 'public/assets/js/config.js');
 mix.copy('resources/assets/js/c3/c3.min.js', 'public/assets/js/c3/c3.min.js');
 mix.copy('resources/assets/js/d3/d3.min.js', 'public/assets/js/d3/d3.min.js');
 mix.copy('resources/assets/css/c3/c3.min.css', 'public/assets/css/c3/c3.min.css');
-
+mix.copy('resources/assets/user/css/search-page.css', 'public/assets/css/search-page.css');
 //admin
 mix.autoload({
     jquery: ['$', 'jQuery', 'window.jQuery'],

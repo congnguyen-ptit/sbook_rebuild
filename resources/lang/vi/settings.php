@@ -109,6 +109,8 @@ return [
         'msgSameTitleBook' => 'Trên hệ thống hiện đã có cuốn sách này, bạn có muốn chia sẽ cuốn sách này không ?',
         'titleModalSame' => 'Sách có cùng tên ',
         'totalPage' => 'Tổng số trang :',
+        'msgWait' => 'Yêu cầu đã được gửi đi, bạn phải chờ phản hồi từ chủ sách',
+        'msgCancel' => 'Yêu cầu mượn sách của bạn đã được hủy bỏ !',
     ],
 
     'review' => [

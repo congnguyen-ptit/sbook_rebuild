@@ -1,5 +1,5 @@
 @extends('layout.app')
-
+{{ Html::style('assets/user/css/search-page.css') }}
 @section('header')
     @parent
     <div class="breadcrumbs-area mb-70">
@@ -17,22 +17,23 @@
                     <div class="breadcrumbs-menu">
                         <ul id="search-page">
                             <li>{{ trans('page.searchBy') }}</li>
-                            <li class="active"><a id="status" value="{{ trans('page.summary') }}" href="#title" data-toggle="tab">{{ trans('page.summary') }}</a></li>
-                            <li><a id="status" value="{{ trans('page.book.author') }}" href="#author" data-toggle="tab">{{ trans('page.book.author') }}</a></li>
-                            <li><a id="status" value="{{ trans('page.book.description') }}" href="#description" data-toggle="tab">{{ trans('page.book.description') }}</a></li>
-                            <li><a id="status" value="{{ trans('settings.admin.layout.users') }}" href="#users" data-toggle="tab">{{ trans('settings.admin.layout.users') }}</a></li>
+                            <li class="active">
+                                <input class="cursor" id="tab-title" name="tab-type" checked type="radio" data-target="#title">
+                                <label class="cursor" for="tab-title">{{ trans('page.summary') }}</label>
+                            </li>
+                            <li>
+                                <input class="cursor" id="tab-author" name="tab-type" type="radio" data-target="#author">
+                                <label class="cursor" for="tab-author">{{ trans('page.book.author') }}</label>
+                            </li>
+                            <li>
+                                <input class="cursor" id="tab-desc" name="tab-type" type="radio" data-target="#description">
+                                <label class="cursor" for="tab-desc">{{ trans('page.book.description') }}</label>
+                            </li>
+                            <li>
+                                <input class="cursor" id="tab-users" name="tab-type" type="radio" data-target="#users">
+                                <label class="cursor" for="tab-users">{{ trans('settings.admin.layout.users') }}</label>
+                            </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="entry-header-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="entry-header-title">
-                        <h2>{{ trans('page.keySearch') }} {{ $key }}</h2>
                     </div>
                 </div>
             </div>
