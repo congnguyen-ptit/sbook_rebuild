@@ -167,6 +167,9 @@ return [
         'no_category' => 'Không có danh mục',
         'no_author' => 'Không có tác giả',
         'no_sku' => 'Không Sku',
+        'more' => 'Xem thêm',
+        'unavailable' => 'Không có sẵn',
+        'available' => 'Có thể mượn',
     ],
 
     'profile' => [

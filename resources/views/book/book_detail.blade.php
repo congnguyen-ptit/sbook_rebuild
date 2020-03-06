@@ -47,15 +47,60 @@
                                                 <p class="share-by"><b>{{ trans('settings.book.owners') }}</b></p>
                                                 @if (count($book->owners) > 0)
                                                     <div class="owner-avatar">
-                                                        @foreach ($book->owners as $owner)
-                                                            <div class="owner mr-6" id="{{ 'user-' . $owner->id }}">
-                                                                <a href="{{ route('user', $owner->id) }}" title="{{ $owner->name ? $owner->name : '' }}({{
+                                                        @foreach ($book->owners as $key => $owner)
+                                                            @if($key < config('view.taking_numb.showOwner'))
+                                                                <div class="owner" id="{{ 'user-' . $owner->id }}">
+                                                                    <a href="{{ route('user', $owner->id) }}" title="{{ $owner->name ? $owner->name : '' }}({{
                                                                     $owner->office ? $owner->office->name : '' }})">
-                                                                    <img src="{{ $owner->avatar ? $owner->avatar : asset(config('view.image_paths.user') . '1.png') }}" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};" class="owner-avatar-icon">
-                                                                </a>
-                                                                <span class="owner-office">{{ $owner->office ? $owner->office->address : '' }}</span>
-                                                            </div>
+                                                                        <img src="{{ $owner->avatar ? $owner->avatar : asset(config('view.image_paths.user') . '1.png') }}" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};" class="owner-avatar-icon">
+                                                                    </a>
+                                                                </div>
+                                                            @else
+                                                                <div class="owner owner-show">
+                                                                    <a href="#" id="list-owner" title="{{ trans('settings.modal.more') }}" class="owner-more" data-toggle="tooltip">
+                                                                        <span>+</span>
+                                                                        <span>{{ $book->owners->count() - config('view.taking_numb.showOwner') }}</span>
+                                                                    </a>
+                                                                </div>
+                                                                @break
+                                                            @endif
                                                         @endforeach
+                                                    </div>
+                                                    <div class="modal fade" id="modal-list-owner">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-hidden="true">
+                                                                        &times;
+                                                                    </button>
+                                                                    <h4 class="modal-title">{{ trans('settings.book.owners') }}</h4>
+                                                                </div>
+                                                                <div class="panel">
+                                                                    <div class="panel-body scroll-h-3">
+                                                                        <ul class="list-group">
+                                                                            @foreach ($book->owners as $key => $owner)
+                                                                                <li class="row border-bottom">
+                                                                                    <div class="col-md-4">
+                                                                                        <div id="{{ 'user-' . $owner->id }}">
+                                                                                            <a href="{{ route('user', $owner->id) }}" title="{{ $owner->name ? $owner->name : '' }}({{
+                                                                    $owner->office ? $owner->office->name : '' }})">
+                                                                                                <img src="{{ $owner->avatar ? $owner->avatar : asset(config('view.image_paths.user') . '1.png') }}" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};" class="img-list">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-8">
+                                                                                        <b>{{ $owner->name }}</b>
+                                                                                        <span class="owner-office">{{ $owner->office ? $owner->office->address : 'N/A' }}</span>
+                                                                                    </div>
+                                                                                </li>
+                                                                            @endforeach
+                                                                        </ul>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 @else
                                                     <span class="text-danger no_onwer">{{ trans('settings.modal.no_owners') }}</span>
@@ -139,32 +184,6 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="list-item">
-                                            <h4>{{ count($bookTypeStatus) > 0 ? trans('settings.book.list_borrow') : '' }}</h4>
-                                        </div>
-                                        <div class="row">
-                                            @foreach ($bookTypeStatus as $item)
-                                                <div class="col-sm-6">
-                                                    <div class="product-reviews-summary pt-0">
-                                                        <div class="rating-summary">
-                                                            <p class="mb-0">
-                                                                <b>{{ trans('settings.book.userBorrow') }}</b>
-                                                                <b class="mb-0 text-danger">{{ $item['userBorrow'] ? $item['userBorrow'] : trans('settings.book.availble') }}</b>
-                                                            </p>
-                                                            <p class="mb-0">
-                                                                <b>{{ $item ? trans('settings.book.dateReturn') : '' }}</b>
-                                                                <span class="mb-0">{{ !is_null($item['dateReturn']) ? $item['dateReturn'] : trans('settings.book.not_date') }}</span>
-                                                            </p>
-                                                            <p class="mb-0">
-                                                                <b>{{ $item['owner'] ? trans('settings.book.owners') : '' }}</b>
-                                                                <span class="mb-0">{{ isset($item['owner']) ? $item['owner'] : '' }}</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-
                                         <div class="product-add-form">
                                             @if ($book->owners->count() > 0)
                                                 <form>
@@ -196,7 +215,7 @@
                                                     @else
                                                         <a data-toggle="modal" href="{{ Auth::check() ? '#borrowingModal' : '' }}"
                                                             data-id="{{ $book->id }}"
-                                                            class="{{ Auth::check() ? 'btn-borrow book-info-link' : 'login' }} {{ $isOwner ? 'disabled' : '' }}">
+                                                            class="{{ Auth::check() ? 'btn-borrow book-info-link' : 'login' }} {{ $isOwner ? 'hide' : '' }}">
                                                             {{ trans('settings.book.borrow_book') }}
                                                         </a>
                                                     @endif
@@ -567,7 +586,7 @@
     </div>
     {{-- end chartUserEvaluationModel --}}
 
-    <div class="modal animated zoomIn faster" id="borrowingModal">
+    <div class="modal animated zoomIn faster overflow-none" id="borrowingModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -583,31 +602,45 @@
                         'data-id' => $book->id,
                     ]) !!}
                 <div class="modal-body row">
-                    <div class="owner-input">
+                    <div class="owner-input scroll-h-3">
                         @if ($book->owners)
-                            @foreach ($book->owners as $owner)
-                                @if ($owner->id != Auth::id())
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12" id="owner{{ $owner->id }}">
-                                            <label class="radio">
-                                                {{ $owner->name }}
-                                                {!! Form::radio(
-                                                    'owner_id',
-                                                    $owner->id,
-                                                    [
-                                                        'required' => 'required',
-                                                    ]
-                                                ) !!}
-                                                <span class="checkround"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                @elseif ($owner->id == Auth::id() && $book->owners->count() == 1)
-                                    @php $status = 0; @endphp
-                                    <div class="alert alert-info text-center mb-4" role="alert">
-                                        <p class="no-owner">{{ trans('page.noOwner') }}</p>
-                                    </div>
-                                @endif
+                            @foreach($book->owners->groupBy('office_id') as $workspace => $owners)
+                                <div style="border-bottom: 1px solid black">
+                                    <h4>
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $owners->first()->office->name ?? 'N/A' }}
+                                    </h4>
+                                    @foreach ($owners as $owner)
+                                        @if ($owner->id != Auth::id())
+                                            <div class="row ml-15">
+                                                <div class="col-xs-12 col-sm-12" id="owner{{ $owner->id }}">
+                                                    <label class="radio">
+                                                        @if (!bookBorrowed($owner, $book->id))
+                                                            {{ $owner->name }}
+                                                            {!! Form::radio(
+                                                                'owner_id',
+                                                                $owner->id,
+                                                                [
+                                                                    'required' => 'required',
+                                                                ]
+                                                            ) !!}
+                                                            <span class="checkround"></span>
+                                                        @else
+                                                            {{ $owner->name }}
+                                                        @endif
+                                                            <small>
+                                                                ( {{ !bookBorrowed($owner, $book->id) ? trans('settings.modal.available') : trans('settings.modal.unavailable') }} )
+                                                            </small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        @elseif ($owner->id == Auth::id() && $book->owners->count() == 1)
+                                            @php $status = 0; @endphp
+                                            <div class="alert alert-info text-center mb-4" role="alert">
+                                                <p class="no-owner">{{ trans('page.noOwner') }}</p>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
                             @endforeach
                         @else
                             @php $status = 0; @endphp

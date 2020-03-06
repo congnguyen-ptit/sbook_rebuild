@@ -167,6 +167,9 @@ return [
         'no_category' => 'There is no category',
         'no_author' => 'No author',
         'no_sku' => 'No Sku',
+        'more' => 'View more',
+        'unavailable' => 'Unavailable',
+        'available' => 'Available',
     ],
 
     'profile' => [

@@ -104,10 +104,12 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
         }
     }
 
-    public function getDataRequest($data = [], $with = [], $dataSelect = ['*'], $attribute = ['id', 'desc'])
+    public function getDataRequest($data = [], $with = [], $dataSelect = ['users.name', 'users.id'], $attribute = ['id', 'desc'])
     {
         return $this->model()
+            ->join('users', 'users.id', '=', 'book_user.user_id')
             ->select($dataSelect)
+            ->distinct('user_id')
             ->with($with)
             ->where($data)
             ->whereHas('book', function ($query) {

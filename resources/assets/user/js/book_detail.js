@@ -76,3 +76,10 @@ async function getUserEvaluationByYear(book_id, year) {
 
     return data;
 }
+
+$(document).ready(function(){
+    $('#list-owner').click(function (e) {
+        e.preventDefault();
+        $('#modal-list-owner').modal('show');
+    });
+});

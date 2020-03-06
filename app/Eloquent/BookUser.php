@@ -35,4 +35,8 @@ class BookUser extends Model
     {
         return $this->belongsTo(User::class, 'owner_id');
     }
+
+    public static function countByCondition ($condition) :int {
+        return static::where($condition)->count();
+    }
 }

@@ -1,20 +1,20 @@
 @if (isset($data) && count($data))
         <div class="book-status">
             <div class="row">
-                @foreach ($data as $bookUser)
+                @foreach ($data as $user)
                     <div class="col-sm-6 col-md-4">
                         <div class="d-flex exhibition-item user">
-                            <a href="{{ route('user', $bookUser->user->id) }}" class="a-follow">
-                                <img src="{{ ($bookUser->user->avatar) ? $bookUser->user->avatar : asset(config('view.image_paths.user') . '1.png') }}" class="avatar-icon" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};">
+                            <a href="{{ route('user', $user->id) }}" class="a-follow">
+                                <img src="{{ ($user->avatar) ? $user->avatar : asset(config('view.image_paths.user') . '1.png') }}" class="avatar-icon" onerror="this.onerror=null;this.src={{ config('view.links.avatar') }};">
                             </a>
                             <div class="user-info overflow-hidden">
-                                <a href="{{ route('user', $bookUser->user->id) }}" class="link"><b>{{ $bookUser->user->name }}</b></a>
+                                <a href="{{ route('user', $user->id) }}" class="link"><b>{{ $user->name }}</b></a>
                                 <div class="subscribe">
-                                    @if (in_array($bookUser->user->id, $followingIds))
-                                        <button data-id="{{ $bookUser->user->id }}" class="btn btn-follow following">{{ trans('settings.profile.following') }}</button>
-                                    @elseif (Auth::id() == $bookUser->user->id)
+                                    @if (in_array($user->id, $followingIds))
+                                        <button data-id="{{ $user->id }}" class="btn btn-follow following">{{ trans('settings.profile.following') }}</button>
+                                    @elseif (Auth::id() == $user->id)
                                     @else
-                                        <button data-id="{{ $bookUser->user->id }}" class="btn btn-follow  follow">{{ trans('settings.profile.follow') }}</button>
+                                        <button data-id="{{ $user->id }}" class="btn btn-follow  follow">{{ trans('settings.profile.follow') }}</button>
                                     @endif
                                 </div>
                             </div>
