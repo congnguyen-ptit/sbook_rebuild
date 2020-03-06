@@ -104,12 +104,10 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
         }
     }
 
-    public function getDataRequest($data = [], $with = [], $dataSelect = ['users.name', 'users.id'], $attribute = ['id', 'desc'])
+    public function getDataRequest($data = [], $with = [], $dataSelect = ['*'], $attribute = ['id', 'desc'])
     {
         return $this->model()
-            ->join('users', 'users.id', '=', 'book_user.user_id')
             ->select($dataSelect)
-            ->distinct('user_id')
             ->with($with)
             ->where($data)
             ->whereHas('book', function ($query) {
@@ -119,14 +117,18 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
             ->paginate(config('view.paginate.book_request'), ['*'], isset($data['type']) ? $data['type'] : 'page');
     }
 
-    public function getDetailData($request)
+    public function getDetailData($request, $with = ['user'], $attribute = ['id', 'desc'])
     {
         try {
-            $with = [
-                'user',
-            ];
+            return $this->model()
+                ->join('users', 'users.id', '=', 'book_user.user_id')
+                ->select(['users.name', 'users.id'])
+                ->distinct('user_id')
+                ->with($with)
+                ->where($request)
+                ->orderBy($attribute[0], $attribute[1])
+                ->paginate(config('view.paginate.book_request'), ['*'], isset($request['type']) ? $request['type'] : 'page');
 
-            return $this->getDataRequest($request, $with);
         } catch (Exception $e) {
             return null;
         }

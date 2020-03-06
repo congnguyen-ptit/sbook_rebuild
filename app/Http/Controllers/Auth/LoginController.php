@@ -86,7 +86,7 @@ class LoginController extends Controller
         if(is_null($office)){
             $dataWorkspace = [
                 'name' => $workspaceFirst['name'],
-                'address' => $workspaceFirst['address'] ?? 'N/A',
+                'address' => empty($workspaceFirst['address']) ? $workspaceFirst['name'] : $workspaceFirst['address'],
                 'description' => $workspaceFirst['description'] ?? 'N/A',
             ];
             $office = $this->office->store($dataWorkspace);
