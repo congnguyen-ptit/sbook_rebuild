@@ -131,7 +131,7 @@
                         ]) !!}
                         {!! Form::text(
                             'req',
-                            null,
+                            ($searchParam ?? null),
                             [
                                 'placeHolder' => __('page.search'),
                                 'required' => 'required',

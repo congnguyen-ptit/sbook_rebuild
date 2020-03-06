@@ -109,6 +109,8 @@ return [
         'msgSameTitleBook' => 'On the existing system, do you want to share this book?',
         'titleModalSame' => 'Book the same title',
         'totalPage' => 'Total pages :',
+        'msgWait' => 'The request has been submitted, You need to wait for the owner to respond',
+        'msgCancel' => 'Your request to borrow a book has been canceled',
     ],
 
     'review' => [

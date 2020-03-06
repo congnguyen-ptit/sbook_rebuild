@@ -102,7 +102,7 @@ function translate($value)
 
 function splitAddressOffice($value)
 {
-    $value = empty($value) ? 'NA' : $value;
+    $value = empty($value) ? 'N/A' : $value;
     $address = explode(' ', $value);
     $office = '';
     foreach ($address as $add) {

@@ -1,0 +1,42 @@
+input.cursor
+{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    background-color: #f1f1f1;
+    color: black;
+    top: 5px;
+    height: 20px;
+    width: 20px;
+    border: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+}
+input.cursor:checked::before
+{
+    position: absolute;
+    font: 13px/1 'Open Sans', sans-serif;
+    left: 7px;
+    top: 3px;
+    content: '\02143';
+    transform: rotate(40deg);
+}
+input.cursor:hover
+{
+    background-color: #f7f7f7;
+}
+input.cursor:checked
+{
+    background-color: #f1f1f1;
+}
+label.cursor
+{
+    font: 15px/1.7 'Open Sans', sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
+}

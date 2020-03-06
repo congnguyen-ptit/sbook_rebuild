@@ -121,7 +121,7 @@ class HomeController extends Controller
         $data['titles'] = $this->book->search('title', $request->req, 'titles', $with);
         $data['authors'] = $this->book->search('author', $request->req, 'authors', $with);
         $data['descriptions'] = $this->book->search('description', $request->req, 'descriptions', $with);
-        $data['key'] = $request->req;
+        $data['searchParam'] = $request->req;
         $data['page'] = trans('page.summary');
 
         return view('search', $data);

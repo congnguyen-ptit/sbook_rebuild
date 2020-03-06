@@ -57,7 +57,9 @@
                             </div>
                             <div class="single-info">
                                 <b>{{ __('settings.modal.count_review') }}</b>
-                                <span>{{ $book->countReview->count() > 0 ? $book->countReview[0]->value : '0' }}</span>
+                                <span>
+                                    {{ $book->reviews->count() ?? 0 }}
+                                </span>
                             </div>
                             <div class="single-info">
                                 <b>{{ __('settings.modal.view') }}</b>

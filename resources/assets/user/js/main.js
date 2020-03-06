@@ -405,6 +405,7 @@
             data: f.serialize(),
         })
         .done(function(data) {
+            messagePopup(settings.book.msgWait, 'success', 'success');
             obj.html(textCancel);
             obj.attr('href', '#');
             obj.removeClass().addClass('btn-cancel-borrowing');
@@ -451,6 +452,7 @@
                     data: { id: id },
                 })
                 .done(function(res) {
+                    messagePopup(settings.book.msgCancel, 'warning', 'warning');
                     obj.html(textBorrow);
                     obj.attr('href', '#modalBorrowing');
                     obj.removeClass().addClass('btn-borrow');
@@ -1056,6 +1058,10 @@
     $('#update-phone').click(function (e) {
         e.preventDefault();
         $('#myModal').modal('show');
+    });
+
+    $('input[name="tab-type"]').click(function () {
+        $(this).tab('show');
     });
 
     $(function() {
