@@ -346,11 +346,7 @@
                     url: route('user.sharing', {id: id}),
                 })
                 .done(function(res) {
-                    var html = '<div class="owner mr-6" id="user-' + res.id + '">';
-                    html += '<a href="/users/' + res.id + '" title="' + res.name + "(" + res.office + ')">';
-                    html += '<img src="' + res.avatar + '" class="owner-avatar-icon"></a>'
-                        + '<span class="owner-office">' + res.office + '</span>' + '</div>';
-                    $('.owner-avatar').append(html);
+                    $('#list-owners').html(res);
                     obj.html(textRemoveOwner);
                     obj.removeClass('btn-share').addClass('btn-remove-owner');
                     $('.btn-borrow').addClass('disabled hide');
@@ -378,7 +374,7 @@
                     url: route('user.remove-owner', {id: id}),
                 })
                 .done(function(res) {
-                    $('#user-' + res).remove();
+                    $('#list-owners').html(res);
                     obj.html(textBook);
                     obj.removeClass().addClass('btn-share');
                     $('.btn-borrow').removeClass('disabled hide');
@@ -701,6 +697,13 @@
 
     $('#review').click(function (e) {
         e.preventDefault();
+        if (!$('a[href$=reviews].tab-pane').parent().hasClass('active')){
+            $.each($('.tab-pane'), (id, item) => {
+                $(item).removeClass('active');
+            });
+            $('div.tab-pane#reviews').addClass('active');
+            $('li.tab-pane#li-reviews').addClass('active');
+        }
         $('html, body').animate({
             scrollTop: $('#reviews').offset().top - 180
         }, 1000);
@@ -1062,6 +1065,11 @@
 
     $('input[name="tab-type"]').click(function () {
         $(this).tab('show');
+    });
+
+    $('body').on('click', '#list-owner', function(e) {
+       e.preventDefault();
+       $('#modal-list-owner').modal('show');
     });
 
     $(function() {

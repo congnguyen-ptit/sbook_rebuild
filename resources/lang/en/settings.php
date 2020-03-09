@@ -85,7 +85,7 @@ return [
         'remove_owner' => 'Remove Owner',
         'owners' => 'Share By:',
         'waiting' => 'Waiting',
-        'reading' => 'Reading',
+        'reading' => 'Borrowing',
         'returning' => 'Returning',
         'returned' => 'Returned',
         'accept' => 'Accept',
