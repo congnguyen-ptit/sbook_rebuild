@@ -237,7 +237,9 @@ class UserController extends Controller
                 );
             }
 
-            return $data;
+            $book = $this->book->find($id, ['owners', 'users', 'users.office']);
+
+            return view('layout.section.list_owners', compact('book'));
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -274,8 +276,9 @@ class UserController extends Controller
                 'user_id' => Auth::id(),
                 'book_id' => $id,
             ]);
+            $book = $this->book->find($id, ['owners', 'users', 'users.office']);
 
-            return Auth::id();
+            return view('layout.section.list_owners', compact('book'));
         } catch (Exception $e) {
             return $e->getMessage();
         }

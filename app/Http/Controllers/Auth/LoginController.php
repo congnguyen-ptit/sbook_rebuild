@@ -61,6 +61,11 @@ class LoginController extends Controller
         $user = Fauth::driver('framgia')->user();
         $token = $user->token;
         $userSocial = Fauth::driver('framgia')->userFromToken($token);
+        if (isset($userSocial->user['workspaces'][0])){
+            $workspaceFirst = $userSocial->user['workspaces'][0];
+        }else{
+            return redirect()->route('home')->with(['unccess' => trans('auth.noWorkspace')]);
+        }
         $user = User::where('email', $userSocial->user['email'])->first();
         if ($user) {
             if (Auth::loginUsingId($user->id)) {
@@ -68,7 +73,6 @@ class LoginController extends Controller
             }
         }
         $office = null;
-        $workspaceFirst = $userSocial->user['workspaces'][0];
         // Find workspace if user no have workspace default
         if(empty($userSocial->user['workspace_default'])){
             $office = $this->office->byName($workspaceFirst['name']);
