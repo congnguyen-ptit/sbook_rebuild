@@ -138,3 +138,13 @@ function bookBorrowed ($owner, $bookId) :bool {
 
     return $result > 0 ? true : false;
 }
+
+function activeTab ($type) {
+    $typeParam = $_GET['type'] ?? false;
+    if (ucfirst($typeParam) == $type) {
+        return 'active';
+    }
+    if (!$typeParam && $type == __('settings.grid')) {
+        return 'active';
+    }
+}

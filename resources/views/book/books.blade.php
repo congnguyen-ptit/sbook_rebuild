@@ -1,4 +1,3 @@
-
 @extends('layout.app')
 
 @section('header')
@@ -70,15 +69,19 @@
                     <div class="shop-tab">
                         <div class="tab-3">
                             <ul>
-                                <li class="active"><a href="#th" data-toggle="tab"><i class="fa fa-th-large"></i>{{ __('settings.grid') }}</a></li>
-                                <li><a href="#list" data-toggle="tab"><i class="fa fa-bars"></i>{{ __('settings.list') }}</a></li>
+                                <li class="{{ activeTab(__('settings.grid')) }}">
+                                    <a href="#th" data-toggle="tab" class="tab-type" data-type="grid"><i class="fa fa-th-large"></i>{{ __('settings.grid') }}</a>
+                                </li>
+                                <li class="{{ activeTab(__('settings.list')) }}">
+                                    <a href="#list" data-toggle="tab" class="tab-type" data-type="list"><i class="fa fa-bars"></i>{{ __('settings.list') }}</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- tab-area-start -->
                 <div class="tab-content">
-                    <div class="tab-pane active" id="th">
+                    <div class="tab-pane {{ activeTab(__('settings.grid')) }}" id="th">
                         <div class="row">
                             @foreach ($books as $book)
                                 <div class="col-lg-3 col-md-4 col-sm-6 mh-406">
@@ -159,7 +162,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="list">
+                    <div class="tab-pane fade in {{ activeTab(__('settings.list')) }}" id="list">
                         @foreach ($books as $book)
                             <div class="single-shop mb-30">
                                 <div class="row">
@@ -251,7 +254,7 @@
                         </p>
                     </div>
                     <div class="page-numbers">
-                        {{ $books->links() }}
+                        {{ $books->appends(request()->only(['type']))->links() }}
                     </div>
                 </div>
                 <!-- pagination-area-end -->
@@ -263,4 +266,8 @@
 
 @section('footer')
     @parent
+@endsection
+@section('script')
+    @parent
+    {{ Html::script('assets/user/js/book.js') }}
 @endsection
