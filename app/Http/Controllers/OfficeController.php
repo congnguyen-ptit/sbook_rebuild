@@ -26,7 +26,7 @@ class OfficeController extends Controller
     public function ajaxIndex()
     {
         try {
-            $offices = $this->office->getData([], [], ['id', 'name', 'address', 'description', 'wsm_workspace_id']);
+            $offices = $this->office->getData([], [], ['id', 'name', 'address', 'description']);
 
             return DataTables::of($offices)->make(true);
         } catch (Exception $e) {

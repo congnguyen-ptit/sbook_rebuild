@@ -33,6 +33,7 @@ return [
             'author' => 'Tác giả ...',
             'totalPage' => 'Số trang ...',
             'sku' => 'Mã SKU ...',
+            'desc' => 'Mô tả sách ...',
         ],
         'show' => 'Xem thêm',
         'less' => 'Ẩn bớt',

@@ -32,7 +32,7 @@
                         'method' => 'POST',
                         'route' => ['books.store'],
                         'class' => 'form-groupt',
-                        'files' => 'true'
+                        'files' => 'true',
                     ]) !!}
                     <div class="single-register">
                         {!! Form::label(
@@ -78,6 +78,7 @@
                                         'title' => __('page.book.author'),
                                         'autocomplete' => 'off',
                                         'list' => 'authors',
+                                        'id' => 'book-author',
                                     ]
                                 ) !!}
                             </div>
@@ -101,7 +102,7 @@
                                         'accept' => 'image/png, image/jpg, image/jpeg, image/bmp, image/gif',
                                         'onchange' => 'changeFile(event)',
                                         'onclick' => 'clickFile(event)',
-                                        'title' => __('page.book.avatar')
+                                        'title' => __('page.book.avatar'),
                                     ])
                                 !!}
                                 {!! Form::label('customFile', __('page.book.browse'), ['class' => 'custom-file-label col-10 ml-3', 'id' => 'label']) !!}
@@ -148,6 +149,7 @@
                                 'id' => 'mytextarea',
                                 'class' => 'form-control m-input',
                                 'required' => 'required',
+                                'placeholder' => __('page.book.placeHolder.desc'),
                             ]
                         ) !!}
                     </div>

@@ -548,7 +548,7 @@
                     <div class="owner-input scroll-h-3">
                         @if ($book->owners)
                             @foreach($book->owners->groupBy('office_id') as $workspace => $owners)
-                                <div style="border-bottom: 1px solid black">
+                                <div class="mb-10">
                                     <h4>
                                         <i class="fa fa-map-marker" aria-hidden="true"></i> {{ $owners->first()->office->name ?? 'N/A' }}
                                     </h4>

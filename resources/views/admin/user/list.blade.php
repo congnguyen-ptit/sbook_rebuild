@@ -55,9 +55,6 @@
                             <th class="text-center" title="{{ trans('settings.admin.user.employee_code') }}">
                                 {{ trans('settings.admin.user.employee_code') }}
                             </th>
-                            <th class="text-center" title="{{ trans('settings.admin.user.office') }}">
-                                {{ trans('settings.admin.user.office') }}
-                            </th>
                             <th class="text-center" title="{{ trans('settings.admin.default.action') }}">
                                 {{ trans('settings.admin.default.action') }}
                             </th>

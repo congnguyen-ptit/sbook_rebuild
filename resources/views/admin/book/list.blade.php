@@ -37,18 +37,6 @@
                             <i class="fa fa-long-arrow-alt-up"></i><i class="fa fa-long-arrow-alt-down"></i>
                         </span>
                     </th>
-                    <th title="{{ trans('admin.book.publishDate') }}">
-                        {{ trans('admin.book.publishDate') }}
-                        <span class="sort">
-                            <i class="fa fa-long-arrow-alt-up"></i><i class="fa fa-long-arrow-alt-down"></i>
-                        </span>
-                    </th>
-                    <th title="{{ trans('admin.book.totalPage') }}">
-                        {{ trans('admin.book.totalPage') }}
-                        <span class="sort">
-                            <i class="fa fa-long-arrow-alt-up"></i><i class="fa fa-long-arrow-alt-down"></i>
-                        </span>
-                    </th>
                     <th title="{{ trans('admin.book.avgStar') }}">
                         {{ trans('admin.book.avgStar') }}
                         <span class="sort">

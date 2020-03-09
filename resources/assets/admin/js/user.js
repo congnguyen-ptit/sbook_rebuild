@@ -38,7 +38,6 @@ var DatatablesBasicPaginations = {
                 },
                 { data: 'reputation_point', name: 'reputation_point' },
                 { data: 'employee_code', name: 'employee_code' },
-                { data: 'workspace', name: 'workspace' },
                 {
                     data: 'action',
                     name: 'action',
@@ -47,7 +46,7 @@ var DatatablesBasicPaginations = {
                     },
                 }
             ],
-            order: [[ 6, 'desc' ]],
+            order: [[ 0, 'asc' ]],
             language: textDatatable,
             fnDrawCallback: function(oSettings) {
                 if ($('#m_table_1 tr').length < 11) {
