@@ -51,13 +51,6 @@
                                     <a href="{{ route('books.create') }}" class="btn btn-sm btn-share-book{{ Auth::check() ? '' : 'login' }}">
                                         <i class="fa fa-plus mr-3_pl-0"></i> {{ __('settings.shareBook') }}
                                     </a>
-                                <li class="">
-                                    <div class="header-noti">
-                                        <a href="#">
-                                            <i class="fa fa-mobile" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                </li>
                                 <li class="noti">
                                     <div class="header-noti">
                                         <a href="#">

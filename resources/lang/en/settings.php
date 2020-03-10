@@ -122,7 +122,7 @@ return [
 
     'home' => [
         'best_sharing' => 'Best Sharing',
-        'latest_books' => 'Latest Books',
+        'latest_books' => 'Newest Books',
         'top_interesting' => 'Top Interesting',
         'top_borrowed' => 'Top Borrowed',
         'top_rating' => 'Top Rating',
