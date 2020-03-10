@@ -409,7 +409,6 @@
             var book_id = $('.detail-tabs').attr('data-id');
             $('.btn-share').addClass('disabled');
             $.ajax({
-                url: '/book-detail',
                 type: 'POST',
                 data: {
                     type: 'waiting',
@@ -419,8 +418,6 @@
             .done(function(res) {
                 $('#waiting').attr('status', 'done');
                 $('#waiting').html(res);
-                $('.book-status').hide();
-                $('.book-status#' + 'waiting' + '0').show();
             })
             .fail(function() {
                 //
@@ -455,7 +452,6 @@
                     var book_id = $('.detail-tabs').attr('data-id');
                     $('.btn-share').removeClass('disabled');
                     $.ajax({
-                        url: '/book-detail',
                         type: 'POST',
                         data: {
                             type: 'waiting',
@@ -465,8 +461,6 @@
                     .done(function(res) {
                         $('#waiting').attr('status', 'done');
                         $('#waiting').html(res);
-                        $('.book-status').hide();
-                        $('.book-status#' + 'waiting' + '0').show();
                     })
                     .fail(function() {
                         //
@@ -584,15 +578,14 @@
         var type = $(e).attr('id');
         var book_id = $('.detail-tabs').attr('data-id');
         var url = window.location.href;
-        if ($(e).attr('status') == 'none') {
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: {
-                    type: type,
-                    book_id: book_id
-                },
-            })
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                type: type,
+                book_id: book_id
+            },
+        })
             .done(function(res) {
                 $(e).attr('status', 'done');
                 $(e).html(res);
@@ -602,7 +595,6 @@
             .fail(function() {
                 //
             });
-        }
         // $('.book-status#' + type + '0').show();
     });
 
@@ -697,13 +689,7 @@
 
     $('#review').click(function (e) {
         e.preventDefault();
-        if (!$('a[href$=reviews].tab-pane').parent().hasClass('active')){
-            $.each($('.tab-pane'), (id, item) => {
-                $(item).removeClass('active');
-            });
-            $('div.tab-pane#reviews').addClass('active');
-            $('li.tab-pane#li-reviews').addClass('active');
-        }
+        $('a[href="#reviews"]').click();
         $('html, body').animate({
             scrollTop: $('#reviews').offset().top - 180
         }, 1000);
@@ -776,7 +762,6 @@
             $('#returningModal').modal('hide');
             var book_id = $('.detail-tabs').attr('data-id');
             $.ajax({
-                url: '/book-detail',
                 type: 'POST',
                 data: {
                     type: 'returning',
@@ -786,8 +771,6 @@
             .done(function(res) {
                 $('#returning').attr('status', 'done');
                 $('#returning').html(res);
-                $('.book-status').hide();
-                $('.book-status#' + 'returning' + '0').show();
                 swal({
                     text: textWaiting,
                     icon: 'success',
@@ -1070,6 +1053,12 @@
     $('body').on('click', '#list-owner', function(e) {
        e.preventDefault();
        $('#modal-list-owner').modal('show');
+    });
+
+    $('input[type=reset]').click(function(){
+        $('input#book-title').attr('value', '');
+        $('input#book-author').attr('value', '');
+        $('textarea#mytextarea').html('');
     });
 
     $(function() {

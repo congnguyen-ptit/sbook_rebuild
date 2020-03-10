@@ -15,7 +15,6 @@ var DatatablesDataSourceAjaxServer = {
                 { data: 'name', name: 'name' },
                 { data: 'address', name: 'address' },
                 { data: 'description', name: 'description' },
-                { data: 'wsm_workspace_id', name: 'wsm_workspace_id' },
                 {
                     data: null,
                     name: 'id',

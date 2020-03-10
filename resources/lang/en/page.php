@@ -33,6 +33,7 @@ return [
             'author' => 'Author of book...',
             'totalPage' => 'Total pages...',
             'sku' => 'Sku of book...',
+            'desc' => 'Description ...',
         ],
         'show' => 'Show more',
         'less' => 'Show less',

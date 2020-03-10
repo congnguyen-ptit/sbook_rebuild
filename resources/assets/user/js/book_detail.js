@@ -1,3 +1,4 @@
+
 let bar_chart;
 $('.product-social-links').on('click', '#chartUserEvaluationBt', function () {
     let nowYear = $('#chartUserEvaluationModel #yearFilterSelect').val();

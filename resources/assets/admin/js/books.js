@@ -28,7 +28,7 @@ var DatatablesDataSourceAjaxServer = {
                     },
                 }
             ],
-            order: [[ 6, 'desc' ]],
+            order: [[ 2, 'desc' ]],
             language: trans('admin.searchPlaceholder'),
             fnDrawCallback: function(oSettings) {
                 if ($('#m_table_1 tr').length < 11) {

@@ -35,12 +35,6 @@
                             <i class="fa fa-long-arrow-alt-up"></i><i class="fa fa-long-arrow-alt-down"></i>
                         </span>
                     </th>
-                    <th title="{{ trans('admin.office.wsm_workspace_id') }}">
-                        {{ trans('admin.office.wsm_workspace_id') }}
-                        <span class="sort">
-                            <i class="fa fa-long-arrow-alt-up"></i><i class="fa fa-long-arrow-alt-down"></i>
-                        </span>
-                    </th>
                     <th></th>
                 </tr>
                 </thead>
@@ -71,10 +65,6 @@
                             <div class="single-info">
                                 <b>{{ trans('admin.office.description') }}:</b>
                                 <span id="description"></span>
-                            </div>
-                            <div class="single-info">
-                                <b>{{ trans('admin.office.wsm_workspace_id') }}:</b>
-                                <span id="wsm_workspace_id"></span>
                             </div>
                         </div>
                     </div>
