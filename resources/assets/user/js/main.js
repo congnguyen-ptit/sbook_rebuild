@@ -578,23 +578,25 @@
         var type = $(e).attr('id');
         var book_id = $('.detail-tabs').attr('data-id');
         var url = window.location.href;
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: {
-                type: type,
-                book_id: book_id
-            },
-        })
-            .done(function(res) {
-                $(e).attr('status', 'done');
-                $(e).html(res);
-                // $('.book-status').hide();
-                // $('.book-status#' + type + '0').show();
+        if ($(e).attr('status') == 'none') {
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    type: type,
+                    book_id: book_id
+                },
             })
-            .fail(function() {
-                //
-            });
+                .done(function (res) {
+                    $(e).attr('status', 'done');
+                    $(e).html(res);
+                    // $('.book-status').hide();
+                    // $('.book-status#' + type + '0').show();
+                })
+                .fail(function () {
+                    //
+                });
+        }
         // $('.book-status#' + type + '0').show();
     });
 
