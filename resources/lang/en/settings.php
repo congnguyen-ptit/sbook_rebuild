@@ -133,6 +133,9 @@ return [
         'top_author' => 'Top Author',
         'book' => 'books',
         'top_sharing' => 'Top Sharing',
+        'titles' => 'Book By Title',
+        'authors' => 'Book By Author',
+        'users' => 'Users',
     ],
 
     'error' => [

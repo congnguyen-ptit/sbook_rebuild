@@ -132,7 +132,10 @@ return [
         'user' => 'USER',
         'top_author' => 'Thành viên tích cực',
         'book' => 'sách',
-        'top_sharing' => 'Người chia sẻ nhiều nhất'
+        'top_sharing' => 'Người chia sẻ nhiều nhất',
+        'titles' => 'Sách theo tên',
+        'authors' => 'Sách theo tác giả',
+        'users' => 'Người dùng',
     ],
 
     'error' => [

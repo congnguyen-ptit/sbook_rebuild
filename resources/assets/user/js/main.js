@@ -531,8 +531,10 @@
         };
     });
 
-    $('body').click(function () {
-        $('#search-suggest div').hide();
+    $('body').click(function (e) {
+        if (!$($(e.target)[0]).hasClass('tab-suggest')) {
+            $('#search-suggest div').hide();
+        }
         if ($('#noti-detail div').hasClass('suggestion') && !$('#bell-notification').hasClass('noti-show')) {
             $('#noti-detail').html('');
             $('#bell-notification').addClass('noti-show');
@@ -839,7 +841,7 @@
             },
         })
         .done(function(res) {
-            $('#search').html(res);
+            $('.search__append').html(res);
         })
         .fail(function() {
                 //
