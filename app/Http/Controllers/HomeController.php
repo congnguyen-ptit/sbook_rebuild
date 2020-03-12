@@ -105,6 +105,8 @@ class HomeController extends Controller
         if ($request->req != '') {
             $result = collect([
                 'titles' => $this->book->searchPage('title', $request->req)->take(config('view.paginate.book_request')),
+                'authors' => $this->book->searchPage('author', $request->req)->take(config('view.paginate.book_request')),
+                'users' => $this->user->search('name', $request->req)->take(config('view.paginate.book_request'))->get(),
             ]);
         }
 

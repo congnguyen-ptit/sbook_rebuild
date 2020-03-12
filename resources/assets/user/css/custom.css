@@ -1930,3 +1930,34 @@ span.no_onwer {
 .dp-none {
     display: none;
 }
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+    border-bottom: 4px solid #fbcdcf;
+}
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+    border: 0;
+    background: none !important;
+    color: #333333;
+}
+.tabbable-line > .nav-tabs > li.active {
+    border-bottom: 4px solid #f3565d;
+    position: relative;
+}
+.tabbable-line > .nav-tabs > li.active > a {
+    border: 0;
+    color: #333333;
+}
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline;
+    zoom:1;
+    padding: 0px !important;
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+.tab-suggest{
+    border: none !important;
+}
