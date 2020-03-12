@@ -28,6 +28,7 @@ class NotificationController extends Controller
         $where = [
             'receive_id' => Auth::id(),
         ];
+
         return $data = $this->notification->getNotifications($with, $where);
     }
 

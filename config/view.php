@@ -42,6 +42,7 @@ return [
         'book_request' => 6,
         'notifications' => 15,
         'review' => 3,
+        'categories' => 5,
     ],
 
     'taking_numb' => [

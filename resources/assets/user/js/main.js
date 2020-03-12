@@ -1065,6 +1065,16 @@
         $('textarea#mytextarea').html('');
     });
 
+    $('body').on('click', '#load-more', function(e){
+        $('#categories').removeClass('overload');
+        $(this).addClass('hide');
+    });
+
+    $('body').on('click', '#hide-more', function(e){
+        $('#categories').addClass('overload');
+        $('#load-more').removeClass('hide');
+    });
+
     $(function() {
         showStart($('.rating'));
         var url = window.location.href;

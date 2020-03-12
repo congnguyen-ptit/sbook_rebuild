@@ -69,13 +69,25 @@
                         <div class="col-sm-6">
                             <div class="single-info">
                                 <b>{{ __('settings.modal.category') }}</b>
-                                @foreach ($book->categories as $cate)
-                                    <li>
-                                        <a href="{{ route('book.category', $cate->slug . '-' . $cate->id) }}" class="text-info">
-                                            {{ $book->categories->count() > 0 ? $cate->name : __('settings.modal.no_category') }}
-                                        </a>
-                                    </li>
-                                @endforeach
+                                <div class="overload" id="categories">
+                                    @foreach ($book->categories as $key => $cate)
+                                        @if($key === config('view.paginate.categories'))
+                                            <li class="text-center load-more">
+                                                <span id="load-more" class="cursor">Load more</span>
+                                            </li>
+                                        @endif
+                                        <li>
+                                            <a href="{{ route('book.category', $cate->slug . '-' . $cate->id) }}" class="text-info">
+                                                {{ $book->categories->count() > 0 ? $cate->name : __('settings.modal.no_category') }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                    @if($book->categories->count() > config('view.paginate.categories'))
+                                        <li class="text-center load-more">
+                                            <span id="hide-more" class="cursor">Hide</span>
+                                        </li>
+                                    @endif
+                                </div>
                             </div>
                             <div class="single-info">
                                 <b>{{ __('settings.modal.author') }}</b>
