@@ -111,6 +111,7 @@ return [
         'totalPage' => 'Total pages :',
         'msgWait' => 'The request has been submitted, You need to wait for the owner to respond',
         'msgCancel' => 'Your request to borrow a book has been canceled',
+        'msgRmOnwer' => 'You can\'t stop share this book, cuz anyone is reading or returning your book',
     ],
 
     'review' => [
