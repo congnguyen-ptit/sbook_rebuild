@@ -240,7 +240,9 @@ class BookController extends Controller
                     } else {
                         $likedBook = false;
                     }
-
+                    if($isOwner){
+                        $anyReadingOrReturning = $this->bookUser->anyReturningOrReading($book->id, Auth::id());
+                    }
                     $bookTypeStatus = $this->bookUser->getTypeBook($book->id);
                     $data = [
                         'book',
@@ -256,6 +258,7 @@ class BookController extends Controller
                         'bookTypeStatus',
                         'filterYears',
                         'likedBook',
+                        'anyReadingOrReturning',
                     ];
 
                     return view('book.book_detail', compact($data));

@@ -379,8 +379,8 @@
                     obj.removeClass().addClass('btn-share');
                     $('.btn-borrow').removeClass('disabled hide');
                 })
-                .fail(function() {
-                    //
+                .fail(function(res) {
+                    messagePopup(JSON.parse(res.responseText), 'warning', 'warning');
                 });
             }
         });

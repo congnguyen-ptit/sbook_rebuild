@@ -251,6 +251,9 @@ class UserController extends Controller
             $with = [
                 'office',
             ];
+            if ($this->bookUser->anyReturningOrReading($id, Auth::id())) {
+                return response()->json(trans('settings.book.msgRmOnwer'), 403);
+            }
             // delete or update book office in table bookmeta
             $bookOffice = $this->book->find((int)$id, $with)->office;
             $userOffice = Auth::user()->office;

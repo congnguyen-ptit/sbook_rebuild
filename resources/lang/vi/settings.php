@@ -111,6 +111,7 @@ return [
         'totalPage' => 'Tổng số trang :',
         'msgWait' => 'Yêu cầu đã được gửi đi, bạn phải chờ phản hồi từ chủ sách',
         'msgCancel' => 'Yêu cầu mượn sách của bạn đã được hủy bỏ !',
+        'msgRmOnwer' => 'Bạn không thể dừng chia sẽ sách này vì ai đó đang mượn hoặc đang trả cuốn sách này của bạn!',
     ],
 
     'review' => [

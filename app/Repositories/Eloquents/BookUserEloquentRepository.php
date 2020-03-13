@@ -256,4 +256,15 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
     {
         return $this->model()->where('book_id', $bookId)->where('user_id', $userId)->first();
     }
+
+    public function anyReturningOrReading($book_id, $owner_id) :bool
+    {
+        return $this->model()
+            ->where([
+                'book_id'=> $book_id,
+                'owner_id' => $owner_id
+            ])
+            ->WhereIn('type', ['reading', 'returning'])
+            ->count() > 0;
+    }
 }

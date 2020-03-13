@@ -163,7 +163,7 @@
                                                         </a>
                                                     @endif
                                                     @if (Auth::check() && $isOwner)
-                                                        <a data-toggle="modal" class="btn-remove-owner" data-id="{{ $book->id }}" owner="{{ Auth::id() }}">
+                                                        <a data-toggle="modal" class="btn-remove-owner {{ $anyReadingOrReturning ? 'disabled' : '' }}" data-id="{{ $book->id }}" owner="{{ Auth::id() }}">
                                                             {{ trans('settings.book.remove_owner') }}
                                                         </a>
                                                     @else
