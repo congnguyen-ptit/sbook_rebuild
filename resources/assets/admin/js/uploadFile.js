@@ -5,7 +5,7 @@ function changeFile(event) {
     var val = customFile.value;
     var last = val.substring(val.lastIndexOf('.') + 1).toLowerCase();
     switch(last){
-        case 'gif': case 'jpg': case 'png': case 'gif' : case 'bmp': case '' :
+        case 'gif': case 'jpg': case 'jpeg': case 'png': case 'gif' : case 'bmp': case '' :
             break;
         default:
             customFile.value = '';
