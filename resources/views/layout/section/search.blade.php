@@ -3,9 +3,9 @@
         <ul class="suggestions-list">
             <div class="tabbable-panel">
                 <div class="tabbable-line">
-                    <ul class="nav nav-tabs ">
+                    <ul class="nav nav-tabs nav-search">
                         @foreach ($result as $key => $value)
-                            <li class="{{ $key == 'titles' ? 'active' : '' }}">
+                            <li class="{{ $key == 'titles' ? 'active' : '' }} search-tab">
                                 <a data-toggle="tab" href="#{{ $key }}" class="tab-suggest">{{ trans("settings.home.$key") }}</a>
                             </li>
                         @endforeach
