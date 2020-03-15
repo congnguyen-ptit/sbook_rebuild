@@ -82,6 +82,9 @@ function translate($value)
         case 'returned':
             return __('settings.book.returned');
             break;
+        case 'abtExpire':
+            return __('settings.book.abtExpire');
+            break;
         case 'cancel':
             return __('settings.book.cancel');
             break;

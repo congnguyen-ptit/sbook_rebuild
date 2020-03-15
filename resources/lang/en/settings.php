@@ -69,6 +69,11 @@ return [
         'books' => 'books',
         'reviews' => 'reviews',
         'members' => 'members',
+        'dateBorrow' => 'Time borrow',
+        'daysBorrow' => 'Days to borrow',
+        'extend' => 'Extend',
+        'notExtend' => 'No Extend',
+        'titleModalExtend' => 'The books are about to expire',
     ],
 
     'book' => [
@@ -89,6 +94,7 @@ return [
         'returning' => 'Returning',
         'returned' => 'Returned',
         'accept' => 'Accept',
+        'abtExpire' => 'wanna extend book ',
         'cancel' => 'Cancel',
         'no_user' => 'No User!',
         'cancel_borrowing' => 'Cancel Borrowing',
@@ -112,6 +118,9 @@ return [
         'msgWait' => 'The request has been submitted, You need to wait for the owner to respond',
         'msgCancel' => 'Your request to borrow a book has been canceled',
         'msgRmOnwer' => 'You can\'t stop share this book, cuz anyone is reading or returning your book',
+        'msgExtend' => 'Would you like to extend this book?',
+        'pickDate' => 'Choose date extend',
+        'extendMore' => 'Extend more',
     ],
 
     'review' => [

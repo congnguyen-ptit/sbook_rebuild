@@ -102,6 +102,16 @@ class MyRequestController extends Controller
         return back()->with('success', __('page.success'));
     }
 
+    public function handleExpire(Request $req)
+    {
+        if ($req->status === config('model.book_user.type.abtExpire')) {
+            if($this->bookUser->handleExpire($req->only(['type', 'status', 'id']))){
+                return back()->with('success', __('page.success'));
+            }
+            return back()->with('error', 'Errors');
+        }
+    }
+
     public function destroy($id)
     {
         //

@@ -107,6 +107,21 @@
                                                 @endif
                                             {!! Form::close() !!}
                                         </td>
+                                    @elseif ($book->type == config('view.request.abtExpire'))
+                                        <td>
+                                            {!! Form::open(['method' => 'post', 'route' => ['handle-expire'], 'id' => $book->id]) !!}
+                                                {!! Form::hidden('status', $book->type) !!}
+                                                {!! Form::hidden('id', $book->id) !!}
+                                                {!! Form::hidden('type', __('settings.request.approve')) !!}
+                                                {!! Form::button(__('settings.request.approve'), ['class' => 'btn btn-info btn-sm approve notify-2 ' , 'type' => 'submit']) !!}
+                                            {!! Form::close() !!}
+                                            {!! Form::open(['method' => 'post', 'route' => ['handle-expire'], 'id' => $book->id]) !!}
+                                                {!! Form::hidden('status', $book->type) !!}
+                                                {!! Form::hidden('id', $book->id) !!}
+                                                {!! Form::hidden('type', __('settings.request.dismiss')) !!}
+                                                {!! Form::button(__('settings.request.dismiss'), ['class' => 'btn btn-danger btn-sm approve notify-2 ' , 'type' => 'submit']) !!}
+                                            {!! Form::close() !!}
+                                        </td>
                                     @else
                                         <td class="product-remove">
                                             {!! Form::open(['method' => 'patch', 'route' => ['my-request.update', $book->id], 'id' => $book->id]) !!}

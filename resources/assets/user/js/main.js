@@ -1075,6 +1075,60 @@
         $('#load-more').removeClass('hide');
     });
 
+    $(document).ready(function(){
+        $('#bookExpire').modal('show');
+        $('body').on('click', '#extend', function () {
+            const id = $(this).attr('data-id');
+            $('#modal-extend').modal('show');
+            $('#btn-extend').click(function(){
+                const days_to_read = $('#days_to_read').val();
+                $('#modal-extend').modal('hide');
+                swal({
+                    title: settings.book.msgExtend,
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                }).then( confirm => {
+                    if(confirm){
+                        $.ajax({
+                            url: route('extend-book', id),
+                            data: {days_to_read},
+                            dataType: 'json',
+                            method: 'put',
+                            success: function (res) {
+                                messagePopup(settings.book.msgWait, 'success', 'success', true);
+                                $('.badge-expire').remove();
+                            },
+                            error: function (res) {
+                                messagePopup(JSON.parse(res.responseText), 'error', 'error', true);
+                            }
+                        });
+                    }
+                });
+            })
+        });
+        $('body').on('click', '#not-extend', function (){
+            const id = $(this).attr('data-id');
+            swal({
+                title: settings.book.sure,
+                icon: 'warning',
+                buttons: true,
+                dangerMode: true,
+            }).then( confirm => {
+                if(confirm) {
+                    $.ajax({
+                        url: route('extend-book', id),
+                        dataType: 'json',
+                        method: 'put',
+                        success: function(res){
+                            $('.badge-expire').remove();
+                        }
+                    })
+                }
+            });
+        });
+    });
+
     $(function() {
         showStart($('.rating'));
         var url = window.location.href;

@@ -67,6 +67,8 @@ Route::group(['middleware' => 'locale'], function () {
             Route::post('language/{language}', 'SettingController@postLanguage')->name('setting.language');
             Route::get('/get-book-title', 'BookController@getBookByTitle')->name('get-book-title');
             Route::get('/get-authors', 'BookController@getAuthors')->name('get-authors');
+            Route::put('/extend-book/{id}', 'BookController@extendBook')->name('extend-book');
+            Route::post('handle-expire', 'MyRequestController@handleExpire')->name('handle-expire');
         });
     });
 
@@ -86,7 +88,7 @@ Route::group(['middleware' => 'locale'], function () {
         Route::get('/reputation', 'HomeController@index');
         Route::get('/tag', 'HomeController@index');
         Route::get('/', 'HomeController@adminIndex')->name('dashboard');
-        Route::resource('/roles', 'RoleController');
+//        Route::resource('/roles', 'RoleController');
         Route::resource('/offices', 'OfficeController');
         Route::get('list-offices', 'OfficeController@ajaxIndex')->name('office.ajax-index');
         Route::resource('/users', 'UserController');

@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquents;
 
 use App\Eloquent\User;
 use App\Repositories\Contracts\UserRepository;
+use DateTime;
 use File;
 
 class UserEloquentRepository extends AbstractEloquentRepository implements UserRepository

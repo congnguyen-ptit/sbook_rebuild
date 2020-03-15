@@ -2,6 +2,7 @@
 
 namespace App\Eloquent;
 
+use DateTime;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -62,6 +63,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Book::class)
             ->withPivot('type', 'approved', 'owner_id', 'created_at', 'days_to_read');
+    }
+
+    public function booksReading()
+    {
+        return $this->books()->withPivot('id')
+            ->wherePivot('type', config('model.book_user.type.reading'))
+            ->wherePivot('expire', true);
+
     }
 
     public function review()
@@ -125,5 +134,18 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Book::class, 'favorites')
             ->withTimestamps();
+    }
+
+    public function bookAboutToExpire()
+    {
+        return $this->booksReading->filter(function ($book) {
+            $currentDate = new DateTime(date('Y/m/d'));
+            $borrowDate = new DateTime(date("Y/m/d", strtotime($book->pivot->created_at)));
+            $numOfBorrowed = $currentDate->diff($borrowDate)->days;
+            $daysLeft = $book->pivot->days_to_read - $numOfBorrowed;
+            if($daysLeft <= 1 && $daysLeft >= 0){
+                return $book;
+            }
+        });
     }
 }

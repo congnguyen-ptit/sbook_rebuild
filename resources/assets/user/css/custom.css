@@ -1976,3 +1976,26 @@ span.no_onwer {
 .load-more span:hover {
     color: #31708f;
 }
+.badge-expire {
+    border-radius: 0 !important;
+    padding: 10px !important;
+    cursor: pointer;
+}
+.bg-expire{
+    background-color: #6746d6 !important;
+}
+
+.bg-abtExpire{
+    background-color: #6746d6 !important;
+}
+.badge-expire:hover{
+    background-color: #1faed6 !important;
+}
+#modal-extend{
+    z-index: 9999999;
+}
+.form-extend{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px !important;
+}
