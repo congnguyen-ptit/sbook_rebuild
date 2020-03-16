@@ -1931,23 +1931,23 @@ span.no_onwer {
     display: none;
 }
 
-.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+.search-tab.open, .search-tab:hover {
     border-bottom: 4px solid #fbcdcf;
 }
-.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+.search-tab.open > a, .search-tab:hover > a {
     border: 0;
     background: none !important;
     color: #333333;
 }
-.tabbable-line > .nav-tabs > li.active {
+.search-tab.active {
     border-bottom: 4px solid #f3565d;
     position: relative;
 }
-.tabbable-line > .nav-tabs > li.active > a {
+.search-tab.active > a {
     border: 0;
     color: #333333;
 }
-.nav-tabs > li, .nav-pills > li {
+.nav-tabs > .search-tab {
     float:none;
     display:inline-block;
     *display:inline;
@@ -1955,7 +1955,7 @@ span.no_onwer {
     padding: 0px !important;
 }
 
-.nav-tabs, .nav-pills {
+.nav-search, .nav-pills {
     text-align:center;
 }
 
