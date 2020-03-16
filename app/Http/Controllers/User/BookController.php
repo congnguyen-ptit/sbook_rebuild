@@ -240,9 +240,7 @@ class BookController extends Controller
                     } else {
                         $likedBook = false;
                     }
-                    if($isOwner){
-                        $anyReadingOrReturning = $this->bookUser->anyReturningOrReading($book->id, Auth::id());
-                    }
+                    $anyReadingOrReturning = $isOwner ? $this->bookUser->anyReturningOrReading($book->id, Auth::id()) : false;
                     $bookTypeStatus = $this->bookUser->getTypeBook($book->id);
                     $data = [
                         'book',
@@ -434,5 +432,34 @@ class BookController extends Controller
         if ($req->req != '') {
             return response()->json($this->book->getAuthors($req->req));
         };
+    }
+
+    public function extendBook(Request $req, $id)
+    {
+        try {
+            $bookUser = $this->bookUser->updateExpire($id)->toArray();
+            if(isset($req->days_to_read)){
+                $bookUser['type'] = config('model.book_user.type.abtExpire');
+                $bookUser['days_to_read'] = $req->days_to_read;
+                $bookUser['approved'] = config('model.approved.default');
+                $object = $this->bookUser->store($bookUser);
+                if($object){
+                    $info = [
+                        'send_id' => Auth::id(),
+                        'receive_id' => $object->owner_id,
+                        'target_type' => config('model.target_type.book_user'),
+                        'target_id' => $object->id,
+                        'viewed' => config('model.viewed.false'),
+                    ];
+                    $this->notification->store($info);
+                }
+            }else{
+                $object = null;
+            }
+
+            return response()->json($object,200);
+        }catch (\Exception $e) {
+            return response()->json($e->getMessage(),500);
+        }
     }
 }

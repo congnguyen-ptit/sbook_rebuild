@@ -15,6 +15,7 @@ class BookUser extends Model
         'owner_id',
         'book_id',
         'user_id',
+        'expire',
     ];
 
     public function book()

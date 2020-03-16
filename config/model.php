@@ -26,6 +26,7 @@ return [
             'waiting' => 'waiting',
             'reading' => 'reading',
             'returned' => 'returned',
+            'abtExpire' => 'abtExpire',
         ],
     ],
 

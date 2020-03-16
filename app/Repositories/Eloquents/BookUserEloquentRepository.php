@@ -3,6 +3,7 @@
 namespace App\Repositories\Eloquents;
 
 use App\Eloquent\BookUser;
+use App\Eloquent\Notification;
 use App\Repositories\Contracts\BookUserRepository;
 use App\Repositories\Contracts\NotificationRepository;
 use Carbon\Carbon;
@@ -165,10 +166,24 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
         $bookUser = $this->model()->where('book_id', $id)
                     ->where('user_id', Auth::id())
                     ->where('type', '<>', config('view.request.returned'))
+                    ->where('type', '<>', config('view.request.abtExpire'))
                     ->orderBy('created_at', 'desc')
                     ->first();
         $type = config('view.request.returning');
-        
+
+        $data = [
+            'type' => config('view.request.abtExpire'),
+            'owner_id' => $bookUser->owner_id,
+            'book_id' => $bookUser->book_id,
+            'user_id' => $bookUser->user_id,
+        ];
+
+        $expire = $this->model()->where($data)->first();
+        if($expire){
+            $this->notification->destroy(['target_id' => $expire->id]);
+            $expire->delete();
+        }
+
         $this->notification->destroy([
             'send_id' => $bookUser->owner_id,
             'receive_id' => $bookUser->user_id,
@@ -231,6 +246,7 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
         return $this->model()->where('book_id', $idBook)
                     ->where('user_id', Auth::id())
                     ->where('type', '<>', config('view.request.returned'))
+                    ->where('type', '<>', config('view.request.abtExpire'))
                     ->orderByDesc('created_at')
                     ->first();
     }
@@ -266,5 +282,38 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
             ])
             ->WhereIn('type', ['reading', 'returning'])
             ->count() > 0;
+    }
+
+    public function updateExpire($id, $status = false)
+    {
+        return tap($this->model()->findOrFail($id))->update(['expire' => $status]);
+    }
+
+    public function handleExpire($req)
+    {
+        DB::beginTransaction();
+        try {
+            $currentBookBorrow = $this->findId($req['id']);
+            $data = [
+                'type' => 'reading',
+                'owner_id' => $currentBookBorrow->owner_id,
+                'book_id' => $currentBookBorrow->book_id,
+                'user_id' => $currentBookBorrow->user_id,
+                'expire' => false
+            ];
+            $bookUser = $this->model()->where($data)->first();
+            if($req['type'] === __('settings.request.approve')){
+                $bookUser->update(['expire' => true]);
+                $bookUser->increment('days_to_read', $currentBookBorrow->days_to_read);
+            }else{
+                $bookUser->update(['expire' => false]);
+            }
+            $currentBookBorrow->delete();
+            DB::commit();
+
+            return true;
+        } catch (\Exception $e){
+            return false;
+        }
     }
 }

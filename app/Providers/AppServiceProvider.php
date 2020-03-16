@@ -29,6 +29,11 @@ class AppServiceProvider extends ServiceProvider
             }
             $view->with('offices', Office::getAll());
         });
+        view()->composer('*', function ($view) {
+            if (Auth::check()) {
+                $view->with('bookAboutToExpire', Auth::user()->bookAboutToExpire());
+            }
+        });
     }
 
     /**

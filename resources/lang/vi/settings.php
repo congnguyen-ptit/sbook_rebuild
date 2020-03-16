@@ -69,6 +69,11 @@ return [
         'books' => 'cuốn',
         'reviews' => 'đánh giá',
         'members' => 'thành viên',
+        'dateBorrow' => 'Thời gian mượn',
+        'daysBorrow' => 'Số ngày mượn',
+        'extend' => 'Gia hạn',
+        'notExtend' => 'Không gia hạn',
+        'titleModalExtend' => 'Những sách sắp hết hạn',
     ],
 
     'book' => [
@@ -87,6 +92,7 @@ return [
         'waiting' => 'Đang chờ',
         'reading' => 'Đang mượn',
         'returning' => 'Đang trả',
+        'abtExpire' => 'muốn gia hạn thêm sách ',
         'returned' => 'Đã trả',
         'accept' => 'Chấp nhận',
         'cancel' => 'Hủy cho mượn',
@@ -112,6 +118,9 @@ return [
         'msgWait' => 'Yêu cầu đã được gửi đi, bạn phải chờ phản hồi từ chủ sách',
         'msgCancel' => 'Yêu cầu mượn sách của bạn đã được hủy bỏ !',
         'msgRmOnwer' => 'Bạn không thể dừng chia sẽ sách này vì ai đó đang mượn hoặc đang trả cuốn sách này của bạn!',
+        'msgExtend' => 'Bạn muốn gia hạn thêm cho cuốn sách này ?',
+        'pickDate' => 'Chọn ngày gia hạn',
+        'extendMore' => 'Gia hạn thêm',
     ],
 
     'review' => [
