@@ -147,16 +147,7 @@ class BookController extends Controller
             ];
             $this->owner->store($data);
             if ($followers) {
-                foreach ($followers as $follower) {
-                    $info = [
-                        'send_id' => Auth::id(),
-                        'receive_id' => $follower,
-                        'target_type' => config('model.target_type.book'),
-                        'target_id' => $book->id,
-                        'viewed' => config('model.viewed.false'),
-                    ];
-                    $this->notification->store($info);
-                }
+                $this->notification->addNotificationToFollowers($book->id, $followers, Auth::id());
             }
             Session::flash('success', trans('settings.success.store'));
 
