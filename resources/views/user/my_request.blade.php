@@ -79,7 +79,9 @@
                                                 {{ setTimeDefault($book->updated_at) }}
                                             </td>
                                             <td>
-                                                {{ getDay($book->updated_at, $book->days_to_read) }}
+                                                @if($book->type != config('view.request.abtExpire'))
+                                                    {{ getDay($book->updated_at, $book->days_to_read) }}
+                                                @endif
                                             </td>
                                     @else
                                         <td></td>

@@ -67,7 +67,7 @@ function getDay($value1, $value2)
     return date('d/m/y', strtotime($value1) + $value2 * 86400);
 }
 
-function translate($value)
+function translate($value, $userReceive = false)
 {
     switch ($value) {
         case 'waiting':
@@ -84,6 +84,15 @@ function translate($value)
             break;
         case 'abtExpire':
             return __('settings.book.abtExpire');
+            break;
+        case 'abtExpiring':
+            return __('settings.book.abtExpiring');
+            break;
+        case 'cancelExtend':
+            return __('settings.book.cancelExtend');
+            break;
+        case 'hasExtended':
+            return $userReceive ? __('settings.book.hasExtended') : __('settings.book.abtExpire');
             break;
         case 'cancel':
             return __('settings.book.cancel');

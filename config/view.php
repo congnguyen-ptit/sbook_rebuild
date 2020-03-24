@@ -86,6 +86,8 @@ return [
         'returning' => 'returning',
         'returned' => 'returned',
         'abtExpire' => 'abtExpire',
+        'hasExtended' => 'hasExtended',
+        'cancelExtend' => 'cancelExtend',
         'cancel' => 'cancel',
         'approve' => 1,
         'dismiss' => 0,
@@ -99,7 +101,9 @@ return [
     ],
 
     'notifications' => [
-        'abtExpire' => 'abtExpire',
+        'abtExpire' => 'abtExpiring',
+        'hasExtended' => 'hasExtended',
+        'cancelExtend' => 'cancelExtend',
         'review' => 'Review your book: ',
         'follow' => 'Follow you',
         'upvote' => 'Upvote your review for the book: ',

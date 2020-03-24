@@ -62,7 +62,7 @@ class User extends Authenticatable
     public function books()
     {
         return $this->belongsToMany(Book::class)
-            ->withPivot('type', 'approved', 'owner_id', 'created_at', 'days_to_read');
+            ->withPivot('type', 'approved', 'owner_id', 'created_at', 'updated_at', 'days_to_read');
     }
 
     public function booksReading()
@@ -140,7 +140,7 @@ class User extends Authenticatable
     {
         return $this->booksReading->filter(function ($book) {
             $currentDate = new DateTime(date('Y/m/d'));
-            $borrowDate = new DateTime(date("Y/m/d", strtotime($book->pivot->created_at)));
+            $borrowDate = new DateTime(date("Y/m/d", strtotime($book->pivot->updated_at)));
             $numOfBorrowed = $currentDate->diff($borrowDate)->days;
             $daysLeft = $book->pivot->days_to_read - $numOfBorrowed;
             if($daysLeft <= 1 && $daysLeft >= 0){
