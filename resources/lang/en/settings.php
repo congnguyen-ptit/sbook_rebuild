@@ -234,7 +234,7 @@ return [
         'accept' => 'Accept',
         'delete' => 'Delete',
         'nodata' => 'No data',
-        'timeRemain' => 'Day return',
+        'timeRemain' => 'Returned date',
         'day' => 'days',
     ],
 

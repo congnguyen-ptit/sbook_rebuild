@@ -45,6 +45,7 @@
                     <table>
                         <thead>
                             <tr>
+                                <th><b>#</b></th>
                                 <th class="product-thumbnail"><b>{{ __('settings.request.image') }}</b></th>
                                 <th class="product-name"><b>{{ __('settings.request.title') }}</b></th>
                                 <th class="product-remove"><b>{{ __('settings.request.dayRead') }}</b></th>
@@ -56,9 +57,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($books as $book)
+                            @foreach ($books as $index => $book)
                                 @if ($book->book)
                                 <tr>
+                                    <td>{{ currentIndex($books->currentPage(), config('view.paginate.book_request'), $index) }}</td>
                                     <td class="product-thumbnail">
                                         @if ($book->book->medias->count() > 0)
                                             <img src="{{ asset(config('view.image_paths.book') . $book->book->medias[0]->path) }}" alt="man" />
@@ -67,15 +69,15 @@
                                         @endif
                                     </td>
                                     <td class="product-name">
-                                        <a href="{{ route('books.show', $book->book->slug . '-' . $book->book_id) }}">{{ $book->book->title }}</a>
+                                        <a href="{{ route('books.show', $book->book->slug . '-' . $book->book_id) }}" class="hover-text">{{ $book->book->title }}</a>
                                     </td>
                                     <td>
                                         {{ $book->days_to_read }} {{ __('settings.request.day') }}
                                     </td>
-                                    <td>{{ $book->user->name }}</td>
+                                    <td><a href="{{ route('user', $book->user->id) }}" class="hover-text">{{ $book->user->name }}</a></td>
                                     @if ($book->type != config('view.request.waiting'))
                                             <td>
-                                                <p>{{ $book->updated_at ? $book->updated_at->format('d/m/y h:i:s') : '' }}</p>
+                                                <p>{{ $book->updated_at ? $book->updated_at->format('d/m/Y') : '' }}</p>
                                                 {{ setTimeDefault($book->updated_at) }}
                                             </td>
                                             <td>
@@ -98,11 +100,7 @@
                                         <td>
                                             {!! Form::open(['method' => 'patch', 'route' => ['my-request.update', $book->id], 'id' => $book->id]) !!}
                                                 {!! Form::hidden('status', $book->type) !!}
-                                                @if ($book->type == config('view.request.reading'))
-                                                    {!! Form::button(__('settings.request.returned'),
-                                                        ['class' => 'btn btn-return btn-sm notify-2',
-                                                        'type' => 'submit', 'disabled' => 'disabled']) !!}
-                                                @else
+                                                @if ($book->type !== config('view.request.reading'))
                                                     {!! Form::button(__('settings.request.accept'),
                                                         ['class' => 'btn btn-return btn-sm notify-2',
                                                         'type' => 'submit']) !!}
@@ -141,6 +139,14 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div>
+                        <p class="pull-left">
+                            @if($books->count() >0)
+                                {{ __('settings.showing')  }}
+                                {{ ($books->currentpage() - 1) * $books->perpage() + 1 }} {{ __('settings.to') }} {{ ($books->currentpage() - 1) * $books->perpage() + $books->count() }} {{ __('settings.of') }} {{ $books->total() }} {{ __('settings.items') }}
+                            @endif
+                        </p>
+                    </div>
                      <div class="page-numbers">
                         {{ $books->links() }}
                     </div>

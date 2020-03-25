@@ -163,9 +163,11 @@
                                                         </a>
                                                     @endif
                                                     @if (Auth::check() && $isOwner)
-                                                        <a data-toggle="modal" class="btn-remove-owner {{ $anyReadingOrReturning ? 'disabled' : '' }}" data-id="{{ $book->id }}" owner="{{ Auth::id() }}">
-                                                            {{ trans('settings.book.remove_owner') }}
-                                                        </a>
+                                                        @if(!$anyReadingOrReturning)
+                                                            <a data-toggle="modal" class="btn-remove-owner" data-id="{{ $book->id }}" owner="{{ Auth::id() }}">
+                                                                {{ trans('settings.book.remove_owner') }}
+                                                            </a>
+                                                        @endif
                                                     @else
                                                         <a data-toggle="modal" href="#" class="{{ Auth::check() ? 'btn-share book-info-link' : 'login' }} {{ $bookStatus && $bookStatus->type != 'returned' ? 'disabled' : '' }}" data-id="{{ $book->id }}" owner="{{ Auth::id() }}">
                                                             {{ trans('settings.book.i_have_this_book') }}

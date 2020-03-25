@@ -197,7 +197,7 @@
                                                                         </div>
                                                                     @endforeach
                                                                 @else
-                                                                    <span class="text-danger">{{ __('settings.modal.no_owners') }}</span>
+                                                                    <span class="text-danger reltop-15">{{ __('settings.modal.no_owners') }}</span>
                                                                 @endif
                                                             </div>
                                                         </div>
