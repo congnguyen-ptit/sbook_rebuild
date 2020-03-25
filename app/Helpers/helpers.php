@@ -67,6 +67,13 @@ function getDay($value1, $value2)
     return date('d/m/y', strtotime($value1) + $value2 * 86400);
 }
 
+function getDateReturn($book) {
+    $types = ['reading', 'returning'];
+    return is_null($book->date_return)
+        ? (getDay($book->updated_at, $book->days_to_read) . (in_array($book->type, $types) ? ' ( '. trans('settings.book.expected') .' ) ' : '' ))
+        : date('d/m/y', strtotime($book->date_return));
+}
+
 function translate($value, $userReceive = false)
 {
     switch ($value) {

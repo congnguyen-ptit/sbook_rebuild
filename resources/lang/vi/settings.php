@@ -124,6 +124,7 @@ return [
         'msgExtend' => 'Bạn muốn gia hạn thêm cho cuốn sách này ?',
         'pickDate' => 'Chọn ngày gia hạn',
         'extendMore' => 'Gia hạn thêm',
+        'expected' => 'Dự kiến',
     ],
 
     'review' => [
