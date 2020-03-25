@@ -51,8 +51,7 @@ class NotificationEloquentRepository extends AbstractEloquentRepository implemen
                     if ($record->target) {
                         $book = $record->target->book;
                         if ($book) {
-                            $message = translate(config('view.notifications.' . $record->target->type))
-                                . $book->title;
+                            $message = translate(config('view.notifications.' . $record->target->type), $record->receive_id !== $record->target->owner_id ? true : false) . $book->title;
                             $record = array_add($record, 'message', $message);
                             $type = $record->target->type;
                             if ($type == config('view.request.waiting') ||

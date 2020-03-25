@@ -111,6 +111,7 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
             ->select($dataSelect)
             ->with($with)
             ->where($data)
+            ->whereNotIn('type', ['hasExtended', 'cancelExtend'])
             ->whereHas('book', function ($query) {
                 $query->where('deleted_at', null);
             })
@@ -286,7 +287,17 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
 
     public function updateExpire($id, $status = false)
     {
-        return tap($this->model()->findOrFail($id))->update(['expire' => $status]);
+        $bookUser = $this->model()->findOrFail($id);
+        return $this->saveWithoutTimestamps($bookUser, $status);
+    }
+
+    public function saveWithoutTimestamps($object, $status, $days = 0)
+    {
+        $object->expire = $status;
+        $object->days_to_read = $object->days_to_read + $days;
+        $object->timestamps = false;
+        $object->save();
+        return $object->fresh();
     }
 
     public function handleExpire($req)
@@ -303,12 +314,23 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
             ];
             $bookUser = $this->model()->where($data)->first();
             if($req['type'] === __('settings.request.approve')){
-                $bookUser->update(['expire' => true]);
-                $bookUser->increment('days_to_read', $currentBookBorrow->days_to_read);
+                $status = true;
+                $type = config('view.request.hasExtended');
+                $days = $currentBookBorrow->days_to_read;
             }else{
-                $bookUser->update(['expire' => false]);
+                $status = false;
+                $type = config('view.request.cancelExtend');
+                $days = 0;
             }
-            $currentBookBorrow->delete();
+            $this->saveWithoutTimestamps($bookUser, $status, $days);
+            $currentBookBorrow->update(['type' => $type]);
+            $this->notification->store([
+                'send_id' => $currentBookBorrow->owner_id,
+                'receive_id' => $currentBookBorrow->user_id,
+                'target_type' => config('model.target_type.book_user'),
+                'target_id' => $currentBookBorrow->id,
+                'viewed' => config('model.viewed.false'),
+            ]);
             DB::commit();
 
             return true;
