@@ -32,11 +32,12 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
             ->get();
     }
 
-    public function updateBookUser($type, $id)
+    public function updateBookUser($type, $id, $date_return = false)
     {
-        DB::select(
-            "UPDATE book_user SET type = '$type' WHERE id = $id"
-        );
+        $query = "UPDATE book_user SET type = '$type'" .
+            ( $date_return ? " , date_return = '$date_return'" : '')
+            . " WHERE id = $id";
+        DB::select($query);
     }
 
     public function store($data)
@@ -87,7 +88,8 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
                         break;
                     case config('view.request.returning'):
                         $type = 'returned';
-                        $this->updateBookUser($type, $bookRequest->id);
+                        $date_return = date("Y-m-d");
+                        $this->updateBookUser($type, $bookRequest->id, $date_return);
                         break;
                     case config('view.request.dismiss'):
                         $type['type'] = 'cancel';

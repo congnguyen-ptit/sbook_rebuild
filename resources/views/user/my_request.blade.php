@@ -80,7 +80,7 @@
                                             </td>
                                             <td>
                                                 @if($book->type != config('view.request.abtExpire'))
-                                                    {{ getDay($book->updated_at, $book->days_to_read) }}
+                                                    {{ getDateReturn($book) }}
                                                 @endif
                                             </td>
                                     @else

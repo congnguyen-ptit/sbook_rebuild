@@ -124,6 +124,7 @@ return [
         'msgExtend' => 'Would you like to extend this book?',
         'pickDate' => 'Choose date extend',
         'extendMore' => 'Extend more',
+        'expected' => 'Expected',
     ],
 
     'review' => [
