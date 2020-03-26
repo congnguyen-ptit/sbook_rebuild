@@ -176,4 +176,27 @@ class NotificationEloquentRepository extends AbstractEloquentRepository implemen
 
         return $data;
     }
+
+    public function sendNotificationToFollowers($book_id, $follower_ids, $user_id)
+    {
+        $datas = [];
+        foreach ($follower_ids as $follower_id){
+            $data = [
+                'send_id' => $user_id,
+                'receive_id' => $follower_id,
+                'target_type' => config('model.target_type.book'),
+                'target_id' => $book_id,
+                'viewed' => config('model.viewed.false'),
+                'created_at' => date('Y-m-d H:i:s'),
+            ];
+            array_push($datas, $data);
+        }
+        try {
+            $this->model()->insert($datas);
+
+            return true;
+        }catch(\Exception $e){
+            throw new \Exception($e->getMessage());
+        }
+    }
 }

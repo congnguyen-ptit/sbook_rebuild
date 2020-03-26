@@ -238,6 +238,8 @@ class UserController extends Controller
             }
 
             $book = $this->book->find($id, ['owners', 'users', 'users.office']);
+            $follower_ids = Auth::user()->followers->pluck('id');
+            $this->notification->sendNotificationToFollowers($book->id, $follower_ids, Auth::id());
 
             return view('layout.section.list_owners', compact('book'));
         } catch (Exception $e) {
