@@ -64,7 +64,7 @@ function setTimeDefault($value)
 
 function getDay($value1, $value2)
 {
-    return date('d/m/y', strtotime($value1) + $value2 * 86400);
+    return date('d/m/Y', strtotime($value1) + $value2 * 86400);
 }
 
 function getDateReturn($book) {
@@ -166,4 +166,8 @@ function activeTab ($type) {
     if (!$typeParam && $type == __('settings.grid')) {
         return 'active';
     }
+}
+
+function currentIndex($pageIndex, $pageSize, $index){
+    return ($pageIndex - 1) * $pageSize + ($index + 1);
 }
