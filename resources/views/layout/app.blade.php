@@ -84,15 +84,15 @@
                                         @foreach($bookAboutToExpire as $book)
                                             <tr>
                                                 <td scope="row"> {{ $book->title }}</td>
-                                                <td>{{ $book->pivot->updated_at }}</td>
+                                                <td class="text-center">{{ getday($book->pivot->updated_at, 0) }}</td>
                                                 <td>{{ $book->pivot->days_to_read }}</td>
                                                 <td>
-                                                    <span class="badge badge-expire bg-expire" id="extend" data-id="{{ $book->pivot->id }}" data-type="true">
+                                                    <button class="btn btn-sm badge-expire bg-expire" id="extend" data-id="{{ $book->pivot->id }}" data-type="true">
                                                         {{ trans('settings.default.extend') }}
-                                                    </span>
-                                                    <span class="badge badge-expire bg-danger" id="not-extend" data-id="{{ $book->pivot->id }}" data-type="false">
+                                                    </button>
+                                                    <button class="btn btn-sm badge-expire bg-danger" id="not-extend" data-id="{{ $book->pivot->id }}" data-type="false">
                                                         {{ trans('settings.default.notExtend') }}
-                                                    </span>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach

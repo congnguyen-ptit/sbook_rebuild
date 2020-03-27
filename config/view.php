@@ -92,6 +92,8 @@ return [
         'approve' => 1,
         'dismiss' => 0,
         'favorite' => 'favorite',
+        'grid' => 'Grid',
+        'list' => 'List',
     ],
 
     'limit' => [
