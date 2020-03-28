@@ -2006,3 +2006,19 @@ span.no_onwer {
 .hover-text:hover{
     color: #F7941D !important;
 }
+.mr-10 {
+    margin-right: 10px;
+}
+.badge-warning {
+    background-color: #f1c40f;
+    padding: 5px;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.rotate-180{
+    transform: rotate(180deg);
+}
+.not-allow{
+    cursor: not-allowed;
+}

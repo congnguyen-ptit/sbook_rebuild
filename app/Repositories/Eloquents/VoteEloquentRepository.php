@@ -66,4 +66,15 @@ class VoteEloquentRepository extends AbstractEloquentRepository implements VoteR
             }
         }
     }
+
+    public function getDataVote($review_id, $data = false)
+    {
+        $satisfied = $this->countVoteByStatus(1, $review_id);
+        $unsatisfied = $this->countVoteByStatus(-1, $review_id);
+        return ['status' => $data, 'satisfied' => $satisfied, 'unsatisfied' => $unsatisfied];
+    }
+
+    protected function countVoteByStatus($status, $review_id){
+        return $this->model()->where(['status' => $status, 'review_id' => $review_id])->count();
+    }
 }

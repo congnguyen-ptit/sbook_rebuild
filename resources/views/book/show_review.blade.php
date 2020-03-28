@@ -116,21 +116,21 @@
                         vote: $(this).val()
                     },
                     success: function(data) {
-                        if (data == 'up') {
+                        if (data.status == 'up') {
                             $('.btn-vote').removeClass('voted');
                             $('.up-vote').addClass('voted');
                             var vote = parseInt($('.count-vote').text());
                             $('.count-vote').text(vote + 1);
-                        } else if (data == 'down') {
+                        } else if (data.status == 'down') {
                             $('.btn-vote').removeClass('voted');
                             $('.down-vote').addClass('voted');
                             var vote = parseInt($('.count-vote').text());
                             $('.count-vote').text(vote - 1);
-                        } else if (data == 'nodown') {
+                        } else if (data.status == 'nodown') {
                             $('.btn-vote').removeClass('voted');
                             var vote = parseInt($('.count-vote').text());
                             $('.count-vote').text(vote - 1);
-                        } else if (data == 'noup') {
+                        } else if (data.status == 'noup') {
                             $('.btn-vote').removeClass('voted');
                             var vote = parseInt($('.count-vote').text());
                             $('.count-vote').text(vote + 1);

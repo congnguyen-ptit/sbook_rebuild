@@ -125,6 +125,10 @@ return [
         'pickDate' => 'Choose date extend',
         'extendMore' => 'Extend more',
         'expected' => 'Expected',
+        'satisfied' => 'Satisfied',
+        'unsatisfied' => 'Unsatisfied',
+        'loginToVote' => 'Login to vote',
+        'voted' => 'You voted',
     ],
 
     'review' => [
