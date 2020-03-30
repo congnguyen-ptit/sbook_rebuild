@@ -69,7 +69,7 @@ return [
         'books' => 'books',
         'reviews' => 'reviews',
         'members' => 'members',
-        'dateBorrow' => 'Time borrow',
+        'dateBorrow' => 'Previously borrowed time',
         'daysBorrow' => 'Days to borrow',
         'extend' => 'Extend',
         'notExtend' => 'No Extend',

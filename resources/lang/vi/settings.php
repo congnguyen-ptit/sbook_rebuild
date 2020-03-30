@@ -69,7 +69,7 @@ return [
         'books' => 'cuốn',
         'reviews' => 'đánh giá',
         'members' => 'thành viên',
-        'dateBorrow' => 'Thời gian mượn',
+        'dateBorrow' => 'Thời gian mượn ban đầu',
         'daysBorrow' => 'Số ngày mượn',
         'extend' => 'Gia hạn',
         'notExtend' => 'Không gia hạn',

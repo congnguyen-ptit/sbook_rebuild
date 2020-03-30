@@ -69,11 +69,11 @@
                     <div class="shop-tab">
                         <div class="tab-3">
                             <ul>
-                                <li class="{{ activeTab(__('settings.grid')) }}">
-                                    <a href="#th" data-toggle="tab" class="tab-type" data-type="grid"><i class="fa fa-th-large"></i>{{ __('settings.grid') }}</a>
+                                <li class="{{ activeTab(config('view.request.grid')) }}">
+                                    <a href="#th" data-toggle="tab" class="tab-type" data-type="grid"><i class="fa fa-th-large"></i>{{ config('view.request.grid') }}</a>
                                 </li>
-                                <li class="{{ activeTab(__('settings.list')) }}">
-                                    <a href="#list" data-toggle="tab" class="tab-type" data-type="list"><i class="fa fa-bars"></i>{{ __('settings.list') }}</a>
+                                <li class="{{ activeTab(config('view.request.list')) }}">
+                                    <a href="#list" data-toggle="tab" class="tab-type" data-type="list"><i class="fa fa-bars"></i>{{ config('view.request.list') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -81,7 +81,7 @@
                 </div>
                 <!-- tab-area-start -->
                 <div class="tab-content">
-                    <div class="tab-pane {{ activeTab(__('settings.grid')) }}" id="th">
+                    <div class="tab-pane {{ activeTab(config('view.request.grid')) }}" id="th">
                         <div class="row">
                             @foreach ($books as $book)
                                 <div class="col-lg-3 col-md-4 col-sm-6 mh-406">
@@ -162,7 +162,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="tab-pane fade in {{ activeTab(__('settings.list')) }}" id="list">
+                    <div class="tab-pane fade in {{ activeTab(config('view.request.list')) }}" id="list">
                         @foreach ($books as $book)
                             <div class="single-shop mb-30">
                                 <div class="row">
