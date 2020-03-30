@@ -168,8 +168,7 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
     {
         $bookUser = $this->model()->where('book_id', $id)
                     ->where('user_id', Auth::id())
-                    ->where('type', '<>', config('view.request.returned'))
-                    ->where('type', '<>', config('view.request.abtExpire'))
+                    ->whereNotIn('type', $this->rejectStatuses())
                     ->orderBy('created_at', 'desc')
                     ->first();
         $type = config('view.request.returning');
@@ -246,10 +245,10 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
      */
     public function getBookStatusForUser($idBook)
     {
+
         return $this->model()->where('book_id', $idBook)
                     ->where('user_id', Auth::id())
-                    ->where('type', '<>', config('view.request.returned'))
-                    ->where('type', '<>', config('view.request.abtExpire'))
+                    ->whereNotIn('type', $this->rejectStatuses())
                     ->orderByDesc('created_at')
                     ->first();
     }
@@ -339,5 +338,13 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
         } catch (\Exception $e){
             return false;
         }
+    }
+
+    protected function rejectStatuses(){
+        return [
+            config('view.request.returned'),
+            config('view.request.hasExtended'),
+            config('view.request.abtExpire')
+        ];
     }
 }

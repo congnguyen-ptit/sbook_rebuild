@@ -99,7 +99,7 @@ function translate($value, $userReceive = false)
             return __('settings.book.cancelExtend');
             break;
         case 'hasExtended':
-            return $userReceive ? __('settings.book.hasExtended') : __('settings.book.abtExpire');
+            return $userReceive ? __('settings.notifications.hasExtended') : __('settings.notifications.abtExpire');
             break;
         case 'cancel':
             return __('settings.book.cancel');

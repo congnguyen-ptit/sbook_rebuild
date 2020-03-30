@@ -320,6 +320,8 @@ return [
         'reading' => ' đã chấp nhận cho mượn sách: ',
         'prompt' => 'bạn sẽ phải trả sách sớm',
         'cancel' => ' từ chối cho bạn mượn sách: ',
+        'hasExtended' => 'đã đồng ý cho bạn gia hạn sách: ',
+        'abtExpire' => 'đang gia hạn sách :',
     ],
 
     'statisticMonths' => [
