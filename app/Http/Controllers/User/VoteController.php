@@ -81,6 +81,7 @@ class VoteController extends Controller
                     ]);
                 }
                 $this->review->upVote($id, $data);
+                $data = $this->vote->getDataVote($review->id, $data[0]);
             } else {
                 $data = ['error'];
             }
@@ -105,6 +106,7 @@ class VoteController extends Controller
                     ]);
                 }
                 $this->review->downVote($id, $data);
+                $data = $this->vote->getDataVote($review->id, $data[0]);
             } else {
                 $data = ['error'];
             }

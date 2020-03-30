@@ -271,42 +271,38 @@
                                                                                 </div>
                                                                             @endif
                                                                         </div>
-                                                                        <h4 class="media-heading list-inline list-unstyled rating-star m-0">
-                                                                            @for ($i = 1; $i <= ($review->star); $i++)
-                                                                                <li class="active">
-                                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                                </li>
-                                                                            @endfor
-                                                                            @for ($j = 1; $j <= 5 - ($review->star); $j++)
-                                                                                <li class="">
-                                                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                                                </li>
-                                                                            @endfor
-                                                                        </h4>
-                                                                        <p class="m-0 review-title">{{ $review->title }}</p>
-                                                                        <div class="custom-vote">
-                                                                            <div class="float-right">
-                                                                                <div class="vote">
-                                                                                    <p class="no-margin">
-                                                                                        <i class="fa fa-caret-up"
-                                                                                           aria-hidden="true"></i>
-                                                                                    </p>
-                                                                                    <p class="no-margin mtop">
-                                                                                        <i class="fa fa-caret-down"
-                                                                                           aria-hidden="true"></i>
-                                                                                    </p>
-                                                                                </div>
-                                                                                <div class="count-voted">
-                                                                                    <span>{{ $review->upvote - $review->downvote }}</span>
-                                                                                </div>
+                                                                        <div class="row center-align">
+                                                                            <div class="col-md-3">
+                                                                                <h4 class="media-heading list-inline list-unstyled rating-star m-0">
+                                                                                    @for ($i = 1; $i <= ($review->star); $i++)
+                                                                                        <li class="active">
+                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                        </li>
+                                                                                    @endfor
+                                                                                    @for ($j = 1; $j <= 5 - ($review->star); $j++)
+                                                                                        <li class="">
+                                                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                                                        </li>
+                                                                                    @endfor
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <h4 class="m-0 review-title">{{ $review->title }}</h4>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <a href="{{ route('review.show', [$book->slug . '-' . $book->id, $review->id]) }}" class="view_more {{ Auth::check() ? '' : 'login' }}">
-                                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                        {{ trans('settings.review.viewMore') }}
-                                                                    </a>
+                                                                    <p>
+                                                                        {{ $review->content }}
+                                                                    </p>
                                                                 </div>
+                                                            </div>
+                                                            <div class="row text-right">
+                                                                <span class="badge-warning badge btn-vote mr-10 up-vote {{ Auth::id() == $review->user_id ? 'not-allow' : '' }}" data-review="{{ $review->id }}" data-value="1">
+                                                                    <i class="fa fa-thumbs-up fa-lg"></i>@lang('settings.book.satisfied') <span id="satisfied">{{ $review->upvote }}</span>
+                                                                </span>
+                                                                <span class="badge-warning badge btn-vote down-vote {{ Auth::id() == $review->user_id ? 'not-allow' : '' }}" data-review="{{ $review->id }}" data-value="-1">
+                                                                    <i class="fa fa-thumbs-o-up fa-lg rotate-180"></i>@lang('settings.book.unsatisfied') <span id="unsatisfied">{{ $review->downvote }}</span>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -658,4 +654,8 @@
 
 @section('footer')
     @parent
+@endsection
+@section('script')
+    @parent
+    {{ Html::script('assets/user/js/vote.js') }}
 @endsection

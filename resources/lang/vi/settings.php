@@ -125,6 +125,10 @@ return [
         'pickDate' => 'Chọn ngày gia hạn',
         'extendMore' => 'Gia hạn thêm',
         'expected' => 'Dự kiến',
+        'satisfied' => 'Hài lòng',
+        'unsatisfied' => 'Không hài lòng',
+        'loginToVote' => 'Cần đăng nhập để đánh giá',
+        'voted' => 'Bạn đã đánh giá rồi',
     ],
 
     'review' => [
