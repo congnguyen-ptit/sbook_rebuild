@@ -1079,6 +1079,7 @@
         $('#bookExpire').modal('show');
         $('body').on('click', '#extend', function () {
             const id = $(this).attr('data-id');
+            const btn = $(`.extend-${id}`);
             $('#modal-extend').modal('show');
             $('#btn-extend').click(function(){
                 const days_to_read = $('#days_to_read').val();
@@ -1097,7 +1098,7 @@
                             method: 'put',
                             success: function (res) {
                                 messagePopup(settings.book.msgWait, 'success', 'success', true);
-                                $('.badge-expire').remove();
+                                btn.remove();
                             },
                             error: function (res) {
                                 messagePopup(JSON.parse(res.responseText), 'error', 'error', true);
@@ -1109,6 +1110,7 @@
         });
         $('body').on('click', '#not-extend', function (){
             const id = $(this).attr('data-id');
+            const btn = $(`.extend-${id}`);
             swal({
                 title: settings.book.sure,
                 icon: 'warning',
@@ -1121,7 +1123,7 @@
                         dataType: 'json',
                         method: 'put',
                         success: function(res){
-                            $('.badge-expire').remove();
+                            btn.remove();
                         }
                     })
                 }

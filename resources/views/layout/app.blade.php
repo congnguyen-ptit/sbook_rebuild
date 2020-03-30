@@ -87,10 +87,10 @@
                                                 <td class="text-center">{{ getday($book->pivot->updated_at, 0) }}</td>
                                                 <td>{{ $book->pivot->days_to_read }}</td>
                                                 <td>
-                                                    <button class="btn btn-sm badge-expire bg-expire" id="extend" data-id="{{ $book->pivot->id }}" data-type="true">
+                                                    <button class="btn btn-sm badge-expire bg-expire extend-{{ $book->pivot->id }}" id="extend" data-id="{{ $book->pivot->id }}" data-type="true">
                                                         {{ trans('settings.default.extend') }}
                                                     </button>
-                                                    <button class="btn btn-sm badge-expire bg-danger" id="not-extend" data-id="{{ $book->pivot->id }}" data-type="false">
+                                                    <button class="btn btn-sm badge-expire bg-danger extend-{{ $book->pivot->id }}" id="not-extend" data-id="{{ $book->pivot->id }}" data-type="false">
                                                         {{ trans('settings.default.notExtend') }}
                                                     </button>
                                                 </td>
