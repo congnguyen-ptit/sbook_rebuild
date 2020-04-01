@@ -163,7 +163,7 @@ function activeTab ($type) {
     if (ucfirst($typeParam) == $type) {
         return 'active';
     }
-    if (!$typeParam && $type == __('settings.grid')) {
+    if (!$typeParam && $type == config('view.request.grid')) {
         return 'active';
     }
 }
