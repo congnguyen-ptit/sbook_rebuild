@@ -188,17 +188,17 @@ function getDaysExpired($date1, $date2, $days_to_read){
 }
 
 function whenExpired($book){
-    if(!$book->dateReturn){
-        $dateReturn = getDateTime(strtotime($book->date_return));
-        $dateBorrow = getDateTime(strtotime($book->updated_at));
-        return getDaysExpired($dateReturn, $dateBorrow, $book->days_to_read);
-    }
-
-    return false;
+    $dateReturn = getDateTime(strtotime($book->date_return));
+    $dateBorrow = getDateTime(strtotime($book->updated_at));
+    return getDaysExpired($dateReturn, $dateBorrow, $book->days_to_read);
 }
 
 function whenBorrowingExpired($book){
-    $currentDate = getDateTime();
-    $dateBorrow = getDateTime(strtotime($book->updated_at));
-    return getDaysExpired($currentDate, $dateBorrow, $book->days_to_read);
+    if(!$book->date_return){
+        $currentDate = getDateTime();
+        $dateBorrow = getDateTime(strtotime($book->updated_at));
+        return getDaysExpired($currentDate, $dateBorrow, $book->days_to_read);
+    }
+
+    return false;
 }
