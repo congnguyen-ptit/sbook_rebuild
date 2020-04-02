@@ -84,10 +84,10 @@
                                                 @if($book->type != config('view.request.abtExpire'))
                                                     {{ getDateReturn($book) }}
                                                     <br>
-                                                    @if(whenExpired($book) && $book->type == config('view.request.reading'))
-                                                        {{ whenExpired($book) }}
-                                                    @elseif(whenBorrowingExpired($book) && $book->type == config('view.request.returneed'))
+                                                    @if(whenBorrowingExpired($book) && $book->type == config('view.request.reading'))
                                                         {{ whenBorrowingExpired($book) }}
+                                                    @elseif(whenExpired($book) && $book->type == config('view.request.returned'))
+                                                        {{ whenExpired($book) }}
                                                     @endif
                                                 @endif
                                             </td>
@@ -96,7 +96,7 @@
                                         <td></td>
                                     @endif
                                     <td class="type">
-                                        @if(whenExpired($book) && $book->type == config('view.request.reading'))
+                                        @if(whenBorrowingExpired($book) && $book->type == config('view.request.reading'))
                                             <label class="stt bg-danger">
                                                 @lang('settings.book.expired')    
                                             </label>

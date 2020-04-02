@@ -88,7 +88,7 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
                         break;
                     case config('view.request.returning'):
                         $type = 'returned';
-                        $date_return = date("Y-m-d");
+                        $date_return = date("Y-m-d H:i:s");
                         $this->updateBookUser($type, $bookRequest->id, $date_return);
                         break;
                     case config('view.request.dismiss'):
