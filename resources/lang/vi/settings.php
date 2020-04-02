@@ -129,6 +129,7 @@ return [
         'unsatisfied' => 'Không hài lòng',
         'loginToVote' => 'Cần đăng nhập để đánh giá',
         'voted' => 'Bạn đã đánh giá rồi',
+        'expired' => 'Đã quá hạn',
     ],
 
     'review' => [

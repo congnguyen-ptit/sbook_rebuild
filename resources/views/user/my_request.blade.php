@@ -83,6 +83,12 @@
                                             <td>
                                                 @if($book->type != config('view.request.abtExpire'))
                                                     {{ getDateReturn($book) }}
+                                                    <br>
+                                                    @if(whenExpired($book) && $book->type == config('view.request.reading'))
+                                                        {{ whenExpired($book) }}
+                                                    @elseif(whenBorrowingExpired($book) && $book->type == config('view.request.returneed'))
+                                                        {{ whenBorrowingExpired($book) }}
+                                                    @endif
                                                 @endif
                                             </td>
                                     @else
@@ -90,9 +96,15 @@
                                         <td></td>
                                     @endif
                                     <td class="type">
-                                        <label class="stt bg-{{ $book->type }}">
-                                            {{ $book->type != config('view.request.returned') ? translate($book->type) : __('settings.book.returned') }}
-                                        </label>
+                                        @if(whenExpired($book) && $book->type == config('view.request.reading'))
+                                            <label class="stt bg-danger">
+                                                @lang('settings.book.expired')    
+                                            </label>
+                                        @else
+                                            <label class="stt bg-{{ $book->type }}">
+                                                {{ $book->type != config('view.request.returned') ? translate($book->type) : __('settings.book.returned') }}
+                                            </label>
+                                        @endif
                                     </td>
                                     @if ($book->type == config('view.request.returned') || $book->type == config('view.request.cancel'))
                                         <td></td>

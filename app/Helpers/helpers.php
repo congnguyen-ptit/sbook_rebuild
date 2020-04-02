@@ -171,3 +171,34 @@ function activeTab ($type) {
 function currentIndex($pageIndex, $pageSize, $index){
     return ($pageIndex - 1) * $pageSize + ($index + 1);
 }
+
+function getDateTime($timestamp = false, $format = "Y/m/d H:i:s"){
+    $date = $timestamp ? date($format, $timestamp) : date($format);
+    return new DateTime($date);   
+}
+
+function getDaysExpired($date1, $date2, $days_to_read){
+    $totalDaysBorrow = $date1->diff($date2)->days;
+    $daysExpired = $totalDaysBorrow - $days_to_read;
+    if($daysExpired > 0){
+        return __('settings.book.expired') . ' ' . $daysExpired . ' ' . __('settings.request.day');
+    }
+
+    return false;
+}
+
+function whenExpired($book){
+    if(!$book->dateReturn){
+        $dateReturn = getDateTime(strtotime($book->date_return));
+        $dateBorrow = getDateTime(strtotime($book->updated_at));
+        return getDaysExpired($dateReturn, $dateBorrow, $book->days_to_read);
+    }
+
+    return false;
+}
+
+function whenBorrowingExpired($book){
+    $currentDate = getDateTime();
+    $dateBorrow = getDateTime(strtotime($book->updated_at));
+    return getDaysExpired($currentDate, $dateBorrow, $book->days_to_read);
+}

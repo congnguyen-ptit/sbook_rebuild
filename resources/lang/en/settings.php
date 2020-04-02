@@ -129,6 +129,7 @@ return [
         'unsatisfied' => 'Unsatisfied',
         'loginToVote' => 'Login to vote',
         'voted' => 'You voted',
+        'expired' => 'Expired',
     ],
 
     'review' => [
@@ -321,6 +322,8 @@ return [
         'reading' => ' Has approve request to borrow: ',
         'prompt' => 'You will be returned book soon',
         'cancel' => ' Has refuse request borrow: ',
+        'abtExpire' => 'wanna extend book ',
+        'hasExtended' => 'has agreed for you to renew the book: ',
     ],
 
     'statisticMonths' => [
