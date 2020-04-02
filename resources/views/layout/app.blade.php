@@ -46,7 +46,7 @@
                                     {{ trans('settings.book.extendMore') }}
                                 </div>
                                 <div class="col-md-8">
-                                    {!! Form::selectRange('days_to_read', 3, 30, null, ['class' => 'form-control day', 'id' => 'days_to_read']) !!}
+                                    {!! Form::selectRange('days_to_read', 1, 30, 1, ['class' => 'form-control day', 'id' => 'days_to_read']) !!}
                                     <span>{{ trans('settings.modal.days') }}</span>
                                 </div>
                             </div>
