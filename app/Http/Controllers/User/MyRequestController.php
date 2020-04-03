@@ -32,10 +32,14 @@ class MyRequestController extends Controller
         $with = [
             'book',
         ];
-        $books = $this->bookUser->getDataRequest($data, $with);
+        $books = $this->bookUser->getDataRequest($data, $with, request()->types ?? []);
         $bookStatus = $books->where('type', config('view.request.reading'))->pluck('book_id')->toArray();
-
-        return view('user.my_request', compact('books', 'bookStatus'));
+        $countTypes = $this->bookUser->countTypes(Auth::id());
+        if(request()->ajax()){
+            return view('user.requests', compact('books', 'bookStatus'));
+        }
+        
+        return view('user.my_request', compact('books', 'bookStatus', 'countTypes'));
     }
 
     public function create()

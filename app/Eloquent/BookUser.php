@@ -40,4 +40,8 @@ class BookUser extends Model
     public static function countByCondition ($condition) :int {
         return static::where($condition)->count();
     }
+
+    public function scopeBooksInTypes($query, array $types){
+        return $types ? $query->whereIn('type', $types) : $query;
+    }
 }

@@ -130,6 +130,7 @@ return [
         'loginToVote' => 'Cần đăng nhập để đánh giá',
         'voted' => 'Bạn đã đánh giá rồi',
         'expired' => 'Đã quá hạn',
+        'all' => 'Tất cả',
     ],
 
     'review' => [

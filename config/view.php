@@ -94,6 +94,7 @@ return [
         'favorite' => 'favorite',
         'grid' => 'Grid',
         'list' => 'List',
+        'all' => 'all',
     ],
 
     'limit' => [
