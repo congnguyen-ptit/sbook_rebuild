@@ -1133,9 +1133,11 @@
 
     $(function() {
         showStart($('.rating'));
+        const basePath = location.origin + location.pathname;
+        const page = route('my-request.index').template;
         var url = window.location.href;
         var arr = parseInt(url.split('=')[1]);
-        if (arr > 0) {
+        if (arr > 0 && page !== basePath) {
             $('html, body').animate({
                 scrollTop: $('#reviews').offset().top - 180
             }, 1000);

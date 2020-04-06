@@ -107,9 +107,10 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
         }
     }
 
-    public function getDataRequest($data = [], $with = [], $dataSelect = ['*'], $attribute = ['id', 'desc'])
+    public function getDataRequest($data = [], $with = [], $types = [], $dataSelect = ['*'], $attribute = ['id', 'desc'])
     {
         return $this->model()
+            ->booksInTypes($types)
             ->select($dataSelect)
             ->with($with)
             ->where($data)
@@ -338,6 +339,36 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
         } catch (\Exception $e){
             return false;
         }
+    }
+
+    public function countTypes($user_id){
+        $query = $this->model();
+        $datas = [];
+        foreach($this->allTypeValid() as $type){
+            $datas[$type] = $query->countByCondition([
+                'type' => $type,
+                'owner_id' => $user_id
+            ]);
+        }
+        $rejectStatus = $this->rejectStatuses();
+        $keyUnset = array_search(config('view.request.returned'), $rejectStatus, true);
+        unset($rejectStatus[$keyUnset]);
+        array_push($rejectStatus, config('view.request.cancel'));
+        $datas[config('view.request.all')] = $query
+            ->where('owner_id', $user_id)
+            ->whereNotIn('type', $rejectStatus)
+            ->count();
+        return $datas;
+    }
+
+    protected function allTypeValid(){
+        return [
+            config('view.request.waiting'),
+            config('view.request.reading'),
+            config('view.request.returning'),
+            config('view.request.returned'),
+            config('view.request.abtExpire'),
+        ];
     }
 
     protected function rejectStatuses(){

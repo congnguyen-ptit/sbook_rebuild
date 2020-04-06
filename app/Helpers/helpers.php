@@ -202,3 +202,8 @@ function whenBorrowingExpired($book){
 
     return false;
 }
+
+function selectedRequest($types, $type){
+    if(!$types) return;
+    return in_array($type, $types);
+}

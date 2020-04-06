@@ -130,6 +130,8 @@ return [
         'loginToVote' => 'Login to vote',
         'voted' => 'You voted',
         'expired' => 'Expired',
+        'all' => 'All',
+
     ],
 
     'review' => [
@@ -220,6 +222,7 @@ return [
         'changeCover' => 'Update cover',
         'changeCoverSucc' => 'Update cover successfully',
         'update' => 'Update',
+
     ],
 
     'req' => 'Request',

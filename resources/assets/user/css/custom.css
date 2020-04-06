@@ -2059,6 +2059,7 @@ span.no_onwer {
 .mr-10 {
     margin-right: 10px;
 }
+
 .badge-warning {
     background-color: #f1c40f;
     padding: 5px;
@@ -2067,15 +2068,28 @@ span.no_onwer {
     cursor: pointer;
 }
 
-.rotate-180{
+.rotate-180 {
     transform: rotate(180deg);
 }
 
-.not-allow{
+.not-allow {
     cursor: not-allowed;
 }
 
 .reltop-10 {
     position: relative;
     top: 10px;
+}
+
+.btn-outline-dark {
+    color: #343a40;
+    background-color: transparent;
+    background-image: none;
+    border-color: #343a40;
+}
+
+.btn-outline-dark:hover {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
 }
