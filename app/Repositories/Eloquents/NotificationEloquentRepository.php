@@ -52,6 +52,9 @@ class NotificationEloquentRepository extends AbstractEloquentRepository implemen
                         $book = $record->target->book;
                         if ($book) {
                             $message = translate(config('view.notifications.' . $record->target->type), $record->receive_id !== $record->target->owner_id ? true : false) . $book->title;
+                            if($record->target->type == config('view.request.waiting') && bookBorrowed($record->target->owner_id, $record->target->book_id)){
+                                $message = trans('settings.notifications.noAvailable', ['book' => $book->title]);
+                            }
                             $record = array_add($record, 'message', $message);
                             $type = $record->target->type;
                             if ($type == config('view.request.waiting') ||
@@ -118,7 +121,7 @@ class NotificationEloquentRepository extends AbstractEloquentRepository implemen
                     $record = array_add($record, 'link', null);
                     array_push($allRecords, $record);
                     break;
-                
+
                 case config('model.target_type.book'):
                     if ($record->target) {
                         $book = $record->target;

@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="media-body notification">
                                     <span class="media-heading">{{ ($item->userSend->id == Auth::id()) ? 'Me' : $item->userSend->name }}</span>
-                                    <span class="item-message">{{ $item->message }}</span>
+                                    <span class="item-message">{!! $item->message !!}</span>
                                     <p><i class="fa fa-bell"></i>
                                         {{ setTimeShort($item->created_at) }}
                                     </p>

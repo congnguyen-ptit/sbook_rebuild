@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="media-body">
                                             <span class="media-heading">{{ ($item->userSend->id == Auth::id()) ? 'Me' : $item->userSend->name }}</span>
-                                            <span class="item-message">{{ $item->message }}</span>
+                                            <span class="item-message">{!! $item->message !!}</span>
                                             <p><i class="fa fa-bell"></i>
                                                 {{ setTimeDefault($item->created_at) }}
                                             </p>
