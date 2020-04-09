@@ -40,7 +40,7 @@ class BookUser extends Model
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public static function countByCondition ($condition, array $types) :int {
+    public static function countByCondition ($condition, array $types = []) :int {
         return static::where($condition)
                     ->booksIntypes($types)
                     ->count();

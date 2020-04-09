@@ -169,7 +169,7 @@
                                                             </a>
                                                         @endif
                                                     @else
-                                                        <a data-toggle="modal" href="#" class="{{ Auth::check() ? 'btn-share book-info-link' : 'login' }} {{ $bookStatus && $bookStatus->type != 'returned' ? 'disabled' : '' }}" data-id="{{ $book->id }}" owner="{{ Auth::id() }}">
+                                                        <a data-toggle="modal" href="javascript:void(0)" class="{{ Auth::check() ? 'btn-share book-info-link' : 'login' }} {{ $bookStatus && $bookStatus->type != 'returned' ? 'disabled' : '' }}" data-id="{{ $book->id }}" owner="{{ Auth::id() }}">
                                                             {{ trans('settings.book.i_have_this_book') }}
                                                         </a>
                                                     @endif
@@ -555,7 +555,7 @@
                                             <div class="row ml-15">
                                                 <div class="col-xs-12 col-sm-12" id="owner{{ $owner->id }}">
                                                     <label class="radio">
-                                                        @if (bookBorrowed($owner->id, $book->id))
+                                                        @if (!bookBorrowed($owner->id, $book->id))
                                                             {{ $owner->name }}
                                                             {!! Form::radio(
                                                                 'owner_id',
