@@ -401,6 +401,10 @@
             data: f.serialize(),
         })
         .done(function(data) {
+            if(data.status_code === 0){
+                messagePopup(data.msg, 'warning', 'warning');
+                return;
+            }
             messagePopup(settings.book.msgWait, 'success', 'success');
             obj.html(textCancel);
             obj.attr('href', '#');

@@ -291,8 +291,14 @@ class UserController extends Controller
 
     public function borrowingBook(Request $request, $id)
     {
+        if(bookBorrowed($request->owner_id, $id))
+            return response()->json([
+                'status_code' => BookUser::CANT_BORROW,
+                'msg' => trans('settings.book.bookUnavaialbe'),
+            ]);
+
         $request->merge([
-            'type' => config('model.book_user.type.waiting'),
+            'type' => config('model.book_user.type.returning'),
             'book_id' => $id,
             'user_id' => Auth::id(),
             'approved' => config('model.approved.default'),

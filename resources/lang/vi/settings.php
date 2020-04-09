@@ -131,6 +131,7 @@ return [
         'voted' => 'Bạn đã đánh giá rồi',
         'expired' => 'Đã quá hạn',
         'all' => 'Tất cả',
+        'bookUnavaialbe' => 'Hiện tại sách đang không có sẵn, bạn vui lòng mượn quyển sách khác',
     ],
 
     'review' => [
