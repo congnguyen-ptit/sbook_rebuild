@@ -112,7 +112,7 @@ return [
     'unique' => ':Attribute đã tồn tại.',
     'uploaded' => ':Attribute không thể tải lên.',
     'url' => ':Attribute không đúng định dạng.',
-
+    'max_size' => ':Attribute có kích thước không được quá 2Mb.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

@@ -298,7 +298,7 @@ class UserController extends Controller
             ]);
 
         $request->merge([
-            'type' => config('model.book_user.type.returning'),
+            'type' => config('model.book_user.type.waiting'),
             'book_id' => $id,
             'user_id' => Auth::id(),
             'approved' => config('model.approved.default'),
