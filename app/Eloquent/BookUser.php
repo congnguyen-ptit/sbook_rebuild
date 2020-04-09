@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookUser extends Model
 {
+
+    CONST CANT_BORROW = 0;
+
     protected $table = 'book_user';
 
     protected $fillable = [
@@ -37,8 +40,10 @@ class BookUser extends Model
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public static function countByCondition ($condition) :int {
-        return static::where($condition)->count();
+    public static function countByCondition ($condition, array $types) :int {
+        return static::where($condition)
+                    ->booksIntypes($types)
+                    ->count();
     }
 
     public function scopeBooksInTypes($query, array $types){

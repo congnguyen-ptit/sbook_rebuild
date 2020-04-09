@@ -555,7 +555,7 @@
                                             <div class="row ml-15">
                                                 <div class="col-xs-12 col-sm-12" id="owner{{ $owner->id }}">
                                                     <label class="radio">
-                                                        @if (!bookBorrowed($owner, $book->id))
+                                                        @if (bookBorrowed($owner->id, $book->id))
                                                             {{ $owner->name }}
                                                             {!! Form::radio(
                                                                 'owner_id',
@@ -569,7 +569,7 @@
                                                             {{ $owner->name }}
                                                         @endif
                                                             <small>
-                                                                ( {{ !bookBorrowed($owner, $book->id) ? trans('settings.modal.available') : trans('settings.modal.unavailable') }} )
+                                                                ( {{ !bookBorrowed($owner->id, $book->id) ? trans('settings.modal.available') : trans('settings.modal.unavailable') }} )
                                                             </small>
                                                     </label>
                                                 </div>

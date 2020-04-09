@@ -147,13 +147,16 @@ function coverUser($user) {
             : asset(config('view.image_paths.defaultCover'));
 }
 
-function bookBorrowed ($owner, $bookId) :bool {
+function bookBorrowed ($ownerId, $bookId) :bool {
     $condition = [
-        'owner_id' => $owner->id,
+        'owner_id' => $ownerId,
         'book_id' => $bookId,
-        'type' => config('view.request.reading'),
     ];
-    $result = \App\Eloquent\BookUser::countByCondition($condition);
+    $types = [
+        config('view.request.reading'),
+        config('view.request.returning'),
+    ];
+    $result = \App\Eloquent\BookUser::countByCondition($condition, $types);
 
     return $result > 0 ? true : false;
 }

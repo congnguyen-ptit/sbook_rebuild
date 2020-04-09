@@ -131,7 +131,7 @@ return [
         'voted' => 'You voted',
         'expired' => 'Expired',
         'all' => 'All',
-
+        'bookUnavaialbe' => 'This book is not available righ now, please borrow another book',
     ],
 
     'review' => [
