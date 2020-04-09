@@ -112,7 +112,7 @@ return [
     'unique' => 'The :attribute has already been taken.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
-
+    'max_size' => ':Attribute cannot exceed 2Mb.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

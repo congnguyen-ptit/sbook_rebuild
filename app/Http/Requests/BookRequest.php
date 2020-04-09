@@ -29,6 +29,7 @@ class BookRequest extends FormRequest
             'description' => 'required|min:5|max:2500',
             'author' => 'required|min:3|max:100',
             'categories' => 'required',
+            'avatar' => 'max:2000',
         ];
     }
     public function messages()
@@ -43,6 +44,7 @@ class BookRequest extends FormRequest
             'author.min' => trans('validation.min.string'),
             'author.max' => trans('validation.max.string'),
             'categories.required' => trans('validation.required'),
+            'avatar.uploaded' => trans('validation.max_size'),
         ];
     }
 }
