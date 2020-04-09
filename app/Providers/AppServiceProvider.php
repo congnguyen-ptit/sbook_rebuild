@@ -8,6 +8,7 @@ use App\Eloquent\User;
 use App\Eloquent\Notification;
 use App\Eloquent\Office;
 use Auth;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,7 +18,8 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
+    {   
+        URL::forceScheme('https');
         Builder::defaultStringLength(191);
 
         view()->composer('layout.header', function ($view) {
