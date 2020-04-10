@@ -169,7 +169,11 @@
                                                             </a>
                                                         @endif
                                                     @else
-                                                        <a data-toggle="modal" href="javascript:void(0)" class="{{ Auth::check() ? 'btn-share book-info-link' : 'login' }} {{ $bookStatus && $bookStatus->type != 'returned' ? 'disabled' : '' }}" data-id="{{ $book->id }}" owner="{{ Auth::id() }}">
+                                                        <a
+                                                            data-toggle="modal" href="javascript:void(0)"
+                                                            class="{{ Auth::check() ? 'btn-share book-info-link' : 'login' }} {{ $bookStatus &&  inTypesDisable($bookStatus->type) ? 'disabled' : '' }}"
+                                                            data-id="{{ $book->id }}" owner="{{ Auth::id() }}"
+                                                        >
                                                             {{ trans('settings.book.i_have_this_book') }}
                                                         </a>
                                                     @endif
@@ -605,12 +609,14 @@
                 @if (!isset($status))
                     <div class="modal-footer">
                         <a data-dismiss="modal" class="btn btn-danger">{{ trans('settings.modal.btn_close') }}</a>
-                        {!! Form::submit(
-                            trans('settings.modal.btn_submit'),
-                            [
-                                'class' => 'btn btn-success',
-                            ]
-                        )!!}
+                        @if(availableBookCanBorrow($book))
+                            {!! Form::submit(
+                                trans('settings.modal.btn_submit'),
+                                [
+                                    'class' => 'btn btn-success',
+                                ]
+                            )!!}
+                        @endif
                     </div>
                 @endif
                 {!! Form::close() !!}

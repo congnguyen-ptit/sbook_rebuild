@@ -325,7 +325,7 @@ return [
         'cancel' => ' từ chối cho bạn mượn sách: ',
         'hasExtended' => 'đã đồng ý cho bạn gia hạn sách: ',
         'abtExpire' => 'đang gia hạn sách :',
-        'noAvailable' => 'đã cho người khác mượn sách <b> :book </b> rồi, bạn có thể chọn người khác mượn hoặc chọn sách khác!',
+        'noAvailable' => 'đang không có sẵn quyển sách <b> :book </b>, bạn có thể mượn những quyển sách khác',
     ],
 
     'statisticMonths' => [

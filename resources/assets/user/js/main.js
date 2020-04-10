@@ -407,7 +407,7 @@
             }
             messagePopup(settings.book.msgWait, 'success', 'success');
             obj.html(textCancel);
-            obj.attr('href', '#');
+            obj.attr('href', 'javascript:void(0)');
             obj.removeClass().addClass('btn-cancel-borrowing');
             $('#borrowingModal').modal('hide');
             var book_id = $('.detail-tabs').attr('data-id');

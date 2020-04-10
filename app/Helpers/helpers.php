@@ -210,3 +210,25 @@ function selectedRequest($types, $type){
     if(!$types) return;
     return in_array($type, $types);
 }
+
+function inTypesDisable($type){
+    $types = [
+        config('view.request.returned'),
+        config('view.request.cancel'),
+    ];
+
+    return !in_array($type, $types);
+}
+
+function availableBookCanBorrow($book){
+    $count = 0;
+    foreach ($book->owners as $owner) {
+        if(bookBorrowed($owner->id, $book->id))
+            $count += 1;
+    }
+
+    if($count === $book->owners->count())
+        return false;
+
+    return true;
+}
