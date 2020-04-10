@@ -81,6 +81,7 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
                     case config('view.request.waiting'):
                         $type['type'] = 'reading';
                         $bookRequest->update($type);
+                        $this->sendNofiticationToUserWaiting($bookRequest);
                         break;
                     case config('view.request.reading'):
                         $type = 'returning';
@@ -359,6 +360,28 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
             ->whereNotIn('type', $rejectStatus)
             ->count();
         return $datas;
+    }
+
+    public function sendNofiticationToUserWaiting($bookRequest)
+    {
+        $usersWaiting = $this->model()
+            ->where([
+                'book_id' => $bookRequest->book_id,
+                'type' => config('view.request.waiting')
+            ])
+            ->where('user_id', '!=', $bookRequest->user_id)
+            ->select(['owner_id', 'user_id', 'id'])
+            ->get()->map(function($bookUser){
+                return [
+                    'send_id' => $bookUser->owner_id,
+                    'receive_id' => $bookUser->user_id,
+                    'target_type' => config('model.target_type.book_user'),
+                    'target_id' => $bookUser->id,
+                    'viewed' => config('model.viewed.false'),
+                    'created_at' => now()
+                ];
+            });
+        return $this->notification->model()->insert($usersWaiting->toArray());
     }
 
     protected function allTypeValid(){
