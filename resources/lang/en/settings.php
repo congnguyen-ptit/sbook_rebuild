@@ -327,7 +327,7 @@ return [
         'cancel' => ' Has refuse request borrow: ',
         'abtExpire' => 'wanna extend book ',
         'hasExtended' => 'has agreed for you to renew the book: ',
-        'noAvailable' => 'has already let other people borrow <b> :book </b> books, you can choose others to borrow or choose other books!',
+        'noAvailable' =>  'is not available the book <b> :book </b>  right now, please borrow other books',
     ],
 
     'statisticMonths' => [

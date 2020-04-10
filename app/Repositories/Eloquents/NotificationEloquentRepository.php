@@ -51,20 +51,23 @@ class NotificationEloquentRepository extends AbstractEloquentRepository implemen
                     if ($record->target) {
                         $book = $record->target->book;
                         if ($book) {
-                            $message = translate(config('view.notifications.' . $record->target->type), $record->receive_id !== $record->target->owner_id ? true : false) . $book->title;
                             if($record->target->type == config('view.request.waiting') && bookBorrowed($record->target->owner_id, $record->target->book_id)){
                                 $message = trans('settings.notifications.noAvailable', ['book' => $book->title]);
-                            }
-                            $record = array_add($record, 'message', $message);
-                            $type = $record->target->type;
-                            if ($type == config('view.request.waiting') ||
-                                $type == config('view.request.returning') || $type == config('view.request.abtExpire')) {
-                                $record = array_add($record, 'route', config('view.notifications.route.owner_prompt'));
-                                $record = array_add($record, 'link', null);
-                            } else {
                                 $record = array_add($record, 'route', config('view.notifications.route.book'));
                                 $record = array_add($record, 'link', $book->slug . '-' . $book->id);
+                            }else{
+                                $message = translate(config('view.notifications.' . $record->target->type), $record->receive_id !== $record->target->owner_id ? true : false) . $book->title;
+                                $type = $record->target->type;
+                                if ($type == config('view.request.waiting') ||
+                                    $type == config('view.request.returning') || $type == config('view.request.abtExpire')) {
+                                    $record = array_add($record, 'route', config('view.notifications.route.owner_prompt'));
+                                    $record = array_add($record, 'link', null);
+                                } else {
+                                    $record = array_add($record, 'route', config('view.notifications.route.book'));
+                                    $record = array_add($record, 'link', $book->slug . '-' . $book->id);
+                                }
                             }
+                            $record = array_add($record, 'message', $message);
                             array_push($allRecords, $record);
                         }
                     }
