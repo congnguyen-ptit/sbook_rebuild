@@ -1,5 +1,7 @@
 var clone = {}
 
+const { validation } = window.translations;
+
 function changeFile(event) {
     var customFile = document.getElementById('customFile');
     var val = customFile.value;
@@ -11,8 +13,8 @@ function changeFile(event) {
             customFile.value = '';
             swal({
                 type: 'error',
-                title: 'Oops...',
-                text: 'Not an image!',
+                title: validation.custom.oops,
+                text: validation.custom.notImage
             });
             break;
     };

@@ -2095,8 +2095,16 @@ span.no_onwer {
 }
 
 @media (min-width: 1080px){
-    .cover-image{
+    .cover{
         min-height: 400px;
+    }
+    .cover-image{
+        display: block;
+        margin: auto;
+    }
+    .fb-avatar-profile{
+        width: 220px;
+        height: 220px;
     }
 }
 
