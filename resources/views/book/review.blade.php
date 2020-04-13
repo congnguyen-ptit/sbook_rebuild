@@ -76,7 +76,7 @@
                                                 <img src="{{ asset(config('view.image_paths.book') . $book->medias[0]->path) }}" alt="book" />
                                             </a>
                                         @else
-                                            <img src="{{ asset(config('view.image_paths.book') . 'default.jpg') }}" alt="woman" />
+                                            <img src="{{ asset(config('view.image_paths.book') . 'default_book.jpg') }}" alt="woman" />
                                         @endif
                                     </div>
                                 </li>

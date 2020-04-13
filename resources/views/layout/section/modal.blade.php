@@ -9,7 +9,7 @@
                 <div class="product-details-large tab-content">
                     <div class="tab-pane active" id="image-1">
                         <div class="text-center">
-                            <img src="{{ asset(config('view.image_paths.book') . ($book->medias->count() > 0 ? $book->medias[0]->path : 'default.jpg')) }}" alt="book" />
+                            <img src="{{ asset(config('view.image_paths.book') . ($book->medias->count() > 0 ? $book->medias[0]->path : 'default_book.jpg')) }}" alt="book" />
                         </div>
                     </div>
                 </div>
