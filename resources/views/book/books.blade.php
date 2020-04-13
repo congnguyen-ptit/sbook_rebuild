@@ -89,7 +89,7 @@
                                     <div class="product-wrapper mb-40">
                                         <div class="product-img">
                                             <a href="{{ route('books.show', $book->slug . '-' . $book->id) }}">
-                                                <img src="{{ $book->medias->count() > 0 ? asset(config('view.image_paths.book') . $book->medias[0]->path) : asset(config('view.image_paths.book') . 'default.jpg') }}" alt="book" class="primary" />
+                                                <img src="{{ $book->medias->count() > 0 ? asset(config('view.image_paths.book') . $book->medias[0]->path) : asset(config('view.image_paths.book') . 'default_book.jpg') }}" alt="book" class="primary" />
                                             </a>
                                             <div class="quick-view">
                                                 <a class="action-view show-book-modal" href="#" data-url="{{ route('modal-book', $book->id) }}" title="Quick View">
@@ -170,7 +170,7 @@
                                         <div class="product-wrapper-2">
                                             <div class="product-img">
                                                 <a href="{{ route('books.show', $book->slug . '-' . $book->id) }}">
-                                                    <img src="{{ asset(config('view.image_paths.book') . ($book->medias->count() > 0 ? $book->medias[0]->path : 'default.jpg')) }}" alt="book" class="primary" />
+                                                    <img src="{{ asset(config('view.image_paths.book') . ($book->medias->count() > 0 ? $book->medias[0]->path : 'default_book.jpg')) }}" alt="book" class="primary" />
                                                 </a>
                                             </div>
                                         </div>

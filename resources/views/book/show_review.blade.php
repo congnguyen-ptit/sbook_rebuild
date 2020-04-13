@@ -62,7 +62,7 @@
                                         </a>
                                     @else
                                         <a href="{{ route('books.show', $book->slug . '-' . $book->id) }}">
-                                            <img src="{{ asset(config('view.image_paths.book') . 'default.jpg') }}" alt="woman" />
+                                            <img src="{{ asset(config('view.image_paths.book') . 'default_book.jpg') }}" alt="woman" />
                                         </a>
                                     @endif
                                 </div>
