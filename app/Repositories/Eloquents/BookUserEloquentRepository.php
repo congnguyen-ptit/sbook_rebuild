@@ -399,7 +399,8 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
             config('view.request.returned'),
             config('view.request.hasExtended'),
             config('view.request.abtExpire'),
-            config('view.request.cancelExtend')
+            config('view.request.cancelExtend'),
+            config('view.request.cancel')
         ];
     }
 }

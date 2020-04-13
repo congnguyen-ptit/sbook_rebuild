@@ -73,7 +73,7 @@
                                     @foreach ($book->categories as $key => $cate)
                                         @if($key === config('view.paginate.categories'))
                                             <li class="text-center load-more">
-                                                <span id="load-more" class="cursor">Load more</span>
+                                                <span id="load-more" class="cursor">{{ __('page.book.show') }}</span>
                                             </li>
                                         @endif
                                         <li>
@@ -84,7 +84,7 @@
                                     @endforeach
                                     @if($book->categories->count() > config('view.paginate.categories'))
                                         <li class="text-center load-more">
-                                            <span id="hide-more" class="cursor">Hide</span>
+                                            <span id="hide-more" class="cursor">{{ __('page.book.less') }}</span>
                                         </li>
                                     @endif
                                 </div>
