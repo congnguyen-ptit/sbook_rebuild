@@ -48,7 +48,7 @@
         textWaiting = 'Vui lòng đợi chủ sở hữu xác nhận. Cảm ơn bạn!';
     }
 
-    const { settings } = window.translations;
+    const { settings, validation } = window.translations;
     var header = $('#header-sticky');
     var win = $(window);
 
@@ -377,7 +377,9 @@
                     $('#list-owners').html(res);
                     obj.html(textBook);
                     obj.removeClass().addClass('btn-share');
-                    $('.btn-borrow').removeClass('disabled hide');
+                    if($('#list-owners').find('.no_onwer').length === 0){
+                        $('.btn-borrow').removeClass('disabled hide');
+                    }
                 })
                 .fail(function(res) {
                     messagePopup(JSON.parse(res.responseText), 'warning', 'warning');
@@ -951,6 +953,12 @@
     });
 
     $('body').on('change', '#cover', function () {
+        var type = $(this).val();
+        if(type.substring(type.lastIndexOf('.') + 1).toLowerCase() === 'gif'){
+            let msg = validation.mimes.replace(':values', '.gif, .jpg, .jpeg, .png, .bmp').replace(':Attribute', 'Cover');
+            messagePopup(msg, 'warning', 'warning');
+            return;
+        }
         $.ajax({
             url: 'change-cover',
             data: new FormData($("#upload_form")[0]),

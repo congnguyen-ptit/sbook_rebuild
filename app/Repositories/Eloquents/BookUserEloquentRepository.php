@@ -367,7 +367,8 @@ class BookUserEloquentRepository extends AbstractEloquentRepository implements B
         $usersWaiting = $this->model()
             ->where([
                 'book_id' => $bookRequest->book_id,
-                'type' => config('view.request.waiting')
+                'type' => config('view.request.waiting'),
+                'owner_id' => $bookRequest->owner_id
             ])
             ->where('user_id', '!=', $bookRequest->user_id)
             ->select(['owner_id', 'user_id', 'id'])

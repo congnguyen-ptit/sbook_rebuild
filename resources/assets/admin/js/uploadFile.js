@@ -13,8 +13,8 @@ function changeFile(event) {
             customFile.value = '';
             swal({
                 type: 'error',
-                title: validation.custom.oops,
-                text: validation.custom.notImage
+                icon: 'warning',
+                text: validation.mimes.replace(':values', '.gif, .jpg, .jpeg, .png, .bmp').replace(':Attribute', $('label[for="avatar"]').text())
             });
             break;
     };
