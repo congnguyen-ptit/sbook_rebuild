@@ -14,7 +14,7 @@
                             <span id="change-cover"><i class="fa fa-camera"></i>{{ trans('settings.profile.changeCover') }}</span>
                         </div>
                         <form enctype="multipart/form-data" id="upload_form" role="form" method="POST" action="" >
-                            <input type="file" name="cover" class="hide" id="cover">
+                            <input type="file" name="cover" class="hide" id="cover" accept="image/png, image/jpg, image/jpeg, image/bmp">
                         </form>
                     @endif
                 </div>

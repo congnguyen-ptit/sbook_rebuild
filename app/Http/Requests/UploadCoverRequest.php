@@ -25,7 +25,7 @@ class UploadCoverRequest extends FormRequest
     public function rules()
     {
         return [
-            'cover' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

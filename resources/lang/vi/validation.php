@@ -126,7 +126,6 @@ return [
 
     'custom' => [
         'oops' => 'Ôii...',
-        'notImage' => 'Phải là ảnh !',
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
