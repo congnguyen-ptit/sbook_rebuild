@@ -126,6 +126,7 @@ return [
 
     'custom' => [
         'oops' => 'Oops...',
+        'invalidImage' => 'Image invalid type, must is .jpg, .jpeg or .png',
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],

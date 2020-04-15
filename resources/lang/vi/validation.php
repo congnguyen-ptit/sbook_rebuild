@@ -126,6 +126,7 @@ return [
 
     'custom' => [
         'oops' => 'Ôii...',
+        'invalidImage' => 'Ảnh không đúng định dạng, phải là .jpg, .jpeg hoặc .png',
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],

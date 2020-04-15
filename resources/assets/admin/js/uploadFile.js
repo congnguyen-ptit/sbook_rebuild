@@ -7,14 +7,14 @@ function changeFile(event) {
     var val = customFile.value;
     var last = val.substring(val.lastIndexOf('.') + 1).toLowerCase();
     switch(last){
-        case 'gif': case 'jpg': case 'jpeg': case 'png': case 'bmp': case '' :
+        case 'jpg': case 'jpeg': case 'png': case '' :
             break;
         default:
             customFile.value = '';
             swal({
                 type: 'error',
                 icon: 'warning',
-                text: validation.mimes.replace(':values', '.gif, .jpg, .jpeg, .png, .bmp').replace(':Attribute', $('label[for="avatar"]').text())
+                text: validation.custom.invalidImage
             });
             break;
     };
