@@ -955,8 +955,7 @@
     $('body').on('change', '#cover', function () {
         var type = $(this).val();
         if(type.substring(type.lastIndexOf('.') + 1).toLowerCase() === 'gif'){
-            let msg = validation.mimes.replace(':values', '.gif, .jpg, .jpeg, .png, .bmp').replace(':Attribute', 'Cover');
-            messagePopup(msg, 'warning', 'warning');
+            messagePopup(validation.custom.invalidImage, 'warning', 'warning');
             return;
         }
         $.ajax({

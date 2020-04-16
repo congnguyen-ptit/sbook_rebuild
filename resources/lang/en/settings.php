@@ -319,7 +319,7 @@ return [
         'create_book' => 'has created a book: ',
         'upvote' => 'Upvote your review for the book: ',
         'downvote' => 'Downvote your review for the book: ',
-        'waiting' => 'Borrowing your book: ',
+        'waiting' => 'wan\'t borrow your book: ',
         'returning' => 'Return your book: ',
         'returned' => ' Has returned the book: ',
         'reading' => ' Has approve request to borrow: ',
