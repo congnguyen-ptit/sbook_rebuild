@@ -1,5 +1,5 @@
+
 project_type: php
-url: https://civ3-dev.sun-asterisk.vn
 build:
   general_test:
     image: framgiaciteam/laravel-workspace:latest
@@ -16,7 +16,15 @@ build:
       - composer install
       - framgia-ci test-connect mysql_test 3306 60
       - php artisan migrate --database=mysql_test
+      - php artisan config:cache
+      - php artisan cache:clear
+      - framgia-ci run --logs
 test:
+  eslint:
+    ignore: true
+    command: eslint --format=checkstyle
+      --output-file=.framgia-ci-reports/eslint.xml
+      resources/assets/js/ --ext .js
   phpcpd:
     ignore: true
     command: phpcpd --log-pmd=.framgia-ci-reports/phpcpd.xml app
@@ -35,15 +43,24 @@ test:
       --report-xml=.framgia-ci-reports/metrics.xml
       app
   phpcs:
-    ignore: false
+    ignore: true
     command: echo '' | phpcs --standard=Framgia --report-checkstyle=.framgia-ci-reports/phpcs.xml --ignore=app/Supports/* app
   phpunit:
     ignore: false
     command:
-      - php -dzend_extension=xdebug.so vendor/bin/phpunit
+      - phpdbg -qrr vendor/bin/phpunit -d memory_limit=1024M
         --coverage-clover=.framgia-ci-reports/coverage-clover.xml
         --coverage-html=.framgia-ci-reports/coverage
+# deploy:
+#   rocketeer:
+#     image: framgiaciteam/deployer:2.0
+#     when:
+#       branch: develop
+#     run: php rocketeer.phar deploy --on=testing --no-interaction --branch=develop
 cache:
   composer:
     folder: vendor
     file: composer.lock
+  nodejs:
+    folder: node_modules
+    file: yarn.lock
