@@ -41,6 +41,7 @@ Route::group(['middleware' => 'locale'], function () {
 
         Route::group(['middleware' => 'auth'], function () {
             Route::resource('/books/{slug}/review', 'ReviewBookController');
+            Route::post('/books/review/{id}', 'ReviewBookController@getInfor');
             Route::resource('/review/{id}/vote', 'VoteController');
             Route::post('/books/sharing/{id}', 'UserController@sharingBook')->name('user.sharing');
             Route::post('/books/remove-owner/{id}', 'UserController@removeOwner')->name('user.remove-owner');

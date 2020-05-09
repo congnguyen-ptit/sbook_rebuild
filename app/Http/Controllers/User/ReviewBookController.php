@@ -194,4 +194,19 @@ class ReviewBookController extends Controller
 
         return view('book.show_review', compact('review', 'book', 'voted', 'flag'));
     }
+
+    public function getInfor($id)
+    {
+        $votes = $this->review->findOrFail($id)->votes;
+        $data = [];
+        $index = 0;
+        foreach ($votes as $key => $vote) {
+            $data[$index]['name'] = $vote->user->name;
+            $data[$index]['avatar'] = $vote->user->avatar;
+            $index++;
+        }
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
 }

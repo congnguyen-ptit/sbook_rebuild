@@ -196,6 +196,7 @@ return [
         'more' => 'View more',
         'unavailable' => 'Unavailable',
         'available' => 'Available',
+        'peoplevoted' => 'People voted',
     ],
 
     'profile' => [
