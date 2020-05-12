@@ -301,12 +301,20 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row text-right">
-                                                                <span class="badge-warning badge btn-vote mr-10 up-vote {{ Auth::id() == $review->user_id ? 'not-allow' : '' }}" data-review="{{ $review->id }}" data-value="1">
-                                                                    <i class="fa fa-thumbs-up fa-lg"></i>@lang('settings.book.satisfied') <span id="satisfied">{{ $review->upvote }}</span>
-                                                                </span>
-                                                                <span class="badge-warning badge btn-vote down-vote {{ Auth::id() == $review->user_id ? 'not-allow' : '' }}" data-review="{{ $review->id }}" data-value="-1">
-                                                                    <i class="fa fa-thumbs-o-up fa-lg rotate-180"></i>@lang('settings.book.unsatisfied') <span id="unsatisfied">{{ $review->downvote }}</span>
-                                                                </span>
+                                                                @if (Auth::user()->id == $review->user_id)
+                                                                    <span class="badge-warning people-voted" data-id="{{ $review->id }}">
+                                                                        <i class="fa fa-users" aria-hidden="true"></i>
+                                                                        <span>{{ Auth::user()->review->votes->count() }}</span>
+                                                                    </span>
+                                                                @else
+                                                                    <span class="badge-warning badge btn-vote mr-10 up-vote {{ Auth::id() == $review->user_id ? 'not-allow' : '' }}" data-review="{{ $review->id }}" data-value="1">
+                                                                        <i class="fa fa-thumbs-o-up fa-lg"></i> @lang('settings.book.satisfied')
+                                                                    </span>
+                                                                    <span class="badge-warning badge people-voted" data-id="{{ $review->id }}">
+                                                                        <i class="fa fa-users" aria-hidden="true"></i>
+                                                                        <span class="satisfied people_voted">{{ $review->votes->count() }}</span>
+                                                                    </span>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -653,6 +661,20 @@
                     )!!}
                 </div>
                 {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="people_voted" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{ trans('settings.modal.peoplevoted') }}</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="show_people">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

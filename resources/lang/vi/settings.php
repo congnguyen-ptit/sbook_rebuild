@@ -196,6 +196,7 @@ return [
         'more' => 'Xem thêm',
         'unavailable' => 'Không có sẵn',
         'available' => 'Có thể mượn',
+        'peoplevoted' => 'Những người bầu chọn',
     ],
 
     'profile' => [
