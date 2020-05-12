@@ -41,7 +41,7 @@ return [
             'host'      => 'HOST',
             'username'  => 'DEPLOY_NAME',
             'password'  => 'DEPLOY_PASSWORD',
-            'key'       => '/home/tran.duc.quoc/.ssh/id_rsa',
+            'key'       => 'DEPLOY_RSA_KEY',
             'keyphrase' => '',
             'agent'     => '',
             'db_role'   => true,
