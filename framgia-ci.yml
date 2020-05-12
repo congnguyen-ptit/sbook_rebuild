@@ -57,7 +57,7 @@ deploy:
     image: framgiaciteam/deployer:2.0
     when:
       branch: master
-    run: php rocketeer.phar deploy --on=testing --no-interaction --branch=master
+    run: php rocketeer.phar deploy --on=staging --no-interaction --branch=master
 # cache:
 #   composer:
 #     folder: vendor
